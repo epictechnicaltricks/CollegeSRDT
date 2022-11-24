@@ -1,0 +1,7 @@
+#Thu Nov 24 14:07:07 IST 2022
+base.1=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+path.1=classes.dex
+base.0=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
