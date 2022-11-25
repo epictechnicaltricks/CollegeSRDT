@@ -98,6 +98,8 @@ public class AuthActivity extends  AppCompatActivity  {
 	private HashMap<String, Object> map = new HashMap<>();
 
 	String list="";
+	private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
+	private long mBackPressed;
 
 	///////////////////////////////////////////////////////////
 
@@ -288,12 +290,25 @@ public class AuthActivity extends  AppCompatActivity  {
 												if (Util.isConnected(getApplicationContext())) {
 
 													///////////////////// register  ///////////////
-													in.setClass(getApplicationContext(), ForgotPassActivity.class);
+													/*in.setClass(getApplicationContext(), ForgotPassActivity.class);
 													in.putExtra("action", "create");
 													in.putExtra("email", email.getText().toString().trim());
 													in.putExtra("pass", pass.getText().toString().trim());
 													in.putExtra("phone", edittext4.toString().trim());
-													startActivity(in);
+													startActivity(in);*/
+
+
+													_register_api_request("123"
+															,email.getText().toString().substring(0,12)
+															,email.getText().toString()
+															,pass.getText().toString()
+															,edittext4.getText().toString()
+															,"DEMO CLASS NAME"
+															,"COMPUTER SCIENCE"
+															,"2022"
+															,"123");
+
+
 
 													//fauth.signInWithEmailAndPassword(email.getText().toString().trim(), pass.getText().toString().trim()).addOnCompleteListener(LoginActivity.this, _fauth_sign_in_listener);
 												}
@@ -578,6 +593,18 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	@Override
 	public void onBackPressed() {
+
+		if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+		{
+			super.onBackPressed();
+			return;
+		}
+		else {
+
+			Toast.makeText(getBaseContext(), "Tap again to exit", Toast.LENGTH_SHORT).show();
+		}
+
+		mBackPressed = System.currentTimeMillis();
 
 	}
 

@@ -1032,6 +1032,8 @@ drawable googleg_standard_color_18
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable login_user
+drawable login_user_ic
 drawable logo
 drawable logout_1
 drawable logout_2
@@ -1054,6 +1056,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable online_apply
 drawable order
+drawable person
 drawable pido_1
 drawable pido_2
 drawable placeholder_image
@@ -1068,6 +1071,7 @@ drawable skill
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable university
+drawable unlink
 drawable user
 drawable website
 id ALT
@@ -1218,6 +1222,7 @@ id imageview2
 id imageview3
 id imageview4
 id imageview5
+id imageview6
 id info
 id italic
 id item_touch_helper_previous_elevation
@@ -1241,6 +1246,7 @@ id linear9
 id listMode
 id list_item
 id listview1
+id login
 id logout
 id masked
 id materialbutton1
@@ -1274,6 +1280,7 @@ id phone_no
 id pin
 id placements
 id profile
+id profile_image
 id program
 id progress_circular
 id progress_horizontal

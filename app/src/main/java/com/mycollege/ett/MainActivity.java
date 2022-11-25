@@ -67,6 +67,7 @@ public class MainActivity extends  AppCompatActivity  {
 	
 	private void initializeLogic() {
 
+
 		_transparentStatusAndNavigation();
 		_NavStatusBarColor("#FFFFFF", "#FFFFFF");
 		_changeActivityFont("en_light");

@@ -204,8 +204,9 @@ com/mycollege/ett/HomeActivity.java
  com.mycollege.ett.HomeActivity$17
  com.mycollege.ett.HomeActivity$18
  com.mycollege.ett.HomeActivity$19
- com.mycollege.ett.HomeActivity$19$1
  com.mycollege.ett.HomeActivity$2
+ com.mycollege.ett.HomeActivity$20
+ com.mycollege.ett.HomeActivity$20$1
  com.mycollege.ett.HomeActivity$3
  com.mycollege.ett.HomeActivity$4
  com.mycollege.ett.HomeActivity$5
@@ -294,8 +295,6 @@ androidx/lifecycle/R.java
 com/mycollege/ett/Contact.java
  com.mycollege.ett.Contact
  com.mycollege.ett.Contact$1
- com.mycollege.ett.Contact$2
- com.mycollege.ett.Contact$2$1
 androidx/documentfile/R.java
  androidx.documentfile.R
 com/mycollege/ett/Util.java

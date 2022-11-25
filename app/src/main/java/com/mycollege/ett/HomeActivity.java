@@ -45,18 +45,18 @@ import android.graphics.Typeface;
 
 public class HomeActivity extends  AppCompatActivity  {
 
-	private Timer _timer = new Timer();
+	private final Timer _timer = new Timer();
 
 	private Toolbar _toolbar;
 	private AppBarLayout _app_bar;
 	private CoordinatorLayout _coordinator;
 	private DrawerLayout _drawer;
 	private String fontName = "";
-	private String typeace = "";
+	private final String typeace = "";
 	private double count = 0;
 
-	private ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
-	private ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
+	private final ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
+	private final ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
 
 	private LinearLayout linear1;
 	private LinearLayout slider_layouf;
@@ -93,9 +93,12 @@ public class HomeActivity extends  AppCompatActivity  {
 	private TextView _drawer_textview5;
 	private ImageView _drawer_imageview5;
 	private TextView _drawer_textview6;
+	private TextView _drawer_textview7;
+	private LinearLayout _drawer_login;
+	private ImageView _drawer_profile_image;
 
 	private TimerTask scroll_time;
-	private Intent in = new Intent();
+	private final Intent in = new Intent();
 
 	String youtube_player_api ="AIzaSyBZtKZFJ5QFj7BrWGoW8qSzTJyebDM42AM";
 	private YouTubePlayerView ytPlayer;
@@ -127,9 +130,9 @@ public class HomeActivity extends  AppCompatActivity  {
 
 
 
-		_app_bar = (AppBarLayout) findViewById(R.id._app_bar);
-		_coordinator = (CoordinatorLayout) findViewById(R.id._coordinator);
-		_toolbar = (Toolbar) findViewById(R.id._toolbar);
+		_app_bar = findViewById(R.id._app_bar);
+		_coordinator = findViewById(R.id._coordinator);
+		_toolbar = findViewById(R.id._toolbar);
 		setSupportActionBar(_toolbar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -139,48 +142,52 @@ public class HomeActivity extends  AppCompatActivity  {
 				onBackPressed();
 			}
 		});
-		_drawer = (DrawerLayout) findViewById(R.id._drawer);
+		_drawer = findViewById(R.id._drawer);
 		ActionBarDrawerToggle _toggle = new ActionBarDrawerToggle(HomeActivity.this, _drawer, _toolbar, R.string.app_name, R.string.app_name);
 		_drawer.addDrawerListener(_toggle);
 		_toggle.syncState();
 
-		LinearLayout _nav_view = (LinearLayout) findViewById(R.id._nav_view);
+		LinearLayout _nav_view = findViewById(R.id._nav_view);
 
-		linear1 = (LinearLayout) findViewById(R.id.linear1);
-		slider_layouf = (LinearLayout) findViewById(R.id.slider_layouf);
-		vscroll1 = (ScrollView) findViewById(R.id.vscroll1);
-		drawer_open = (ImageView) findViewById(R.id.drawer_open);
-		textview1 = (TextView) findViewById(R.id.textview1);
-		notification = (ImageView) findViewById(R.id.notification);
-		viewpager1 = (ViewPager) findViewById(R.id.viewpager1);
-		bg = (LinearLayout) findViewById(R.id.bg);
-		textview2 = (TextView) findViewById(R.id.textview2);
+		linear1 = findViewById(R.id.linear1);
+		slider_layouf = findViewById(R.id.slider_layouf);
+		vscroll1 = findViewById(R.id.vscroll1);
+		drawer_open = findViewById(R.id.drawer_open);
+		textview1 = findViewById(R.id.textview1);
+		notification = findViewById(R.id.notification);
+		viewpager1 = findViewById(R.id.viewpager1);
+		bg = findViewById(R.id.bg);
+		textview2 = findViewById(R.id.textview2);
 
-		textview3 = (TextView) findViewById(R.id.textview3);
-		linear5 = (LinearLayout) findViewById(R.id.linear5);
-		textview4 = (TextView) findViewById(R.id.textview4);
-		recyclerview1 = (RecyclerView) findViewById(R.id.recyclerview1);
-		_drawer_linear1 = (LinearLayout) _nav_view.findViewById(R.id.linear1);
-		_drawer_image_layout = (LinearLayout) _nav_view.findViewById(R.id.image_layout);
-		_drawer_vscroll1 = (ScrollView) _nav_view.findViewById(R.id.vscroll1);
-		_drawer_name = (TextView) _nav_view.findViewById(R.id.name);
-		_drawer_id = (TextView) _nav_view.findViewById(R.id.id);
-		_drawer_bottom_bg = (LinearLayout) _nav_view.findViewById(R.id.bottom_bg);
-		_drawer_profile = (LinearLayout) _nav_view.findViewById(R.id.profile);
-		_drawer_exam = (LinearLayout) _nav_view.findViewById(R.id.exam);
-		_drawer_linear6 = (LinearLayout) _nav_view.findViewById(R.id.linear6);
-		_drawer_gallery = (LinearLayout) _nav_view.findViewById(R.id.gallery);
-		_drawer_logout = (LinearLayout) _nav_view.findViewById(R.id.logout);
-		_drawer_imageview1 = (ImageView) _nav_view.findViewById(R.id.imageview1);
-		_drawer_textview2 = (TextView) _nav_view.findViewById(R.id.textview2);
-		_drawer_imageview2 = (ImageView) _nav_view.findViewById(R.id.imageview2);
-		_drawer_textview3 = (TextView) _nav_view.findViewById(R.id.textview3);
-		_drawer_imageview3 = (ImageView) _nav_view.findViewById(R.id.imageview3);
-		_drawer_textview4 = (TextView) _nav_view.findViewById(R.id.textview4);
-		_drawer_imageview4 = (ImageView) _nav_view.findViewById(R.id.imageview4);
-		_drawer_textview5 = (TextView) _nav_view.findViewById(R.id.textview5);
-		_drawer_imageview5 = (ImageView) _nav_view.findViewById(R.id.imageview5);
-		_drawer_textview6 = (TextView) _nav_view.findViewById(R.id.textview6);
+		textview3 = findViewById(R.id.textview3);
+		linear5 = findViewById(R.id.linear5);
+		textview4 = findViewById(R.id.textview4);
+		recyclerview1 = findViewById(R.id.recyclerview1);
+		_drawer_linear1 = _nav_view.findViewById(R.id.linear1);
+		_drawer_image_layout = _nav_view.findViewById(R.id.image_layout);
+		_drawer_vscroll1 = _nav_view.findViewById(R.id.vscroll1);
+		_drawer_name = _nav_view.findViewById(R.id.name);
+		_drawer_id = _nav_view.findViewById(R.id.id);
+		_drawer_bottom_bg = _nav_view.findViewById(R.id.bottom_bg);
+		_drawer_profile = _nav_view.findViewById(R.id.profile);
+
+		_drawer_login = _nav_view.findViewById(R.id.login);
+
+		_drawer_exam = _nav_view.findViewById(R.id.exam);
+		_drawer_linear6 = _nav_view.findViewById(R.id.linear6);
+		_drawer_gallery = _nav_view.findViewById(R.id.gallery);
+		_drawer_logout = _nav_view.findViewById(R.id.logout);
+		_drawer_imageview1 = _nav_view.findViewById(R.id.imageview1);
+		_drawer_textview2 = _nav_view.findViewById(R.id.textview2);
+		_drawer_imageview2 = _nav_view.findViewById(R.id.imageview2);
+		_drawer_textview3 = _nav_view.findViewById(R.id.textview3);
+		_drawer_imageview3 = _nav_view.findViewById(R.id.imageview3);
+		_drawer_textview4 = _nav_view.findViewById(R.id.textview4);
+		_drawer_imageview4 = _nav_view.findViewById(R.id.imageview4);
+		_drawer_textview5 = _nav_view.findViewById(R.id.textview5);
+		_drawer_imageview5 = _nav_view.findViewById(R.id.imageview5);
+		_drawer_textview6 = _nav_view.findViewById(R.id.textview6);
+_drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 		// Get reference to the view of Video player
 		/*@SuppressLint("CutPasteId")
@@ -235,7 +242,24 @@ public class HomeActivity extends  AppCompatActivity  {
 			@Override
 			public void onClick(View v) {
 
-				startActivity(new Intent(getApplicationContext(), news.class));
+
+
+				SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+
+
+
+						if(sh.getString("userId", "").equals(""))
+						{
+
+							showMessage("Please login to continue..");
+							startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+
+						} else {
+
+							startActivity(new Intent(getApplicationContext(), news.class));
+
+						}
+
 			}
 		});
 		site .setOnClickListener(new View.OnClickListener() {
@@ -327,6 +351,14 @@ public class HomeActivity extends  AppCompatActivity  {
 			}
 		});
 
+		_drawer_login.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				startActivity(new Intent(getApplicationContext(),AuthActivity.class));
+			}
+		});
+
 		_drawer_logout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
@@ -348,24 +380,61 @@ public class HomeActivity extends  AppCompatActivity  {
 		_slider();
 		_hide();
 
+
+
 		SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
 
-		try{
 
 
-  showMessage("Welcome "+ sh.getString("name", ""));
 
-			//phone.setText(_phone);
-			_drawer_name.setText(sh.getString("name", ""));
-			_drawer_id.setText(sh.getString("userId", ""));
-			//email.setText(_email);
-			//userid.setText(_id);
-			//bill.setText(_bill +"\nbill_id");
-
-		}catch(Exception e)
+		if(sh.getString("userId", "").equals(""))
 		{
-			e.printStackTrace();
+			_drawer_login.setVisibility(View.VISIBLE);
+			_drawer_logout.setVisibility(View.GONE);
+
+
+		} else {
+
+			_drawer_login.setVisibility(View.GONE);
+			_drawer_logout.setVisibility(View.VISIBLE);
+
+			try{
+
+
+				showMessage("Welcome "+ sh.getString("name", ""));
+
+				//phone.setText(_phone);
+				_drawer_name.setText(sh.getString("name", ""));
+				_drawer_id.setText(sh.getString("userId", ""));
+
+/*
+			Glide.with(getApplicationContext())
+					.load(Uri.parse(Objects.requireNonNull(sh.getString("avatar", ""))))
+					.error(R.drawable.person)
+					.placeholder(R.drawable.person)
+					.thumbnail(0.01f)
+					.into(_drawer_profile_image);
+*/
+
+				Glide.with(getApplicationContext())
+						.load(Uri.parse("https://wallpapercave.com/wp/wp11736579.jpg"))
+						.error(R.drawable.person)
+						.placeholder(R.drawable.person)
+						.thumbnail(0.01f)
+						.into(_drawer_profile_image);
+
+				// https://wallpapercave.com/wp/wp11736579.jpg
+				//email.setText(_email);
+				//userid.setText(_id);
+				//bill.setText(_bill +"\nbill_id");
+
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+
 		}
+
 
 
 
@@ -458,7 +527,7 @@ public class HomeActivity extends  AppCompatActivity  {
 
 		try {
 			Typeface
-			typeace = Typeface.createFromAsset(getAssets(), fontName);;
+			typeace = Typeface.createFromAsset(getAssets(), fontName);
 			if ((v instanceof ViewGroup)) {
 				ViewGroup vg = (ViewGroup) v;
 				for (int i = 0;
@@ -488,7 +557,7 @@ public class HomeActivity extends  AppCompatActivity  {
 
 		{
 			Util.showMessage(getApplicationContext(), "Error Loading Font");
-		};
+		}
 	}
 
 
@@ -522,7 +591,7 @@ public class HomeActivity extends  AppCompatActivity  {
 				});
 			}
 		};
-		_timer.scheduleAtFixedRate(scroll_time, (int)(1500), (int)(2000));
+		_timer.scheduleAtFixedRate(scroll_time, 1500, 2000);
 	}
 
 
@@ -570,17 +639,17 @@ public class HomeActivity extends  AppCompatActivity  {
 		@Override
 		public CharSequence getPageTitle(int pos) {
 			// use the activitiy event (onTabLayoutNewTabAdded) in order to use this method
-			return "page " + String.valueOf(pos);
+			return "page " + pos;
 		}
 
 		@Override
 		public  Object instantiateItem(ViewGroup _container,  final int _position) {
 			View _view = LayoutInflater.from(_context).inflate(R.layout.slider, _container, false);
 			
-			final androidx.cardview.widget.CardView cardview1 = (androidx.cardview.widget.CardView) _view.findViewById(R.id.cardview1);
-			final ImageView imageview1 = (ImageView) _view.findViewById(R.id.imageview1);
+			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
+			final ImageView imageview1 = _view.findViewById(R.id.imageview1);
 			
-			Glide.with(getApplicationContext()).load(Uri.parse(listmap.get((int)_position).get("image").toString())).into(imageview1);
+			Glide.with(getApplicationContext()).load(Uri.parse(listmap.get(_position).get("image").toString())).into(imageview1);
 			
 			_container.addView(_view);
 			return _view;
@@ -606,15 +675,15 @@ public class HomeActivity extends  AppCompatActivity  {
 		public void onBindViewHolder(ViewHolder _holder, final int _position) {
 			View _view = _holder.itemView;
 			
-			final androidx.cardview.widget.CardView cardview1 = (androidx.cardview.widget.CardView) _view.findViewById(R.id.cardview1);
-			final LinearLayout linear1 = (LinearLayout) _view.findViewById(R.id.linear1);
-			final ImageView imageview2 = (ImageView) _view.findViewById(R.id.imageview2);
-			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
-			final TextView textview2 = (TextView) _view.findViewById(R.id.textview2);
+			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
+			final LinearLayout linear1 = _view.findViewById(R.id.linear1);
+			final ImageView imageview2 = _view.findViewById(R.id.imageview2);
+			final TextView textview1 = _view.findViewById(R.id.textview1);
+			final TextView textview2 = _view.findViewById(R.id.textview2);
 			
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
 			textview2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
-			Glide.with(getApplicationContext()).load(Uri.parse(listmap2.get((int)_position).get("image").toString())).into(imageview2);
+			Glide.with(getApplicationContext()).load(Uri.parse(listmap2.get(_position).get("image").toString())).into(imageview2);
 		}
 		
 		@Override
@@ -637,14 +706,14 @@ public class HomeActivity extends  AppCompatActivity  {
 	
 	@Deprecated
 	public int getLocationX(View _v) {
-		int _location[] = new int[2];
+		int[] _location = new int[2];
 		_v.getLocationInWindow(_location);
 		return _location[0];
 	}
 	
 	@Deprecated
 	public int getLocationY(View _v) {
-		int _location[] = new int[2];
+		int[] _location = new int[2];
 		_v.getLocationInWindow(_location);
 		return _location[1];
 	}
