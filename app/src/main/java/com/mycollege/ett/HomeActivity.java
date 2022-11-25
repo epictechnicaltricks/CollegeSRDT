@@ -212,14 +212,29 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
-				showMessage(" clicked apply     ");
+
+				SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+
+
+
+				if(sh.getString("userId", "").equals(""))
+				{
+
+					showMessage("Please login to continue..");
+					startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+
+				} else {
+
+					startActivity(new Intent(getApplicationContext(), apply_online.class));
+
+				}
 			}
 		});
 		program .setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-				showMessage(" clicked program");
+				startActivity(new Intent(getApplicationContext(),programs.class));
 
 			}
 		});
@@ -237,7 +252,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
-				showMessage(" clicked placements");
+				startActivity(new Intent(getApplicationContext(),gallery.class));
 
 			}
 		});
@@ -269,9 +284,11 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
-				Intent in = new Intent(Intent.ACTION_VIEW);
+
+				startActivity(new Intent(getApplicationContext(),affiliated.class));
+				/*Intent in = new Intent(Intent.ACTION_VIEW);
 				in.setData(Uri.parse("https://mlu.ac.in/"));
-				startActivity(in);
+				startActivity(in);*/
 
 			}
 		});
@@ -279,7 +296,21 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
-				showMessage(" clicked pay     ");
+
+				SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+				if(sh.getString("userId", "").equals(""))
+				{
+
+					showMessage("Please login to continue..");
+					startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+
+				} else {
+
+					startActivity(new Intent(getApplicationContext(), exam.class));
+
+				}
+
+
 
 			}
 		});
@@ -287,8 +318,20 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
+				SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+				if(sh.getString("userId", "").equals(""))
+				{
 
-				showMessage(" clicked skill     ");
+					showMessage("Please login to continue..");
+					startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+
+				} else {
+
+					startActivity(new Intent(getApplicationContext(), result.class));
+
+				}
+
+
 
 			}
 		});
@@ -508,6 +551,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 		recyclerview1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false));
 	}
 
+
+
+	
 	@Override
 	protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
 

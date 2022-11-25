@@ -213,7 +213,9 @@ public class ProfileActivity extends  AppCompatActivity  {
 			}
 			
 			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
-			
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
 			textview1.setText(clg_list.get((int)_position).get("name").toString());
 			
 			return _view;

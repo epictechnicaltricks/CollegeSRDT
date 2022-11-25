@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\USER\.gradle\caches\transforms-3\f4059abfd9d213dff62bfb5ea58f098c\transformed\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\USER\.gradle\caches\transforms-3\250b0ea8c1c759036867e0079924887f\transformed\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:17:1-42:12
@@ -46,20 +46,20 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\USER\.gradle\caches\
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\USER\.gradle\caches\transforms-3\aa8465075f18fa45c1889811caff3277\transformed\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\USER\.gradle\caches\transforms-3\0610b807a636011aacbcf79d9a40bdb4\transformed\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\USER\.gradle\caches\transforms-3\beeac7a1047acb33f34fa5ee3de25775\transformed\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
 	package
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:4:2-29
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-107:12
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-149:12
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:3:2-60
@@ -72,7 +72,7 @@ ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:6:19-73
 application
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:7:2-106:16
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:7:2-148:16
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\USER\.gradle\caches\transforms-3\f4059abfd9d213dff62bfb5ea58f098c\transformed\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\USER\.gradle\caches\transforms-3\f4059abfd9d213dff62bfb5ea58f098c\transformed\AndroidManifest.xml:22:5-20
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:23:5-40:19
@@ -231,48 +231,120 @@ ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:82:4-97
 	android:name
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:81:4-25
+activity#com.mycollege.ett.affiliated
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:87:3-92:42
+	android:screenOrientation
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:92:4-40
+	android:hardwareAccelerated
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:90:4-38
+	android:supportsPictureInPicture
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:91:4-43
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:89:4-97
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:88:4-30
+activity#com.mycollege.ett.apply_online
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:94:3-99:42
+	android:screenOrientation
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:99:4-40
+	android:hardwareAccelerated
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:97:4-38
+	android:supportsPictureInPicture
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:98:4-43
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:96:4-97
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:95:4-32
+activity#com.mycollege.ett.exam
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:101:3-106:42
+	android:screenOrientation
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:106:4-40
+	android:hardwareAccelerated
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:104:4-38
+	android:supportsPictureInPicture
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:105:4-43
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:103:4-97
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:102:4-24
+activity#com.mycollege.ett.gallery
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:108:3-113:42
+	android:screenOrientation
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:113:4-40
+	android:hardwareAccelerated
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:111:4-38
+	android:supportsPictureInPicture
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:112:4-43
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:110:4-97
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:109:4-27
+activity#com.mycollege.ett.programs
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:115:3-120:42
+	android:screenOrientation
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:120:4-40
+	android:hardwareAccelerated
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:118:4-38
+	android:supportsPictureInPicture
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:119:4-43
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:117:4-97
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:116:4-28
+activity#com.mycollege.ett.result
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:122:3-127:42
+	android:screenOrientation
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:127:4-40
+	android:hardwareAccelerated
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:125:4-38
+	android:supportsPictureInPicture
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:126:4-43
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:124:4-97
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:123:4-26
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:88:3-90:59
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:130:3-132:59
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\f06e9e45515f7c0add2be29f364b1403\transformed\AndroidManifest.xml:23:9-25:69
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\f06e9e45515f7c0add2be29f364b1403\transformed\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:90:4-57
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:132:4-57
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:89:4-49
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:131:4-49
 provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:91:3-95:29
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:133:3-137:29
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\4d04d5f26f3942df3e87eca73bb1341c\transformed\AndroidManifest.xml:12:9-16:39
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\4d04d5f26f3942df3e87eca73bb1341c\transformed\AndroidManifest.xml:12:9-16:39
 	android:authorities
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:93:4-64
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:135:4-64
 	android:exported
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:94:4-28
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:136:4-28
 	android:initOrder
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:95:4-27
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:137:4-27
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:92:4-68
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:134:4-68
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:96:3-102:13
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:138:3-144:13
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:33:9-39:19
 	android:exported
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:98:4-28
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:140:4-28
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:97:4-75
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:139:4-75
 meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:99:4-101:72
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:141:4-143:72
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:36:13-38:85
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:36:13-38:85
 	android:value
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:101:5-70
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:143:5-70
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:100:5-97
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:142:5-97
 uses-library#org.apache.http.legacy
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:103:3-105:30
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:145:3-147:30
 	android:required
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:105:4-28
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:147:4-28
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:104:4-41
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:146:4-41
 uses-sdk
 INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml

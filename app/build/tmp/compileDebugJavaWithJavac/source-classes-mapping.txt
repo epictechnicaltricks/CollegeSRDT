@@ -24,6 +24,8 @@ androidx/vectordrawable/R.java
  androidx.vectordrawable.R$string
  androidx.vectordrawable.R$style
  androidx.vectordrawable.R$styleable
+com/mycollege/ett/apply_online.java
+ com.mycollege.ett.apply_online
 androidx/lifecycle/livedata/core/R.java
  androidx.lifecycle.livedata.core.R
 androidx/appcompat/resources/R.java
@@ -161,8 +163,12 @@ androidx/drawerlayout/R.java
  androidx.drawerlayout.R$string
  androidx.drawerlayout.R$style
  androidx.drawerlayout.R$styleable
+com/mycollege/ett/affiliated.java
+ com.mycollege.ett.affiliated
 androidx/versionedparcelable/R.java
  androidx.versionedparcelable.R
+com/mycollege/ett/gallery.java
+ com.mycollege.ett.gallery
 com/mycollege/ett/RequestNetworkController.java
  com.mycollege.ett.RequestNetworkController
  com.mycollege.ett.RequestNetworkController$1
@@ -173,6 +179,8 @@ com/mycollege/ett/RequestNetworkController.java
 com/mycollege/ett/About.java
  com.mycollege.ett.About
  com.mycollege.ett.About$1
+com/mycollege/ett/exam.java
+ com.mycollege.ett.exam
 androidx/lifecycle/viewmodel/R.java
  androidx.lifecycle.viewmodel.R
 com/mycollege/ett/NotificationActivity.java
@@ -194,32 +202,18 @@ com/bumptech/glide/gifdecoder/R.java
 com/mycollege/ett/RequestNetwork.java
  com.mycollege.ett.RequestNetwork
  com.mycollege.ett.RequestNetwork$RequestListener
-com/mycollege/ett/HomeActivity.java
- com.mycollege.ett.HomeActivity
- com.mycollege.ett.HomeActivity$1
- com.mycollege.ett.HomeActivity$10
- com.mycollege.ett.HomeActivity$11
- com.mycollege.ett.HomeActivity$12
- com.mycollege.ett.HomeActivity$13
- com.mycollege.ett.HomeActivity$14
- com.mycollege.ett.HomeActivity$15
- com.mycollege.ett.HomeActivity$16
- com.mycollege.ett.HomeActivity$17
- com.mycollege.ett.HomeActivity$18
- com.mycollege.ett.HomeActivity$19
- com.mycollege.ett.HomeActivity$2
- com.mycollege.ett.HomeActivity$20
- com.mycollege.ett.HomeActivity$20$1
- com.mycollege.ett.HomeActivity$3
- com.mycollege.ett.HomeActivity$4
- com.mycollege.ett.HomeActivity$5
- com.mycollege.ett.HomeActivity$6
- com.mycollege.ett.HomeActivity$7
- com.mycollege.ett.HomeActivity$8
- com.mycollege.ett.HomeActivity$9
- com.mycollege.ett.HomeActivity$Recyclerview1Adapter
- com.mycollege.ett.HomeActivity$Recyclerview1Adapter$ViewHolder
- com.mycollege.ett.HomeActivity$Viewpager1Adapter
+androidx/vectordrawable/animated/R.java
+ androidx.vectordrawable.animated.R
+ androidx.vectordrawable.animated.R$attr
+ androidx.vectordrawable.animated.R$color
+ androidx.vectordrawable.animated.R$dimen
+ androidx.vectordrawable.animated.R$drawable
+ androidx.vectordrawable.animated.R$id
+ androidx.vectordrawable.animated.R$integer
+ androidx.vectordrawable.animated.R$layout
+ androidx.vectordrawable.animated.R$string
+ androidx.vectordrawable.animated.R$style
+ androidx.vectordrawable.animated.R$styleable
 androidx/cursoradapter/R.java
  androidx.cursoradapter.R
 com/mycollege/ett/news.java
@@ -227,10 +221,8 @@ com/mycollege/ett/news.java
  com.mycollege.ett.news$1
  com.mycollege.ett.news$2
  com.mycollege.ett.news$2$1
-com/mycollege/ett/ProfileActivity.java
- com.mycollege.ett.ProfileActivity
- com.mycollege.ett.ProfileActivity$1
- com.mycollege.ett.ProfileActivity$Listview1Adapter
+com/mycollege/ett/FileUtil.java
+ com.mycollege.ett.FileUtil
 androidx/cardview/R.java
  androidx.cardview.R
  androidx.cardview.R$attr
@@ -404,6 +396,10 @@ androidx/localbroadcastmanager/R.java
  androidx.localbroadcastmanager.R
 com/google/android/gms/tasks/R.java
  com.google.android.gms.tasks.R
+com/mycollege/ett/result.java
+ com.mycollege.ett.result
+com/mycollege/ett/programs.java
+ com.mycollege.ett.programs
 com/google/firebase/auth/internal/R.java
  com.google.firebase.auth.internal.R
 com/mycollege/ett/AuthActivity.java
@@ -432,17 +428,33 @@ com/mycollege/ett/AuthActivity.java
  com.mycollege.ett.AuthActivity$DilatingDotsProgressBar$4
  com.mycollege.ett.AuthActivity$DilatingDotsProgressBar$5
  com.mycollege.ett.AuthActivity$Viewpager1Adapter
-com/mycollege/ett/FileUtil.java
- com.mycollege.ett.FileUtil
-androidx/vectordrawable/animated/R.java
- androidx.vectordrawable.animated.R
- androidx.vectordrawable.animated.R$attr
- androidx.vectordrawable.animated.R$color
- androidx.vectordrawable.animated.R$dimen
- androidx.vectordrawable.animated.R$drawable
- androidx.vectordrawable.animated.R$id
- androidx.vectordrawable.animated.R$integer
- androidx.vectordrawable.animated.R$layout
- androidx.vectordrawable.animated.R$string
- androidx.vectordrawable.animated.R$style
- androidx.vectordrawable.animated.R$styleable
+com/mycollege/ett/HomeActivity.java
+ com.mycollege.ett.HomeActivity
+ com.mycollege.ett.HomeActivity$1
+ com.mycollege.ett.HomeActivity$10
+ com.mycollege.ett.HomeActivity$11
+ com.mycollege.ett.HomeActivity$12
+ com.mycollege.ett.HomeActivity$13
+ com.mycollege.ett.HomeActivity$14
+ com.mycollege.ett.HomeActivity$15
+ com.mycollege.ett.HomeActivity$16
+ com.mycollege.ett.HomeActivity$17
+ com.mycollege.ett.HomeActivity$18
+ com.mycollege.ett.HomeActivity$19
+ com.mycollege.ett.HomeActivity$2
+ com.mycollege.ett.HomeActivity$20
+ com.mycollege.ett.HomeActivity$20$1
+ com.mycollege.ett.HomeActivity$3
+ com.mycollege.ett.HomeActivity$4
+ com.mycollege.ett.HomeActivity$5
+ com.mycollege.ett.HomeActivity$6
+ com.mycollege.ett.HomeActivity$7
+ com.mycollege.ett.HomeActivity$8
+ com.mycollege.ett.HomeActivity$9
+ com.mycollege.ett.HomeActivity$Recyclerview1Adapter
+ com.mycollege.ett.HomeActivity$Recyclerview1Adapter$ViewHolder
+ com.mycollege.ett.HomeActivity$Viewpager1Adapter
+com/mycollege/ett/ProfileActivity.java
+ com.mycollege.ett.ProfileActivity
+ com.mycollege.ett.ProfileActivity$1
+ com.mycollege.ett.ProfileActivity$Listview1Adapter
