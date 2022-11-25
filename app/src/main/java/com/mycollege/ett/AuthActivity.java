@@ -90,7 +90,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	private HashMap<String, Object> api_map = new HashMap<>();
 
-
+private TextView edittext4_textview_91;
 
 
 	private final ArrayList<HashMap<String, Object>> results = new ArrayList<>();
@@ -161,6 +161,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 		action_btn = findViewById(R.id.action_btn);
 
+		edittext4_textview_91 = findViewById(R.id.edittext4_textview_91);
 
 		textview7 = findViewById(R.id.textview7);
 		imageview2 = findViewById(R.id.imageview2);
@@ -270,7 +271,14 @@ public class AuthActivity extends  AppCompatActivity  {
 
 									showMessage("confirm password not match!");
 
-							}else {
+							}
+
+								if(edittext4.getText().toString().length()!=10){
+
+									showMessage("Not a valid phone no !");
+
+
+								} else {
 
 								_autoTransitionScroll(vscroll1);
 								linear8.setVisibility(View.VISIBLE);
@@ -396,7 +404,8 @@ public class AuthActivity extends  AppCompatActivity  {
 					textview9.setVisibility(View.GONE);
 					textview10.setVisibility(View.GONE);
 
-					edittext4.setVisibility(View.GONE);
+					edittext4.setVisibility(View.GONE);  //phone no
+					edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
 					edittext3.setVisibility(View.GONE);
 					linear7.setVisibility(View.GONE);
 					checkbox1.setVisibility(View.GONE);
@@ -414,8 +423,8 @@ public class AuthActivity extends  AppCompatActivity  {
 					textview9.setVisibility(View.VISIBLE);
 					textview10.setVisibility(View.VISIBLE);
 					edittext3.setVisibility(View.VISIBLE);
-					edittext4.setVisibility(View.VISIBLE);
-
+					edittext4.setVisibility(View.VISIBLE);  //phone no
+					edittext4_textview_91.setVisibility(View.VISIBLE); // phone +91 text
 					linear7.setVisibility(View.VISIBLE);
 					//checkbox1.setVisibility(View.VISIBLE);
 					textview5.setVisibility(View.GONE);
@@ -490,8 +499,15 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	private void initializeLogic() {
 		_slider();
-		edittext4.setVisibility(View.GONE);
-		textview10.setVisibility(View.GONE);
+
+
+		edittext4.setVisibility(View.GONE);   //phone no
+		textview10.setVisibility(View.GONE); // PHONE NO TEXT
+
+		edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
+
+
+
 		linear10.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)100, 0xFFFFFFFF));
 	}
 
@@ -1420,7 +1436,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	@Deprecated
 	public void showMessage(String _s) {
-		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_LONG).show();
 	}
 
 

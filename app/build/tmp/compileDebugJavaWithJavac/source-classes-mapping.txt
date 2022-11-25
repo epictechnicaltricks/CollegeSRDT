@@ -170,6 +170,9 @@ com/mycollege/ett/RequestNetworkController.java
  com.mycollege.ett.RequestNetworkController$3
  com.mycollege.ett.RequestNetworkController$3$1
  com.mycollege.ett.RequestNetworkController$3$2
+com/mycollege/ett/About.java
+ com.mycollege.ett.About
+ com.mycollege.ett.About$1
 androidx/lifecycle/viewmodel/R.java
  androidx.lifecycle.viewmodel.R
 com/mycollege/ett/NotificationActivity.java

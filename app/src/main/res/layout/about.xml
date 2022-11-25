@@ -1,0 +1,100 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<RelativeLayout
+
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center_horizontal|center_vertical"
+		android:orientation="vertical">
+
+
+		<LinearLayout
+			android:id="@+id/linear8"
+
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<ImageView
+
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_gravity="center"
+				android:alpha="0.5"
+				android:scaleType="centerCrop"
+				android:src="@drawable/background"/>
+
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:gravity="center"
+			android:orientation="vertical"
+			android:layout_height="match_parent">
+
+<LinearLayout
+	android:gravity="center"
+	android:layout_width="match_parent"
+	android:layout_weight="1"
+	android:orientation="vertical"
+	android:layout_height="wrap_content">
+
+
+	<TextView
+		android:gravity="center"
+		android:textColor="#000000"
+		android:text="About the Madhusudan Law University"
+		android:textSize="19dp"
+		android:textStyle="bold"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+
+	<TextView
+
+		android:layout_margin="20dp"
+
+		android:text="The Madhusudan Law University has been established on the birth anniversary of Madhusudan Das on 28th April, 2021. The University started its official functioning on the same day, under the guidance and vision of the founding vice chancellor Prof. (Dr.) Kamal Jeet Singh. From 28th April, 2021 all government and private law colleges of Odisha, other than constituent law college of universities will be affiliated with Madhusudan Law University Cuttack. Right now, the Madhusudan Law University is housed in the same campus which was earlier known as erstwhile Madhusudan Law College, Cuttack. The administration of the University has plans to expand its campus and further establish the Academic Block, Administrative Block, Library, Hostels, Conference Hall, Auditorium, Health Centre, Gymnasium, Moot Court cum Seminar Halls, Sports Area, Residential Area, etc."
+		android:gravity="center_horizontal|center_vertical"
+		android:textSize="16sp"
+		android:textColor="#A1A0A0"
+		android:textStyle="normal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:gravity="bottom"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:layout_marginBottom="17dp"
+					android:gravity="center"
+					android:id="@+id/textview4"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:alpha="0.6"
+					android:text="www.mlu.ac.in"
+					android:textSize="17sp"
+					android:textStyle="bold"
+					android:textColor="#475E6E"/>
+
+
+			</LinearLayout>
+
+
+
+			></LinearLayout>
+
+	</RelativeLayout>
+</LinearLayout>

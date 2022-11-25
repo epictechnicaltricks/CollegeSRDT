@@ -97,19 +97,41 @@
 						android:textSize="14sp"
 						android:textColor="#737272"/>
 
-					<EditText
-						android:paddingTop="12dp"
-						android:inputType="numberSigned"
-						android:background="@android:color/transparent"
-						android:textSize="14sp"
-						android:id="@+id/edittext4"
+					<LinearLayout
 						android:layout_width="match_parent"
-						android:layout_height="40dp"
-						android:padding="8dp"
+						android:layout_height="wrap_content">
 
-						android:textColor="#000000"
-						android:hint="Phone "
-						android:textColorHint="#607D8B"/>
+
+						<TextView
+							android:id="@+id/edittext4_textview_91"
+							android:layout_width="wrap_content"
+							android:text="+91 "
+							android:textColor="#000"
+							android:layout_height="40dp"
+							android:padding="8dp"
+							android:textSize="14sp"/>
+
+
+						<EditText
+							android:paddingTop="12dp"
+							android:inputType="numberSigned"
+							android:background="@android:color/transparent"
+							android:textSize="14sp"
+							android:id="@+id/edittext4"
+							android:text=""
+							android:layout_weight="1"
+							android:layout_width="match_parent"
+							android:layout_height="40dp"
+							android:padding="8dp"
+
+							android:textColor="#000000"
+							android:hint="Phone "
+							android:textColorHint="#607D8B"/>
+
+
+
+					</LinearLayout>
+
 
 
 					<LinearLayout

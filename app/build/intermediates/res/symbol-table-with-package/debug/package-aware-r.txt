@@ -1189,6 +1189,7 @@ id edittext1
 id edittext2
 id edittext3
 id edittext4
+id edittext4_textview_91
 id email
 id end
 id enterAlways
@@ -1446,6 +1447,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout about
 layout auth
 layout clg_list_cus
 layout contact
