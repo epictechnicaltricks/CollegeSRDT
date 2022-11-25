@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+
+import androidx.core.util.LogWriter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -31,21 +33,24 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import android.graphics.Typeface;
 
 
 public class AuthActivity extends  AppCompatActivity  {
 
-	private Timer _timer = new Timer();
+	private final Timer _timer = new Timer();
 
 	private String fontName = "";
-	private String typeace = "";
+	private final String typeace = "";
 	private boolean Current = false;
 	private boolean Hiden = false;
 	private boolean onStart = false;
 	private double count = 0;
 
-	private ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
+	private final ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
 
 	private LinearLayout linear2;
 	private ScrollView vscroll1;
@@ -54,7 +59,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	private LinearLayout linear10;
 	private LinearLayout linear3;
 	private LinearLayout linear4;
-	private LinearLayout linear7;
+	private LinearLayout linear7,linear12;
 	private CheckBox checkbox1;
 	private TextView textview1;
 	private TextView textview2;
@@ -74,7 +79,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	private RequestNetwork retweet;
 	private RequestNetwork.RequestListener _retweet_request_listener;
 	private TimerTask timer;
-	private Intent in = new Intent();
+	private final Intent in = new Intent();
 	private TimerTask scroll_time;
 
 	private RequestNetwork login_api;
@@ -85,11 +90,33 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	private HashMap<String, Object> api_map = new HashMap<>();
 
-	String login_api_url =  "https://nft.digitallinkcard.xyz/api/login?";
-
-	String register_api_url =  "https://nft.digitallinkcard.xyz/api/register?";
 
 
+
+	private final ArrayList<HashMap<String, Object>> results = new ArrayList<>();
+
+	private HashMap<String, Object> map = new HashMap<>();
+
+	String list="";
+
+	///////////////////////////////////////////////////////////
+
+
+
+
+
+  /**   ░█████╗░██████╗░██╗      ██╗░░░░░██╗███╗░░██╗██╗░░██╗
+		██╔══██╗██╔══██╗██║      ██║░░░░░██║████╗░██║██║░██╔╝
+		███████║██████╔╝██║      ██║░░░░░██║██╔██╗██║█████═╝░
+		██╔══██║██╔═══╝░██║      ██║░░░░░██║██║╚████║██╔═██╗░
+		██║░░██║██║░░░░░██║      ███████╗██║██║░╚███║██║░╚██╗
+		╚═╝░░╚═╝╚═╝░░░░░╚═╝      ╚══════╝╚═╝╚═╝░░╚══╝╚═╝░░╚═╝
+	**/
+
+	   String api = "https://exam.infydemo.in/api/";
+
+
+	////////////////////////////////////////////////
 
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -105,39 +132,39 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 
+   linear12 = findViewById(R.id.linear12);
+		linear2 = findViewById(R.id.linear2);
+		vscroll1 = findViewById(R.id.vscroll1);
+		linear1 = findViewById(R.id.linear1);
+		viewpager1 = findViewById(R.id.viewpager1);
+		linear10 = findViewById(R.id.linear10);
+		linear3 = findViewById(R.id.linear3);
+		linear4 = findViewById(R.id.linear4);
+		linear7 = findViewById(R.id.linear7);
+		checkbox1 = findViewById(R.id.checkbox1);
+		textview1 = findViewById(R.id.textview1);
+		textview2 = findViewById(R.id.textview2);
+		textview3 = findViewById(R.id.textview3);
 
-		linear2 = (LinearLayout) findViewById(R.id.linear2);
-		vscroll1 = (ScrollView) findViewById(R.id.vscroll1);
-		linear1 = (LinearLayout) findViewById(R.id.linear1);
-		viewpager1 = (ViewPager) findViewById(R.id.viewpager1);
-		linear10 = (LinearLayout) findViewById(R.id.linear10);
-		linear3 = (LinearLayout) findViewById(R.id.linear3);
-		linear4 = (LinearLayout) findViewById(R.id.linear4);
-		linear7 = (LinearLayout) findViewById(R.id.linear7);
-		checkbox1 = (CheckBox) findViewById(R.id.checkbox1);
-		textview1 = (TextView) findViewById(R.id.textview1);
-		textview2 = (TextView) findViewById(R.id.textview2);
-		textview3 = (TextView) findViewById(R.id.textview3);
+		textview10 = findViewById(R.id.textview10);
 
-		textview10 = (TextView) findViewById(R.id.textview10);
-
-		email = (EditText) findViewById(R.id.email);
-		textview4 = (TextView) findViewById(R.id.textview4);
-		linear9 = (LinearLayout) findViewById(R.id.linear9);
-		textview9 = (TextView) findViewById(R.id.textview9);
-		linear8 = (LinearLayout) findViewById(R.id.linear8);
-		pass = (EditText) findViewById(R.id.pass);
-		textview5 = (TextView) findViewById(R.id.textview5);
-
-
-		action_btn = (TextView) findViewById(R.id.action_btn);
+		email = findViewById(R.id.email);
+		textview4 = findViewById(R.id.textview4);
+		linear9 = findViewById(R.id.linear9);
+		textview9 = findViewById(R.id.textview9);
+		linear8 = findViewById(R.id.linear8);
+		pass = findViewById(R.id.pass);
+		textview5 = findViewById(R.id.textview5);
 
 
-		textview7 = (TextView) findViewById(R.id.textview7);
-		imageview2 = (ImageView) findViewById(R.id.imageview2);
-		edittext3 = (EditText) findViewById(R.id.edittext3);
+		action_btn = findViewById(R.id.action_btn);
 
-		edittext4 = (EditText) findViewById(R.id.edittext4);
+
+		textview7 = findViewById(R.id.textview7);
+		imageview2 = findViewById(R.id.imageview2);
+		edittext3 = findViewById(R.id.edittext3);
+
+		edittext4 = findViewById(R.id.edittext4);
 
 		retweet = new RequestNetwork(this);
 
@@ -157,7 +184,12 @@ public class AuthActivity extends  AppCompatActivity  {
 			public void onClick(View _view) {
 				in.setClass(getApplicationContext(), ForgotPassActivity.class);
 				in.putExtra("action", "");
+				in.putExtra("email", "");
+				in.putExtra("pass", "");
+				in.putExtra("phone", "");
 				startActivity(in);
+
+
 			}
 		});
 
@@ -201,7 +233,8 @@ public class AuthActivity extends  AppCompatActivity  {
 				////////////////////*/
 
 
-				if ("".equals("")) {
+				if (email.getText().toString().trim().equals("")) {
+
 					textview3.setTextColor(0xFFFF1744);
 					final ObjectAnimator backgroundColorAnimator = ObjectAnimator.ofObject(linear3, "backgroundColor", new ArgbEvaluator(), 0xffEEEEEE, 0xffFF1744);
 					backgroundColorAnimator.setDuration(500);
@@ -217,10 +250,9 @@ public class AuthActivity extends  AppCompatActivity  {
 								0xffFF1744);
 						backgroundColorAnimator.setDuration(500);
 						backgroundColorAnimator.start();
-					}
-					else {
+					} else {
 						if (Current) {
-							if (edittext3.getText().toString().equals("")) {
+							if (edittext3.getText().toString().equals("") ) {
 								textview9.setTextColor(0xFFFF1744);
 								final ObjectAnimator backgroundColorAnimator = ObjectAnimator.ofObject(linear7,
 										"backgroundColor",
@@ -231,6 +263,13 @@ public class AuthActivity extends  AppCompatActivity  {
 								backgroundColorAnimator.start();
 							}
 							else {
+
+								if(!edittext3.getText().toString().trim().equals(pass.getText().toString().trim())){
+
+									showMessage("confirm password not match!");
+
+							}else {
+
 								_autoTransitionScroll(vscroll1);
 								linear8.setVisibility(View.VISIBLE);
 								action_btn.setVisibility(View.GONE);
@@ -246,36 +285,41 @@ public class AuthActivity extends  AppCompatActivity  {
 											@Override
 											public void run() {
 
+												if (Util.isConnected(getApplicationContext())) {
 
-												_register_api_request(
-														"",
-														"",
-														"",
-														"",
-														"",
-														"",
-														"",
-														"",
-														"");
+													///////////////////// register  ///////////////
+													in.setClass(getApplicationContext(), ForgotPassActivity.class);
+													in.putExtra("action", "create");
+													in.putExtra("email", email.getText().toString().trim());
+													in.putExtra("pass", pass.getText().toString().trim());
+													in.putExtra("phone", edittext4.toString().trim());
+													startActivity(in);
+
+													//fauth.signInWithEmailAndPassword(email.getText().toString().trim(), pass.getText().toString().trim()).addOnCompleteListener(LoginActivity.this, _fauth_sign_in_listener);
+												}
+												else {
+													showMessage( "No internet !");
+
+												}
+
 
 												//retweet.startRequestNetwork(RequestNetworkController.GET, "https://www.google.com", "", _retweet_request_listener);
-
-
+												   timer.cancel();
 
 
 											}
 										});
 									}
 								};
-								_timer.schedule(timer, (int)(1000));
-								Util.showMessage(getApplicationContext(), "created account ");
-								/*in.setClass(getApplicationContext(), HomeActivity.class);
-								in.putExtra("action", "create");*/
-								startActivity(in);
+								_timer.schedule(timer, 1000);
+								//Util.showMessage(getApplicationContext(), "created account ");
+
+							}
+
 							}
 						}
 						else {
-							Util.showMessage(getApplicationContext(), "Login success");
+							//Util.showMessage(getApplicationContext(), "Login success");
 							_autoTransitionScroll(vscroll1);
 							linear8.setVisibility(View.VISIBLE);
 							action_btn.setVisibility(View.GONE);
@@ -292,14 +336,32 @@ public class AuthActivity extends  AppCompatActivity  {
 										public void run() {
 
 
-											_login_api_request(email.toString(),pass.toString());
 
-											retweet.startRequestNetwork(RequestNetworkController.GET, "https://www.google.com", "", _retweet_request_listener);
+
+											if (Util.isConnected(getApplicationContext())) {
+
+												//_login_api_request("student@example.com","abcdabcd");
+													_login_api_request(email.getText().toString().trim(),pass.getText().toString().trim());
+
+
+
+													//fauth.signInWithEmailAndPassword(email.getText().toString().trim(), pass.getText().toString().trim()).addOnCompleteListener(LoginActivity.this, _fauth_sign_in_listener);
+											}
+											else {
+												showMessage( "No internet !");
+
+											}
+
+
+
+											timer.cancel();
+
+										///	retweet.startRequestNetwork(RequestNetworkController.GET, "https://www.google.com", "", _retweet_request_listener);
 										}
 									});
 								}
 							};
-							_timer.schedule(timer, (int)(1000));
+							_timer.schedule(timer, 1000);
 						}
 					}
 				}
@@ -346,52 +408,56 @@ public class AuthActivity extends  AppCompatActivity  {
 			}
 		});
 
-		_retweet_request_listener = new RequestNetwork.RequestListener() {
-			@Override
-			public void onResponse(String _param1, String _param2, HashMap<String, Object> _param3) {
-				final String _tag = _param1;
-				final String _response = _param2;
-				final HashMap<String, Object> _responseHeaders = _param3;
-				Util.showMessage(getApplicationContext(), "Logged in");
-				_autoTransitionScroll(vscroll1);
-				linear8.setVisibility(View.GONE);
-				action_btn.setVisibility(View.VISIBLE);
-				textview7.setEnabled(true);
-				checkbox1.setEnabled(true);
-
-				pass.setEnabled(true);
-				edittext3.setEnabled(true);
-				in.setClass(getApplicationContext(), HomeActivity.class);
-				startActivity(in);
-			}
-
-			@Override
-			public void onErrorResponse(String _param1, String _param2) {
-				final String _tag = _param1;
-				final String _message = _param2;
-				_autoTransitionScroll(vscroll1);
-				linear8.setVisibility(View.GONE);
-				action_btn.setVisibility(View.VISIBLE);
-				textview7.setEnabled(true);
-				checkbox1.setEnabled(true);
-
-				pass.setEnabled(true);
-				edittext3.setEnabled(true);
-			}
-		};
 
 
 		_login_api_listener = new RequestNetwork.RequestListener() {
 			@Override
 			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-				showMessage("LOGIN SUCCESS \n\n"+response);
+				showMessage(""+response);
+
+				Log.d("login",response);
+
+				if(response.contains("avatar")) {
+
+					map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
+
+
+
+
+					SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+					SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+
+					myEdit.putString("name", Objects.requireNonNull(map.get("name")).toString());
+					myEdit.putString("userId", Objects.requireNonNull(map.get("userId")).toString());
+					myEdit.putString("roleId",  Objects.requireNonNull(map.get("roleId")).toString());
+					myEdit.putString("token", Objects.requireNonNull(map.get("token")).toString());
+					myEdit.putString("role", Objects.requireNonNull(map.get("role")).toString());
+					myEdit.putString("avatar", Objects.requireNonNull(map.get("avatar")).toString());
+					myEdit.putString("API", Objects.requireNonNull(api));
+
+
+
+
+					myEdit.apply();
+
+
+					success();
+
+				} else {
+
+					failure();
+				}
+
+
 
 			}
 
 			@Override
 			public void onErrorResponse(String tag, String message) {
 
+				failure();
 				showMessage(message);
 
 
@@ -400,22 +466,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 
-		_register_api_listener = new RequestNetwork.RequestListener() {
-			@Override
-			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-				showMessage("REGISTER SUCCESS \n\n"+response);
-
-			}
-
-			@Override
-			public void onErrorResponse(String tag, String message) {
-
-				showMessage(message);
-
-
-			}
-		};
 
 
 
@@ -430,20 +481,52 @@ public class AuthActivity extends  AppCompatActivity  {
 	}
 
 
+	private void success(){
 
+
+
+		_autoTransitionScroll(vscroll1);
+		linear8.setVisibility(View.GONE);
+		action_btn.setVisibility(View.VISIBLE);
+		textview7.setEnabled(true);
+		checkbox1.setEnabled(true);
+
+		pass.setEnabled(true);
+		edittext3.setEnabled(true);
+		in.setClass(getApplicationContext(), HomeActivity.class);
+		startActivity(in);
+		finish();
+
+	}
+
+
+	private void failure(){
+
+		_autoTransitionScroll(vscroll1);
+		linear8.setVisibility(View.GONE);
+		action_btn.setVisibility(View.VISIBLE);
+		textview7.setEnabled(true);
+		checkbox1.setEnabled(true);
+
+		pass.setEnabled(true);
+		edittext3.setEnabled(true);
+
+
+	}
 
 	public void _login_api_request(String email,String password)
 	{
 		linear7.setVisibility(View.VISIBLE);
-		api_map.clear();
+
 		api_map = new HashMap<>();
 
-		api_map.put("email", email.trim());
-		api_map.put("password", password.trim());
+		api_map.put("email", email);
+		api_map.put("password", password);
 
-		login_api.setParams(api_map, RequestNetworkController.REQUEST_BODY);
-		login_api.startRequestNetwork(RequestNetworkController.POST, login_api_url, "no tag", _login_api_listener);
+		login_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
+		login_api.startRequestNetwork(RequestNetworkController.POST, api+"login?", "no tag", _login_api_listener);
 
+		api_map.clear();
 
 		//Toast.makeText(this, "Login complete", Toast.LENGTH_SHORT).show();
 	}
@@ -471,8 +554,10 @@ public class AuthActivity extends  AppCompatActivity  {
 		api_map.put("roll", _roll.trim());
 
 
-		register_api.setParams(api_map, RequestNetworkController.REQUEST_BODY);
-		register_api.startRequestNetwork(RequestNetworkController.POST, register_api_url , "no tag", _login_api_listener);
+
+
+		register_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
+		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _login_api_listener);
 
 
 		//Toast.makeText(this, "Login complete", Toast.LENGTH_SHORT).show();
@@ -541,7 +626,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 		try {
 			Typeface
-					typeace = Typeface.createFromAsset(getAssets(), fontName);;
+					typeace = Typeface.createFromAsset(getAssets(), fontName);
 			if ((v instanceof ViewGroup)) {
 				ViewGroup vg = (ViewGroup) v;
 				for (int i = 0;
@@ -571,7 +656,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 		{
 			Util.showMessage(getApplicationContext(), "Error Loading Font");
-		};
+		}
 	}
 
 
@@ -649,7 +734,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	}
 	public static class DilatingDotDrawable extends android.graphics.drawable.Drawable {
 		private static final String TAG = DilatingDotDrawable.class.getSimpleName();
-		private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		private float radius;
 		private float maxRadius;
 		final Rect mDirtyBounds = new Rect(0, 0, 0, 0);
@@ -752,7 +837,7 @@ public class AuthActivity extends  AppCompatActivity  {
 		private boolean mDismissed = false;
 		private boolean mIsRunning = false;
 		private boolean mAnimateColors = false;
-		private ArrayList<DilatingDotDrawable> mDrawables = new ArrayList<>();
+		private final ArrayList<DilatingDotDrawable> mDrawables = new ArrayList<>();
 		private final List<android.animation.Animator> mAnimations = new ArrayList<>();
 		/** delayed runnable to stop the progress */
 		private final Runnable mDelayedHide = new Runnable() {
@@ -1203,6 +1288,9 @@ public class AuthActivity extends  AppCompatActivity  {
 		_EditTexts(email, textview3, linear3);
 		_EditTexts(pass, textview4, linear4);
 		_EditTexts(edittext3, textview9, linear7);
+		_EditTexts(edittext4, textview10, linear12);
+
+
 		pass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
 		edittext3.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
 
@@ -1239,7 +1327,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				});
 			}
 		};
-		_timer.scheduleAtFixedRate(scroll_time, (int)(1500), (int)(2000));
+		_timer.scheduleAtFixedRate(scroll_time, 1500, 2000);
 	}
 
 
@@ -1279,19 +1367,19 @@ public class AuthActivity extends  AppCompatActivity  {
 		@Override
 		public CharSequence getPageTitle(int pos) {
 			// use the activitiy event (onTabLayoutNewTabAdded) in order to use this method
-			return "page " + String.valueOf(pos);
+			return "page " + pos;
 		}
 
 		@Override
 		public  Object instantiateItem(ViewGroup _container,  final int _position) {
 			View _view = LayoutInflater.from(_context).inflate(R.layout.slider, _container, false);
 
-			final androidx.cardview.widget.CardView cardview1 = (androidx.cardview.widget.CardView) _view.findViewById(R.id.cardview1);
-			final ImageView imageview1 = (ImageView) _view.findViewById(R.id.imageview1);
+			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
+			final ImageView imageview1 = _view.findViewById(R.id.imageview1);
 
 
 			Glide.with(getApplicationContext())
-					.load(Uri.parse(listmap.get((int)_position).get("image").toString()))
+					.load(Uri.parse(listmap.get(_position).get("image").toString()))
 					.error(R.drawable.pyramids)
 					.placeholder(R.drawable.pyramids)
 					.thumbnail(0.01f)

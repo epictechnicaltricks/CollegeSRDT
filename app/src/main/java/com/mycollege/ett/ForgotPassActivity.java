@@ -9,6 +9,7 @@ import android.content.*;
 import android.graphics.*;
 import android.util.*;
 
+import java.io.ObjectStreamClass;
 import java.util.*;
 
 import android.widget.LinearLayout;
@@ -30,7 +31,11 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 	private String phone = "";
 	private String code = "";
 	private String codeSent = "";
-	
+
+
+	private HashMap<String, Object> api_map = new HashMap<>();
+
+
 	private LinearLayout linear1;
 	private LinearLayout get_otp_layout;
 	private LinearLayout verify_otp_layout;
@@ -64,6 +69,13 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 	private OnCompleteListener<AuthResult> _fauth_create_user_listener;
 	private OnCompleteListener<AuthResult> _fauth_sign_in_listener;
 	private OnCompleteListener<Void> _fauth_reset_password_listener;
+
+
+	private RequestNetwork register_api;
+	private RequestNetwork.RequestListener _register_api_listener;
+	String register_api_url =  "https://exam.infydemo.in/api/register?";
+
+
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
@@ -74,7 +86,9 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 	}
 	
 	private void initialize(Bundle _savedInstanceState) {
-		
+
+
+		register_api = new RequestNetwork(this);
 		linear1 = (LinearLayout) findViewById(R.id.linear1);
 		get_otp_layout = (LinearLayout) findViewById(R.id.get_otp_layout);
 		verify_otp_layout = (LinearLayout) findViewById(R.id.verify_otp_layout);
@@ -97,13 +111,57 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 		cpass = (EditText) findViewById(R.id.cpass);
 		textview7 = (TextView) findViewById(R.id.textview7);
 		fauth = FirebaseAuth.getInstance();
-		
+
+
+		_register_api_listener = new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+				showMessage(""+response);
+				showMessage(getIntent().getStringExtra("email"));
+				showMessage(getIntent().getStringExtra("pass"));
+				showMessage(getIntent().getStringExtra("phone"));
+
+
+
+
+				if(response.contains("success")) {
+
+
+
+					showMessage("Account created, LOGIN NOW");
+
+
+				} else {
+
+					showMessage("Failed to create"+response);
+				}
+				startActivity(new Intent(getApplicationContext(), MainActivity.class));
+				finish();
+
+
+			}
+
+			@Override
+			public void onErrorResponse(String tag, String message) {
+
+				showMessage(message);
+
+
+			}
+		};
+
+
+
+
+
+
 		send_otp.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
 				if (phone_no.getText().toString().trim().length() == 10) {
 					_sendotp();
-					verify_otp_layout.setVisibility(View.VISIBLE);
+
 				}
 				else {
 					Util.showMessage(getApplicationContext(), "Invalid number");
@@ -209,6 +267,28 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 				progressbar2.setVisibility(View.GONE);
 				if (_success) {
 					Util.showMessage(getApplicationContext(), "Verifications Success ");
+
+					try{
+
+						_register_api_request(
+								"Student",
+								getIntent().getStringExtra("email").substring(0,10),
+								getIntent().getStringExtra("email"),
+								getIntent().getStringExtra("pass"),
+								getIntent().getStringExtra("phone"),
+								"Class 5",
+								"COMPUTER SCIENCE",
+								"2011",
+								"22");
+
+
+
+						showMessage("Creating account..");
+
+					}catch(Exception e){
+						showMessage(e.toString());
+					}
+
 				}
 				else {
 					Util.showMessage(getApplicationContext(), _errorMessage);
@@ -224,18 +304,60 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 			}
 		};
 	}
-	
+
+	public void _register_api_request(String _role,String _name,
+									  String _email, String _pass,
+									  String _mob, String _class_name,
+									  String _department, String _year,
+									  String _roll)
+	{
+		progressbar2.setVisibility(View.VISIBLE);
+		api_map.clear();
+		api_map = new HashMap<>();
+
+		api_map.put("role", _role.trim());
+		api_map.put("name", _name.trim());
+		api_map.put("email", _email.trim());
+		api_map.put("password", _pass.trim());
+		api_map.put("mobile", _mob.trim());
+		api_map.put("classname", _class_name.trim());
+		api_map.put("department", _department.trim());
+		api_map.put("year", _year.trim());
+		api_map.put("roll", _roll.trim());
+
+
+		register_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
+		register_api.startRequestNetwork(RequestNetworkController.POST, register_api_url , "no tag", _register_api_listener);
+
+
+	}
+
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		startActivity(new Intent(this, MainActivity.class));
+	}
+
 	private void initializeLogic() {
 		_changeActivityFont("en_light");
+
+
 		if (getIntent().getStringExtra("action").equals("create")) {
-			get_otp_layout.setVisibility(View.GONE);
-			verify_otp_layout.setVisibility(View.VISIBLE);
-			new_password_layout.setVisibility(View.GONE);
-		}
-		else {
+
+			phone_no.setText(getIntent().getStringExtra("phone").trim());
 			get_otp_layout.setVisibility(View.VISIBLE);
 			verify_otp_layout.setVisibility(View.GONE);
 			new_password_layout.setVisibility(View.GONE);
+		}
+		else {
+
+			get_otp_layout.setVisibility(View.VISIBLE);
+
+			verify_otp_layout.setVisibility(View.VISIBLE);
+			new_password_layout.setVisibility(View.GONE);
+
+
 		}
 		progressbar1.setVisibility(View.GONE);
 		progressbar2.setVisibility(View.GONE);
@@ -298,6 +420,7 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 	public void _sendotp () {
 		progressbar1.setVisibility(View.VISIBLE);
 		phone = "+91".concat(phone_no.getText().toString().trim());
+		verify_otp_layout.setVisibility(View.VISIBLE);
 		//code for send otp on user mobile
 		
 		com.google.firebase.auth.PhoneAuthProvider.getInstance().verifyPhoneNumber(phone, 50, java.util.concurrent.TimeUnit.SECONDS, this, mCallbacks);
@@ -306,8 +429,8 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 		 @Override
 		public void onVerificationCompleted(com.google.firebase.auth.PhoneAuthCredential phoneAuthCredential) {
 				showMessage("OTP Sent.");
-				
-				
+
+			 verify_otp_layout.setVisibility(View.VISIBLE);
 				progressbar1.setVisibility(View.GONE);
 		}
 		 @Override

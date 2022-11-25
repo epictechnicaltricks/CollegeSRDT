@@ -990,6 +990,7 @@ drawable alarm_2
 drawable app_icon
 drawable avd_hide_password
 drawable avd_show_password
+drawable background
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -998,6 +999,8 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable call
+drawable cash
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1029,12 +1032,14 @@ drawable googleg_standard_color_18
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable logo
 drawable logout_1
 drawable logout_2
 drawable logout_3
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
+drawable news
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -1047,18 +1052,24 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable online_apply
 drawable order
 drawable pido_1
 drawable pido_2
 drawable placeholder_image
+drawable placements
 drawable png
+drawable programs
 drawable pyramids
 drawable school
 drawable school2
 drawable shape
+drawable skill
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable university
 drawable user
+drawable website
 id ALT
 id CTRL
 id FUNCTION
@@ -1070,6 +1081,7 @@ id _coordinator
 id _drawer
 id _nav_view
 id _toolbar
+id about
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
@@ -1110,6 +1122,7 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_btn
 id action_container
 id action_context_bar
 id action_divider
@@ -1128,6 +1141,7 @@ id adjust_width
 id alertTitle
 id all
 id always
+id apply
 id async
 id auto
 id beginning
@@ -1136,6 +1150,7 @@ id blocking
 id bottom
 id bottom_bg
 id buttonPanel
+id call
 id cardview1
 id center
 id center_horizontal
@@ -1170,6 +1185,7 @@ id edittext1
 id edittext2
 id edittext3
 id edittext4
+id email
 id end
 id enterAlways
 id enterAlwaysCollapsed
@@ -1213,6 +1229,7 @@ id line1
 id line3
 id linear1
 id linear10
+id linear12
 id linear2
 id linear3
 id linear4
@@ -1237,6 +1254,7 @@ id name
 id navigation_header_container
 id never
 id new_password_layout
+id news
 id none
 id normal
 id notification
@@ -1251,9 +1269,12 @@ id parallax
 id parentPanel
 id parent_matrix
 id pass
+id pay
 id phone_no
 id pin
+id placements
 id profile
+id program
 id progress_circular
 id progress_horizontal
 id progressbar1
@@ -1290,6 +1311,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id site
+id skill
 id slider_layouf
 id smallLabel
 id snackbar_action
@@ -1418,6 +1441,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout auth
 layout clg_list_cus
+layout contact
 layout custom_dialog
 layout custom_slide
 layout design_bottom_navigation_item
@@ -1439,6 +1463,7 @@ layout home
 layout main
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
+layout news
 layout notification
 layout notification_action
 layout notification_action_tombstone
@@ -1479,6 +1504,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string api
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior

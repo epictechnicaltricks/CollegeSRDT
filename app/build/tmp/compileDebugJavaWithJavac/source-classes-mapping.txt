@@ -195,7 +195,16 @@ com/mycollege/ett/HomeActivity.java
  com.mycollege.ett.HomeActivity
  com.mycollege.ett.HomeActivity$1
  com.mycollege.ett.HomeActivity$10
- com.mycollege.ett.HomeActivity$10$1
+ com.mycollege.ett.HomeActivity$11
+ com.mycollege.ett.HomeActivity$12
+ com.mycollege.ett.HomeActivity$13
+ com.mycollege.ett.HomeActivity$14
+ com.mycollege.ett.HomeActivity$15
+ com.mycollege.ett.HomeActivity$16
+ com.mycollege.ett.HomeActivity$17
+ com.mycollege.ett.HomeActivity$18
+ com.mycollege.ett.HomeActivity$19
+ com.mycollege.ett.HomeActivity$19$1
  com.mycollege.ett.HomeActivity$2
  com.mycollege.ett.HomeActivity$3
  com.mycollege.ett.HomeActivity$4
@@ -209,6 +218,11 @@ com/mycollege/ett/HomeActivity.java
  com.mycollege.ett.HomeActivity$Viewpager1Adapter
 androidx/cursoradapter/R.java
  androidx.cursoradapter.R
+com/mycollege/ett/news.java
+ com.mycollege.ett.news
+ com.mycollege.ett.news$1
+ com.mycollege.ett.news$2
+ com.mycollege.ett.news$2$1
 com/mycollege/ett/ProfileActivity.java
  com.mycollege.ett.ProfileActivity
  com.mycollege.ett.ProfileActivity$1
@@ -277,6 +291,11 @@ androidx/legacy/coreui/R.java
  androidx.legacy.coreui.R$styleable
 androidx/lifecycle/R.java
  androidx.lifecycle.R
+com/mycollege/ett/Contact.java
+ com.mycollege.ett.Contact
+ com.mycollege.ett.Contact$1
+ com.mycollege.ett.Contact$2
+ com.mycollege.ett.Contact$2$1
 androidx/documentfile/R.java
  androidx.documentfile.R
 com/mycollege/ett/Util.java
@@ -358,6 +377,7 @@ com/mycollege/ett/ForgotPassActivity.java
  com.mycollege.ett.ForgotPassActivity$12
  com.mycollege.ett.ForgotPassActivity$13
  com.mycollege.ett.ForgotPassActivity$14
+ com.mycollege.ett.ForgotPassActivity$15
  com.mycollege.ett.ForgotPassActivity$2
  com.mycollege.ett.ForgotPassActivity$3
  com.mycollege.ett.ForgotPassActivity$4
@@ -397,6 +417,7 @@ com/mycollege/ett/AuthActivity.java
  com.mycollege.ett.AuthActivity$3$2$1
  com.mycollege.ett.AuthActivity$4
  com.mycollege.ett.AuthActivity$5
+ com.mycollege.ett.AuthActivity$5$1
  com.mycollege.ett.AuthActivity$6
  com.mycollege.ett.AuthActivity$7
  com.mycollege.ett.AuthActivity$8

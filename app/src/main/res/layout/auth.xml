@@ -111,6 +111,17 @@
 						android:hint="Phone "
 						android:textColorHint="#607D8B"/>
 
+
+					<LinearLayout
+						android:id="@+id/linear12"
+						android:paddingBottom="12dp"
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:padding="8dp"
+						android:background="#EEEEEE"
+						android:orientation="horizontal"/>
+
+
 					<TextView
 						android:layout_marginStart="7dp"
 						android:textStyle="bold"
@@ -217,7 +228,7 @@
 					<LinearLayout
 						android:id="@+id/linear8"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
+						android:layout_height="40dp"
 						android:gravity="center_horizontal|center_vertical"
 						android:orientation="horizontal">
 

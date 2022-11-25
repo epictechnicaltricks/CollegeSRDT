@@ -1,0 +1,87 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<RelativeLayout
+
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center_horizontal|center_vertical"
+		android:orientation="vertical">
+
+
+		<LinearLayout
+			android:id="@+id/linear8"
+
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<ImageView
+
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_gravity="center"
+				android:alpha="0.5"
+				android:scaleType="centerCrop"
+				android:src="@drawable/background"/>
+
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:gravity="center"
+			android:orientation="vertical"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:gravity="center"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:orientation="vertical"
+				android:layout_height="wrap_content">
+
+
+				<TextView
+					android:textColor="#000000"
+					android:text="NEWS"
+					android:textSize="32dp"
+					android:textStyle="bold"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+
+
+					</LinearLayout>
+
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:gravity="bottom"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:layout_marginBottom="17dp"
+					android:gravity="center"
+					android:id="@+id/textview4"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:alpha="0.6"
+					android:text="www.mlu.ac.in"
+					android:textSize="17sp"
+					android:textStyle="bold"
+					android:textColor="#475E6E"/>
+
+
+			</LinearLayout>
+
+
+
+			></LinearLayout>
+
+	</RelativeLayout>
+</LinearLayout>

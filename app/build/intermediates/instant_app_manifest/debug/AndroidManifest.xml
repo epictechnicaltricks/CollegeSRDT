@@ -50,9 +50,11 @@
         <activity
             android:name="com.mycollege.ett.HomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:exported="true"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
-            android:supportsPictureInPicture="true" />
+            android:supportsPictureInPicture="true" >
+        </activity>
         <activity
             android:name="com.mycollege.ett.NotificationActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
@@ -61,6 +63,18 @@
             android:supportsPictureInPicture="true" />
         <activity
             android:name="com.mycollege.ett.ProfileActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:name="com.mycollege.ett.Contact"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:supportsPictureInPicture="true" />
+        <activity
+            android:name="com.mycollege.ett.news"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"

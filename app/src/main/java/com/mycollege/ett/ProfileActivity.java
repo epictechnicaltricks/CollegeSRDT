@@ -96,7 +96,7 @@ public class ProfileActivity extends  AppCompatActivity  {
 		
 		{
 			HashMap<String, Object> _item = new HashMap<>();
-			_item.put("name", "Madhusudan Law University, Cuttack");
+			_item.put("name", "Madhusudan Law University");
 			clg_list.add(_item);
 		}
 		

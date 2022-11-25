@@ -7,7 +7,10 @@
 	android:layout_height="match_parent"
 	tools:openDrawer="start">
 	<androidx.coordinatorlayout.widget.CoordinatorLayout
-		android:id="@+id/_coordinator"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+			android:id="@+id/_coordinator"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 		<com.google.android.material.appbar.AppBarLayout
@@ -49,7 +52,7 @@
 					android:layout_height="wrap_content"
 					android:layout_marginRight="10dp"
 					android:gravity="left|center_vertical"
-					android:text="Madhusudan Law University, Cuttack"
+					android:text="Madhusudan Law University"
 					android:textSize="16sp"
 					android:textColor="#FFFFFF"
 					android:layout_weight="1"/>
@@ -81,7 +84,7 @@
 					android:id="@+id/bg"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:padding="8dp"
+					android:padding="0dp"
 					android:orientation="vertical">
 					<TextView
 						android:id="@+id/textview2"
@@ -106,6 +109,7 @@
 
 
 					<TextView
+						android:visibility="gone"
 						android:id="@+id/textview3"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
@@ -114,6 +118,317 @@
 						android:text="The Madhusudan Law University has been established on the birth anniversary of Madhusudan Das on 28th April, 2021. The University started its official functioning on the same day, under the guidance and vision of the founding vice chancellor Prof. (Dr.) Kamal Jeet Singh. From 28th April, 2021 all government and private law colleges of Odisha, other than constituent law college of universities will be affiliated with Madhusudan Law University Cuttack. Right now, the Madhusudan Law University is housed in the same campus which was earlier known as erstwhile Madhusudan Law College, Cuttack."
 						android:textSize="14sp"
 						android:textColor="#757575"/>
+
+
+					<LinearLayout
+						android:padding="0dp"
+					   android:orientation="vertical"
+						android:background="#E3E2E2"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<!--	LAYER   -->
+
+						<LinearLayout
+
+							android:padding="15dp"
+							android:gravity="left"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content">
+							<LinearLayout
+
+
+								android:id="@+id/about"
+								android:layout_weight="1"
+
+								android:gravity="center"
+								android:orientation="vertical"
+								android:layout_width="50dp"
+								android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/university"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:gravity="center_horizontal"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="About University"
+									android:textSize="13sp">
+
+
+								</TextView>
+
+							</LinearLayout>
+							<LinearLayout
+
+								android:id="@+id/program"
+								android:layout_weight="1"
+						
+								android:gravity="center"
+								android:orientation="vertical"
+								android:layout_width="50dp"
+								android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/programs"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:gravity="center_horizontal"
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="Programs">
+
+
+								</TextView>
+
+							</LinearLayout>
+							<LinearLayout
+
+								android:id="@+id/apply"
+								android:layout_weight="1"
+								android:layout_width="50dp"
+								android:gravity="center"
+								android:orientation="vertical"
+										android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/online_apply"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:gravity="center_horizontal"
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="Apply online">
+
+
+								</TextView>
+
+							</LinearLayout>
+
+
+						</LinearLayout>
+						<!-- LAYER   -->
+
+
+						<!--	LAYER   -->
+
+						<LinearLayout
+							android:padding="15dp"
+							android:gravity="center_vertical|center_horizontal"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content">
+							<LinearLayout
+
+								android:id="@+id/placements"
+								android:layout_weight="1"
+                                android:layout_marginStart="10dp"
+								
+								
+								android:gravity="center"
+								android:orientation="vertical"
+								android:layout_width="50dp"
+								android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/placements"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="Placements">
+
+
+								</TextView>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:id="@+id/news"
+								android:layout_width="50dp"
+								
+								android:layout_height="wrap_content"
+								android:layout_marginLeft="20dp"
+								android:layout_marginRight="20dp"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:orientation="vertical">
+
+								<ImageView
+
+									android:layout_width="30dp"
+									android:layout_height="30dp"
+									android:scaleType="centerInside"
+									android:src="@drawable/news" />
+
+								<TextView
+									android:gravity="center_horizontal"
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="News and Events">
+
+
+								</TextView>
+
+							</LinearLayout>
+
+							<LinearLayout
+
+								android:id="@+id/site"
+								android:layout_weight="1"
+
+								android:layout_marginRight="10dp"
+								android:gravity="center"
+								android:orientation="vertical"
+								android:layout_width="50dp"
+								android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/website"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="Website">
+
+
+								</TextView>
+
+							</LinearLayout>
+
+
+						</LinearLayout>
+						<!-- LAYER   -->
+
+
+						<!--	LAYER   -->
+
+						<LinearLayout
+							android:padding="15dp"
+							android:gravity="center"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content">
+							<LinearLayout
+								android:id="@+id/pay"
+								android:layout_weight="1"
+								android:layout_width="50dp"
+								android:gravity="center"
+								android:orientation="vertical"
+								
+								android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/cash"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:gravity="center_horizontal"
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="Pay Online">
+
+
+								</TextView>
+
+							</LinearLayout>
+							<LinearLayout
+
+								android:id="@+id/skill"
+								android:layout_weight="1"
+								
+								android:gravity="center"
+								android:orientation="vertical"
+								android:layout_width="50dp"
+								android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/skill"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:gravity="center"
+									android:text="Skill Develop \nPrograms">
+
+
+								</TextView>
+
+							</LinearLayout>
+							<LinearLayout
+
+								android:id="@+id/call"
+								android:layout_weight="1"
+								android:layout_width="50dp"
+								android:gravity="center"
+								android:orientation="vertical"
+								
+								android:layout_height="wrap_content">
+
+								<ImageView
+
+									android:src="@drawable/call"
+									android:layout_width="30dp"
+									android:scaleType="centerInside"
+									android:layout_height="30dp"/>
+
+								<TextView
+									android:gravity="center_horizontal"
+									android:textSize="13sp"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="Contact us">
+
+
+								</TextView>
+
+							</LinearLayout>
+
+
+						</LinearLayout>
+						<!-- LAYER   -->
+
+
+
+
+					</LinearLayout>
+
+
+
+
 					<LinearLayout
 						android:id="@+id/linear5"
 						android:layout_width="match_parent"
