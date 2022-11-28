@@ -26,6 +26,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -95,7 +96,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	private TextView action_btn;
 	private TextView textview7,textview10;
 	private ImageView imageview2;
-	private EditText edittext3,edittext4;
+	private EditText edittext3;
 
 	private RequestNetwork retweet;
 	private RequestNetwork.RequestListener _retweet_request_listener;
@@ -134,8 +135,6 @@ public class AuthActivity extends  AppCompatActivity  {
 
 private TextView edittext4_textview_91;
 
-
-	private final ArrayList<HashMap<String, Object>> results = new ArrayList<>();
 
 	private HashMap<String, Object> map = new HashMap<>();
 
@@ -177,10 +176,10 @@ private TextView edittext4_textview_91;
 	private ListView listview4;
 
 
-	String class_name,class_id;
-	String year_name,year_id;
-	String dept_name,dept_id;
-	String blg_name;
+	String class_name,class_id="";
+	String year_name,year_id="";
+	String dept_name,dept_id="";
+	String blg_name="";
 
 
 	///////////////////////////////////////////////////////////
@@ -236,7 +235,92 @@ private TextView edittext4_textview_91;
 
 
 
-  _class_api_listener = new RequestNetwork.RequestListener() {
+		spinner_class_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> _param1, View _param2, int _param3, long _param4) {
+				final int _position = _param3;
+
+				if(!Objects.requireNonNull(class_list.get(_position).get("id")).toString().equals("")){
+
+					class_id = Objects.requireNonNull(class_list.get(_position).get("id")).toString();
+					showMessage(class_id);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> _param1) {
+
+			}
+		});
+
+
+		spinner_department.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> _param1, View _param2, int _param3, long _param4) {
+				final int _position = _param3;
+
+				if(!Objects.requireNonNull(department_list.get(_position).get("id")).toString().equals("")){
+
+					dept_id = Objects.requireNonNull(department_list.get(_position).get("id")).toString();
+					showMessage(dept_id);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> _param1) {
+
+			}
+		});
+
+
+		spinner_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> _param1, View _param2, int _param3, long _param4) {
+				final int _position = _param3;
+
+
+				if(!Objects.requireNonNull(year_list.get(_position).get("id")).toString().equals("")){
+
+					year_id = Objects.requireNonNull(year_list.get(_position).get("id")).toString();
+					showMessage(year_id);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> _param1) {
+
+			}
+		});
+
+
+		spinner_blg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> _param1, View _param2, int _param3, long _param4) {
+				final int _position = _param3;
+
+
+				if(!Objects.requireNonNull(blg_list.get(_position).get("name")).toString().equals("Select blood group..")){
+
+					blg_name = Objects.requireNonNull(blg_list.get(_position).get("name")).toString();
+					showMessage(blg_name);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> _param1) {
+
+			}
+		});
+
+
+
+
+
+		_class_api_listener = new RequestNetwork.RequestListener() {
 	  @Override
 	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
@@ -505,7 +589,7 @@ private TextView edittext4_textview_91;
 		imageview2 = findViewById(R.id.imageview2);
 		edittext3 = findViewById(R.id.edittext3);
 
-		edittext4 = findViewById(R.id.edittext4);
+
 
 		retweet = new RequestNetwork(this);
 
@@ -616,7 +700,7 @@ private TextView edittext4_textview_91;
 
 							}
 
-								if(edittext4.getText().toString().length()!=10){
+								if(phone_edit.getText().toString().length()!=10){
 
 									showMessage("Not a valid phone no !");
 
@@ -631,6 +715,8 @@ private TextView edittext4_textview_91;
 
 								pass.setEnabled(false);
 								edittext3.setEnabled(false);
+
+
 								timer = new TimerTask() {
 									@Override
 									public void run() {
@@ -648,23 +734,46 @@ private TextView edittext4_textview_91;
 													in.putExtra("phone", edittext4.toString().trim());
 													startActivity(in);*/
 
+                       if(!name.getText().toString().equals("")
+							   || !email.getText().toString().equals("")
+			                   || !pass.getText().toString().equals("")
+			                   || !phone_edit.getText().toString().equals("")
+					           || !class_id.equals("")
+					           || !dept_id.equals("")
+							   || !year_id.equals("")
+							   || !roll.toString().equals("")
+							   || !fname.toString().equals("")
+							   || !mname.toString().equals("")
+							   || !blg_name.equals("")
+							   || !dob_value.getText().toString().equals("")
+							   || !addr.getText().toString().equals("")
 
-													_register_api_request(
-															"4"
-															,name.getText().toString()
-															,email.getText().toString()
-															,pass.getText().toString()
-															,phone_edit.getText().toString()
-															,class_id
-															,dept_id
-															,year_id
-															,roll.getText().toString(),
-															fname.getText().toString(),
-															mname.getText().toString(),
-															blg_name,
-															dob_value.getText().toString(),
-															addr.getText().toString());
+					   ) {
 
+						   _register_api_request(
+								   "4"
+								   ,name.getText().toString()
+								   ,email.getText().toString()
+								   ,pass.getText().toString()
+								   ,phone_edit.getText().toString()
+								   ,class_id
+								   ,dept_id
+								   ,roll.getText().toString()
+								   ,year_id
+								   ,fname.getText().toString()
+								   ,mname.getText().toString()
+								   ,blg_name
+								   ,dob_value.getText().toString()
+								   ,addr.getText().toString());
+
+
+
+
+					   } else {
+
+						   showMessage("Some fields are missing.. check it again ! ");
+
+					   }
 
 
 													//fauth.signInWithEmailAndPassword(email.getText().toString().trim(), pass.getText().toString().trim()).addOnCompleteListener(LoginActivity.this, _fauth_sign_in_listener);
@@ -754,7 +863,7 @@ private TextView edittext4_textview_91;
 					textview9.setVisibility(View.GONE);
 					textview10.setVisibility(View.GONE);
 
-					edittext4.setVisibility(View.GONE);  //phone no
+					phone_edit.setVisibility(View.GONE);  //phone no
 					edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
 
 					gone();
@@ -777,7 +886,7 @@ private TextView edittext4_textview_91;
 					textview9.setVisibility(View.VISIBLE);
 					textview10.setVisibility(View.VISIBLE);
 					edittext3.setVisibility(View.VISIBLE);
-					edittext4.setVisibility(View.VISIBLE);  //phone no
+					phone_edit.setVisibility(View.VISIBLE);  //phone no
 					edittext4_textview_91.setVisibility(View.VISIBLE); // phone +91 text
 
 					visible();
@@ -1212,18 +1321,6 @@ private TextView edittext4_textview_91;
 
 			textview1.setText(Objects.requireNonNull(class_list.get((int) _position).get("name")).toString());
 
-			textview1.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-
-					if(!Objects.requireNonNull(class_list.get(_position).get("id")).toString().equals("")){
-
-						class_id = Objects.requireNonNull(class_list.get(_position).get("id")).toString();
-					}
-
-
-				}
-			});
 
 
 
@@ -1266,18 +1363,7 @@ private TextView edittext4_textview_91;
 
 			textview1.setText(Objects.requireNonNull(department_list.get((int) _position).get("name")).toString());
 
-			textview1.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
 
-					if(!Objects.requireNonNull(department_list.get(_position).get("id")).toString().equals("")){
-
-						dept_id = Objects.requireNonNull(department_list.get(_position).get("id")).toString();
-					}
-
-
-				}
-			});
 
 
 
@@ -1321,18 +1407,6 @@ private TextView edittext4_textview_91;
 
 			textview1.setText(Objects.requireNonNull(year_list.get((int) _position).get("year")).toString());
 
-			textview1.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-
-					if(!Objects.requireNonNull(year_list.get(_position).get("id")).toString().equals("")){
-
-						year_id = Objects.requireNonNull(year_list.get(_position).get("id")).toString();
-					}
-
-
-				}
-			});
 
 
 
@@ -1375,20 +1449,6 @@ private TextView edittext4_textview_91;
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
 
 			textview1.setText(Objects.requireNonNull(blg_list.get((int) _position).get("name")).toString());
-
-			textview1.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-
-					if(!Objects.requireNonNull(blg_list.get(_position).get("name")).toString().equals("Select blood group..")){
-
-						blg_name = Objects.requireNonNull(blg_list.get(_position).get("name")).toString();
-					}
-
-
-				}
-			});
-
 
 
 
@@ -1981,7 +2041,7 @@ private TextView edittext4_textview_91;
 		linear7.setVisibility(View.GONE);
 		linear8.setVisibility(View.GONE);
 
-		edittext4.setVisibility(View.GONE);   //phone no
+		phone_edit.setVisibility(View.GONE);   //phone no
 		textview10.setVisibility(View.GONE); // PHONE NO TEXT
 
 		edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
@@ -2095,7 +2155,7 @@ private TextView edittext4_textview_91;
 		_EditTexts(email, textview3, linear3);
 		_EditTexts(pass, textview4, linear4);
 		_EditTexts(edittext3, textview9, linear7);
-		_EditTexts(edittext4, textview10, linear_phone);
+		_EditTexts(phone_edit, textview10, linear_phone);
 
 	_EditTexts(fname, fname_text, linear_fname);
 	_EditTexts(mname, mname_text, linear_mname);
@@ -2188,7 +2248,7 @@ private TextView edittext4_textview_91;
 				});
 			}
 		};
-		_timer.scheduleAtFixedRate(scroll_time, 1500, 2000);
+		_timer.scheduleAtFixedRate(scroll_time, 2500, 2000);
 	}
 
 
