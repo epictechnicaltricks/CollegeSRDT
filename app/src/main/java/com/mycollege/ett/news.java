@@ -82,35 +82,7 @@ public class news extends  AppCompatActivity  {
 		_NavStatusBarColor("#FFFFFF", "#FFFFFF");
 		_changeActivityFont("en_light");
 		_DARK_ICONS();
-		timer = new TimerTask() {
-			@Override
-			public void run() {
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
 
-						SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-
-						toAuth.setClass(getApplicationContext(),HomeActivity.class);
-
-						/*if(sh.getString("userId", "").equals(""))
-						{
-							toAuth.setClass(getApplicationContext(), AuthActivity.class);
-
-						} else {
-
-							//startActivity(new Intent(getApplicationContext(),HomeLayout.class));
-
-						}*/
-						_ActivityTranlation(imageview1, "icon", toAuth);
-						finish();
-
-
-					}
-				});
-			}
-		};
-		_timer.schedule(timer, (int)(3000));
 	}
 
 	@Override
@@ -205,13 +177,12 @@ public class news extends  AppCompatActivity  {
 	}
 
 
-	public void _ActivityTranlation (final View _view, final String _transitionName, final Intent _intent) {
-		_view.setTransitionName(_transitionName);
 
-		android.app.ActivityOptions optionsCompat = android.app.ActivityOptions.makeSceneTransitionAnimation(this, _view, _transitionName);
-		startActivity(_intent, optionsCompat.toBundle());
+
+	public void close(View view){
+
+		finish();
 	}
-
 
 	@Deprecated
 	public void showMessage(String _s) {

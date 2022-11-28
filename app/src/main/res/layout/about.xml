@@ -20,7 +20,7 @@
 			android:layout_height="match_parent">
 
 			<ImageView
-
+				android:layout_marginTop="37dp"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="center"
@@ -37,6 +37,42 @@
 			android:orientation="vertical"
 			android:layout_height="match_parent">
 
+
+			<LinearLayout
+				android:id="@+id/tool"
+				android:layout_width="match_parent"
+				android:layout_height="57dp"
+				android:padding="10dp"
+				android:background="#0091EA"
+				android:gravity="left|center_vertical"
+				android:orientation="horizontal">
+				<ImageView
+					android:onClick="close"
+					android:id="@+id/back"
+					android:layout_width="25dp"
+					android:layout_height="22dp"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="10dp"
+					android:src="@drawable/back2"
+					android:scaleType="centerInside"/>
+				<TextView
+					android:textStyle="bold"
+					android:id="@+id/textview1"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
+					android:gravity="left|center_vertical"
+					android:text="About the Madhusudan Law University"
+					android:textSize="17sp"
+					android:textColor="#FFFFFF"
+					android:layout_weight="1"/>
+			</LinearLayout>
+
+
+
+
+
+
 <LinearLayout
 	android:gravity="center"
 	android:layout_width="match_parent"
@@ -48,7 +84,7 @@
 	<TextView
 		android:gravity="center"
 		android:textColor="#000000"
-		android:text="About the Madhusudan Law University"
+		android:text=""
 		android:textSize="19dp"
 		android:textStyle="bold"
 		android:layout_width="wrap_content"

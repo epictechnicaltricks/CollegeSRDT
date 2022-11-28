@@ -212,8 +212,10 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
+				startActivity(new Intent(getApplicationContext(), apply_online.class));
 
-				SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+
+				/*	SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
 
 
 
@@ -225,9 +227,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 				} else {
 
-					startActivity(new Intent(getApplicationContext(), apply_online.class));
 
-				}
+
+				}*/
 			}
 		});
 		program .setOnClickListener(new View.OnClickListener() {
@@ -260,9 +262,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
+				startActivity(new Intent(getApplicationContext(), news.class));
 
-
-				SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+			/*	SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
 
 
 
@@ -274,9 +276,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 						} else {
 
-							startActivity(new Intent(getApplicationContext(), news.class));
 
-						}
+
+						}*/
 
 			}
 		});

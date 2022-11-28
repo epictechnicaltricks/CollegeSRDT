@@ -78,8 +78,8 @@ public class Contact extends  AppCompatActivity  {
 	
 	private void initializeLogic() {
 
-		_transparentStatusAndNavigation();
-		_NavStatusBarColor("#FFFFFF", "#FFFFFF");
+		//_transparentStatusAndNavigation();
+		//_NavStatusBarColor("#FFFFFF", "#FFFFFF");
 		_changeActivityFont("en_med");
 		_DARK_ICONS();
 
@@ -92,6 +92,10 @@ public class Contact extends  AppCompatActivity  {
 
 	}
 
+	public void close(View view){
+
+		finish();
+	}
 
 	public void _transparentStatusAndNavigation () {
 		getWindow().getDecorView().setSystemUiVisibility(

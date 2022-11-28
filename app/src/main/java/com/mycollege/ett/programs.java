@@ -38,7 +38,13 @@ public class programs extends  AppCompatActivity  {
 	
 	private void initializeLogic() {
 	}
-	
+
+
+	public void close(View view){
+
+		finish();
+	}
+
 	@Override
 	protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
 		

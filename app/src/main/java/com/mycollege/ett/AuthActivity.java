@@ -1,42 +1,62 @@
 package com.mycollege.ett;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.*;
-
-import android.os.*;
-import android.view.*;
-import android.view.View.*;
-import android.widget.*;
-import android.content.*;
-import android.graphics.*;
-import android.graphics.drawable.*;
-import android.util.*;
-import android.animation.*;
-
-import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-
-import androidx.core.util.LogWriter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager.widget.PagerAdapter;
-
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
+import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import java.util.Timer;
-import java.util.TimerTask;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import android.graphics.Typeface;
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class AuthActivity extends  AppCompatActivity  {
@@ -50,7 +70,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	private boolean onStart = false;
 	private double count = 0;
 
-	private final ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
+	private ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
 
 	private LinearLayout linear2;
 	private ScrollView vscroll1;
@@ -59,7 +79,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	private LinearLayout linear10;
 	private LinearLayout linear3;
 	private LinearLayout linear4;
-	private LinearLayout linear7,linear12;
+	private LinearLayout linear7;
 	private CheckBox checkbox1;
 	private TextView textview1;
 	private TextView textview2;
@@ -88,7 +108,28 @@ public class AuthActivity extends  AppCompatActivity  {
 	private RequestNetwork register_api;
 	private RequestNetwork.RequestListener _register_api_listener;
 
+
+	private RequestNetwork class_api;
+
+	private RequestNetwork.RequestListener _class_api_listener;
+
+
+	private RequestNetwork department_api;
+	private RequestNetwork.RequestListener _department_api_listener;
+
+
+	private RequestNetwork year_api;
+	private RequestNetwork.RequestListener _year_api_listener;
+
+
+	private RequestNetwork slider_api;
+	private RequestNetwork.RequestListener _slider_api_listener;
+
+
+
 	private HashMap<String, Object> api_map = new HashMap<>();
+
+	private HashMap<String, Object> api_map2 = new HashMap<>();
 
 private TextView edittext4_textview_91;
 
@@ -100,6 +141,56 @@ private TextView edittext4_textview_91;
 	String list="";
 	private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
 	private long mBackPressed;
+
+	private Spinner
+			 spinner_class_name
+			,spinner_department
+			,spinner_year
+			,spinner_blg;
+
+	LinearLayout
+			linear_mname,
+			linear_name,
+			linear_fname,
+			linear_addr,
+			linear_phone,
+			linear_roll;
+
+	EditText
+			fname,
+			mname,
+			name,
+	         addr,
+			roll;
+
+	TextView
+			dob_text,
+			fname_text,
+			mname_text,
+			name_text,
+			addr_text,
+			roll_text;
+
+
+	ArrayList<HashMap<String, Object>> class_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> year_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> department_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> blg_list = new ArrayList<>();
+
+	private ListView listview1;
+	private ListView listview2;
+	private ListView listview3;
+	private ListView listview4;
+
+
+	String class_name,class_id;
+	String year_name,year_id;
+	String dept_name,dept_id;
+	String blg_name;
+
 
 	///////////////////////////////////////////////////////////
 
@@ -116,7 +207,7 @@ private TextView edittext4_textview_91;
 	**/
 
 	   String api = "https://exam.infydemo.in/api/";
-
+	   String api_mlu = "https://new.mlu.ac.in/api/v1/";
 
 	////////////////////////////////////////////////
 
@@ -132,9 +223,156 @@ private TextView edittext4_textview_91;
 	private void initialize(Bundle _savedInstanceState) {
 
 
+///////////////////////////////////////////////////////////////////////////////////
+
+		/** ////       API SECTION    /////////////  **/
+
+  class_api = new RequestNetwork(this);
+  department_api = new RequestNetwork( this);
+  year_api = new RequestNetwork(this);
+  slider_api = new RequestNetwork(this);
+
+		spinner_class_name = findViewById(R.id.spinner_class_name);
+		spinner_department = findViewById(R.id.spinner_department);
+		spinner_year = findViewById(R.id.spinner_year);
+		spinner_blg = findViewById(R.id.spinner_blg);
+
+		listview1 =  findViewById(R.id.listview_class);
+		listview2 =  findViewById(R.id.listview_dept);
+		listview3 =  findViewById(R.id.listview_year);
+		listview4 =  findViewById(R.id.listview_blg);
 
 
-   linear12 = findViewById(R.id.linear12);
+
+
+  _class_api_listener = new RequestNetwork.RequestListener() {
+	  @Override
+	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+		/*  HashMap<String, Object> _item = new HashMap<>();
+		  _item.put("name", "Select your class..");
+		  _item.put("id", 0);
+		  class_list.add(_item);*/
+
+
+
+
+		  class_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+		  // refresh the list or recycle or grid	  Log.d("class_Api",list);
+
+
+
+		  listview1.setAdapter(new Listview1Adapter(class_list));
+		  ((BaseAdapter)listview1.getAdapter()).notifyDataSetChanged();
+		  spinner_class_name.setAdapter(new
+				  Listview1Adapter(class_list));
+
+		 /* String name = Objects.requireNonNull(class_list.get(0).get("name")).toString();
+		  Toast.makeText(AuthActivity.this, name, Toast.LENGTH_SHORT).show();*/
+
+
+
+
+
+	  }
+
+	  @Override
+	  public void onErrorResponse(String tag, String message) {
+
+		  showMessage("No internet.");
+
+	  }
+  };
+
+  _department_api_listener = new RequestNetwork.RequestListener() {
+	  @Override
+	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+		  Log.d("api depart",response);
+
+		  department_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+		  // refresh the list or recycle or grid
+
+
+		  listview2.setAdapter(new Listview1Adapter(department_list));
+		  ((BaseAdapter)listview2.getAdapter()).notifyDataSetChanged();
+		  spinner_department.setAdapter(new
+				  Listview2Adapter(department_list));
+
+
+	  }
+
+	  @Override
+	  public void onErrorResponse(String tag, String message) {
+		  showMessage("No internet.");
+	  }
+  };
+
+
+  _year_api_listener = new RequestNetwork.RequestListener() {
+	  @Override
+	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+		  Log.d("api year",response);
+
+		  year_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+		  // refresh the list or recycle or grid
+
+
+		  listview2.setAdapter(new Listview1Adapter(year_list));
+		  ((BaseAdapter)listview2.getAdapter()).notifyDataSetChanged();
+		  spinner_year.setAdapter(new
+				  Listview3Adapter(year_list));
+
+	  }
+
+	  @Override
+	  public void onErrorResponse(String tag, String message) {
+
+	  }
+  };
+
+
+  _slider_api_listener = new RequestNetwork.RequestListener() {
+	  @Override
+	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+		  Log.d("api slider",response);
+
+
+		  listmap = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+		  _slider();
+	  }
+
+	  @Override
+	  public void onErrorResponse(String tag, String message) {
+
+	  }
+  };
+
+
+
+  ////////////////////////////////////////////////////////////////////////
+
+
+
+
+		linear_mname = findViewById(R.id.linear_mname);
+		linear_name  = findViewById(R.id.linear_name);
+		linear_fname = findViewById(R.id.linear_fname);
+
+		linear_addr  = findViewById(R.id.linear_addr);
+		linear_phone = findViewById(R.id.linear_phone);
+		linear_roll  = findViewById(R.id.linear_roll);
+
+
+		fname      = findViewById(R.id.fname);
+		mname      = findViewById(R.id.mname);
+		name       = findViewById(R.id.name);
+		dob_text   = findViewById(R.id.dob); // textview
+		addr       = findViewById(R.id.addr);
+		roll       = findViewById(R.id.roll);
+
+
+
 		linear2 = findViewById(R.id.linear2);
 		vscroll1 = findViewById(R.id.vscroll1);
 		linear1 = findViewById(R.id.linear1);
@@ -177,9 +415,14 @@ private TextView edittext4_textview_91;
 		register_api = new RequestNetwork(this);
 
 
+		dob_text.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
 
+				_DateDialog(dob_text);
 
-
+			}
+		});
 
 
 		textview5.setOnClickListener(new View.OnClickListener() {
@@ -306,15 +549,20 @@ private TextView edittext4_textview_91;
 													startActivity(in);*/
 
 
-													_register_api_request("123"
-															,email.getText().toString().substring(0,12)
+													_register_api_request("4"
+															,name.getText().toString()
 															,email.getText().toString()
 															,pass.getText().toString()
 															,edittext4.getText().toString()
-															,"DEMO CLASS NAME"
-															,"COMPUTER SCIENCE"
-															,"2022"
-															,"123");
+															,class_id
+															,dept_id
+															,year_id
+															,roll.getText().toString(),
+															fname.getText().toString(),
+															mname.getText().toString(),
+															blg_name,
+															dob_text.getText().toString(),
+															addr.getText().toString());
 
 
 
@@ -364,7 +612,8 @@ private TextView edittext4_textview_91;
 											if (Util.isConnected(getApplicationContext())) {
 
 												//_login_api_request("student@example.com","abcdabcd");
-													_login_api_request(email.getText().toString().trim(),pass.getText().toString().trim());
+													_login_api_request(email.getText().toString().trim()
+															,pass.getText().toString().trim());
 
 
 
@@ -438,7 +687,7 @@ private TextView edittext4_textview_91;
 			@Override
 			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-				showMessage(""+response);
+				///showMessage(""+response);
 
 				Log.d("login",response);
 
@@ -497,19 +746,129 @@ private TextView edittext4_textview_91;
 
 	}
 
+
+
+	private void blood_gp()
+	{
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "Select blood group..");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "A+");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "A-");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "B+");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "B-");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "O+");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "O-");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "AB+");
+			blg_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("name", "AB-");
+			blg_list.add(_item);
+		}
+
+		listview4.setAdapter(new Listview4Adapter(blg_list));
+		((BaseAdapter)listview4.getAdapter()).notifyDataSetChanged();
+		spinner_blg.setAdapter(new Listview4Adapter(blg_list));
+
+	}
+
 	private void initializeLogic() {
-		_slider();
 
 
-		edittext4.setVisibility(View.GONE);   //phone no
-		textview10.setVisibility(View.GONE); // PHONE NO TEXT
+		request_class_API();
+		request_department_API();
+		request_year_API();
+		request_slider_API();
+		blood_gp();
 
-		edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
 
 
 
 		linear10.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)100, 0xFFFFFFFF));
 	}
+
+
+	private void request_class_API(){
+
+		class_api.startRequestNetwork(RequestNetworkController.GET,
+				api+"get/class",
+				"no tag",
+				_class_api_listener);
+
+	}
+
+
+	private void request_department_API(){
+
+		department_api.startRequestNetwork(RequestNetworkController.GET,
+				api+"get/department",
+				"no tag",
+				_department_api_listener);
+
+	}
+
+
+
+
+	private void request_year_API(){
+
+
+		year_api.startRequestNetwork(RequestNetworkController.GET,
+				api+"get/year",
+				"no tag",
+				_year_api_listener);
+
+	}
+
+
+	private void request_slider_API(){
+
+
+		year_api.startRequestNetwork(RequestNetworkController.GET,
+				api_mlu+"slider",
+				"no tag",
+				_slider_api_listener);
+
+	}
+
 
 
 	private void success(){
@@ -568,7 +927,11 @@ private TextView edittext4_textview_91;
 									  String _email, String _pass,
 									  String _mob, String _class_name,
 									  String _department, String _year,
-									  String _roll)
+									  String _roll,
+									  String _fname, String _mname,
+									  String _blg, String _dob,
+									  String _addr)
+
 	{
 		linear7.setVisibility(View.VISIBLE);
 		api_map.clear();
@@ -581,11 +944,14 @@ private TextView edittext4_textview_91;
 		api_map.put("mobile", _mob.trim());
 		api_map.put("classname", _class_name.trim());
 		api_map.put("department", _department.trim());
-		api_map.put("year", _year.trim());
 		api_map.put("roll", _roll.trim());
+		api_map.put("year", _year.trim());
 
-
-
+		api_map.put("field_1", _fname.trim());
+		api_map.put("field_2", _mname.trim());
+		api_map.put("field_3", _blg.trim());
+		api_map.put("field_4", _dob.trim());
+		api_map.put("field_5", _addr.trim());
 
 		register_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
 		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _login_api_listener);
@@ -638,10 +1004,11 @@ private TextView edittext4_textview_91;
 		}
 	}
 	public void _NavStatusBarColor (final String _color1, final String _color2) {
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-			Window w = this.getWindow();	w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);	w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-			w.setStatusBarColor(Color.parseColor("#" + _color1.replace("#", "")));	w.setNavigationBarColor(Color.parseColor("#" + _color2.replace("#", "")));
-		}
+		Window w = this.getWindow();
+		w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+		w.setStatusBarColor(Color.parseColor("#" + _color1.replace("#", "")));
+		w.setNavigationBarColor(Color.parseColor("#" + _color2.replace("#", "")));
 	}
 
 
@@ -651,7 +1018,7 @@ private TextView edittext4_textview_91;
 
 
 	public void _rippleRoundStroke (final View _view, final String _focus, final String _pressed, final double _round, final double _stroke, final String _strokeclr) {
-		android.graphics.drawable.GradientDrawable GG = new android.graphics.drawable.GradientDrawable();
+		GradientDrawable GG = new GradientDrawable();
 		GG.setColor(Color.parseColor(_focus));
 		GG.setCornerRadius((float)_round);
 		GG.setStroke((int) _stroke,
@@ -665,7 +1032,7 @@ private TextView edittext4_textview_91;
 		fontName = "fonts/".concat(_fontname.concat(".ttf"));
 		overrideFonts(this,getWindow().getDecorView());
 	}
-	private void overrideFonts(final android.content.Context context, final View v) {
+	private void overrideFonts(final Context context, final View v) {
 
 		try {
 			Typeface
@@ -749,9 +1116,257 @@ private TextView edittext4_textview_91;
 	}
 
 
+
+	/////////////////////////////////////////////
+
+
+
+	///Spinner adpters
+
+
+
+
+
+	public class Listview1Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview1Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(class_list.get((int) _position).get("name")).toString());
+
+			textview1.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+
+					if(!Objects.requireNonNull(class_list.get(_position).get("id")).toString().equals("")){
+
+						class_id = Objects.requireNonNull(class_list.get(_position).get("id")).toString();
+					}
+
+
+				}
+			});
+
+
+
+
+			return _view;
+		}
+	}
+
+	public class Listview2Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview2Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(department_list.get((int) _position).get("name")).toString());
+
+			textview1.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+
+					if(!Objects.requireNonNull(department_list.get(_position).get("id")).toString().equals("")){
+
+						dept_id = Objects.requireNonNull(department_list.get(_position).get("id")).toString();
+					}
+
+
+				}
+			});
+
+
+
+
+			return _view;
+		}
+	}
+
+
+	public class Listview3Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview3Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(year_list.get((int) _position).get("year")).toString());
+
+			textview1.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+
+					if(!Objects.requireNonNull(year_list.get(_position).get("id")).toString().equals("")){
+
+						year_id = Objects.requireNonNull(year_list.get(_position).get("id")).toString();
+					}
+
+
+				}
+			});
+
+
+
+
+			return _view;
+		}
+	}
+
+
+	public class Listview4Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview4Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(blg_list.get((int) _position).get("name")).toString());
+
+			textview1.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+
+					if(!Objects.requireNonNull(blg_list.get(_position).get("name")).toString().equals("Select blood group..")){
+
+						blg_name = Objects.requireNonNull(blg_list.get(_position).get("name")).toString();
+					}
+
+
+				}
+			});
+
+
+
+
+			return _view;
+		}
+	}
+
+
+
+
+
+
+
+
+
+	////////////////////////
+
+
+
+
+
+
+
+
+
+
 	public void _dotsProgress (final View _view, final String _color1, final String _color2, final double _count, final double _size, final double _scale, final double _growth, final double _spacing) {
 		final DilatingDotsProgressBar bar = new DilatingDotsProgressBar(this);
-		bar.setLayoutParams(new LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
+		bar.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
 		/*dots size here*/
 
@@ -1087,7 +1702,7 @@ private TextView edittext4_textview_91;
 				final long startDelay = (i - 1) * (int) (START_DELAY_FACTOR * mAnimationDuration);
 
 				// Sizing
-				android.animation.ValueAnimator growAnimator = android.animation.ObjectAnimator.ofFloat(dot, "radius", mDotRadius, mDotMaxRadius, mDotRadius);
+				android.animation.ValueAnimator growAnimator = ObjectAnimator.ofFloat(dot, "radius", mDotRadius, mDotMaxRadius, mDotRadius);
 				growAnimator.setDuration(mAnimationDuration);
 				growAnimator.setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator());
 				if (i == mNumberDots) {
@@ -1108,7 +1723,7 @@ private TextView edittext4_textview_91;
 					// Gradient
 					android.animation.ValueAnimator colorAnimator = android.animation.ValueAnimator.ofInt(mDotEndColor, mDotColor);
 					colorAnimator.setDuration(mAnimationDuration);
-					colorAnimator.setEvaluator(new android.animation.ArgbEvaluator());
+					colorAnimator.setEvaluator(new ArgbEvaluator());
 					colorAnimator.addUpdateListener(new android.animation.ValueAnimator.AnimatorUpdateListener() {
 
 						@Override
@@ -1314,8 +1929,32 @@ private TextView edittext4_textview_91;
 		checkbox1.setVisibility(View.GONE);
 		linear7.setVisibility(View.GONE);
 		linear8.setVisibility(View.GONE);
+
+		edittext4.setVisibility(View.GONE);   //phone no
+		textview10.setVisibility(View.GONE); // PHONE NO TEXT
+
+		edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
+
+
+
+
+
+
+
 		_removeScollBar(vscroll1);
 		_DARK_ICONS();
+	}
+
+
+
+	private void gone(){
+
+
+	}
+
+	private void visible(){
+
+
 	}
 
 
@@ -1331,7 +1970,13 @@ private TextView edittext4_textview_91;
 		_EditTexts(email, textview3, linear3);
 		_EditTexts(pass, textview4, linear4);
 		_EditTexts(edittext3, textview9, linear7);
-		_EditTexts(edittext4, textview10, linear12);
+		_EditTexts(edittext4, textview10, linear_phone);
+
+	//_EditTexts(fname, fname_text, linear_fname);
+	//_EditTexts(mname, mname_text, linear_mname);
+	//_EditTexts(name,  name_text,  linear_name);
+	//_EditTexts(addr,  addr_text,  linear_addr);
+	//_EditTexts(roll,  roll_text,  linear_roll);
 
 
 		pass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
@@ -1340,20 +1985,68 @@ private TextView edittext4_textview_91;
 	}
 
 
+
+	public void _DateDialog (final TextView _textview) {
+		DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+
+			@SuppressLint("SimpleDateFormat")
+			final Calendar c = Calendar.getInstance();
+			final String now_year = new SimpleDateFormat("yyyy").format(c.getTime());
+			final int nowyear = Integer.parseInt(now_year);
+			//c.set(nowyear, 0, 1);
+
+
+
+			@Override
+			public void onDateSet(DatePicker view, int year, int month, int day) {
+				month++;
+
+				// before =                output   1/9/2022
+				// after the below logic = output 01/09/2022
+
+				String tempMonth=""+month,tempDay=""+day;
+				if(month<10) {
+					tempMonth = "/0" + month;
+
+					if(day<10) { tempDay = "0" + day; }
+
+					_textview.setText(tempDay + "" + tempMonth + "/" + year);
+
+
+				}else {
+
+					if(day<10) { tempDay = "0" + day; }
+
+					_textview.setText(tempDay + "/" + tempMonth + "/" + year);
+
+				}
+
+
+
+				// this bool variable for check user is selected data or not
+
+				//edited by shubhamjeet 27th oct 2022, 9:20pm
+
+
+			}
+		};
+		showDatePicker(datePickerListener);
+	}
+	public void showDatePicker(DatePickerDialog.OnDateSetListener listener) {
+		DatePickerDialog datePicker = new DatePickerDialog(this);
+
+
+		// datePicker.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(0));
+
+		datePicker.setOnDateSetListener(listener);
+		datePicker.show();
+	}
+
+
+
 	public void _slider () {
-		{
-			HashMap<String, Object> _item = new HashMap<>();
-			_item.put("image", "https://new.mlu.ac.in/assets/uploads/media-uploader/mluslider31668096628.jpg");
-			listmap.add(_item);
-		}
 
-		{
-			HashMap<String, Object> _item = new HashMap<>();
-			_item.put("image", "https://new.mlu.ac.in/assets/uploads/media-uploader/mluslider21668096623.jpg");
-			listmap.add(_item);
-		}
-
-		final float scaleFactor = 0.96f; viewpager1.setPageMargin(-15); viewpager1.setOffscreenPageLimit(2); viewpager1.setPageTransformer(false, new ViewPager.PageTransformer() { @Override public void transformPage(@NonNull View page1, float position) { page1.setScaleY((1 - Math.abs(position) * (1 - scaleFactor))); page1.setScaleX(scaleFactor + Math.abs(position) * (1 - scaleFactor)); } });
+		//final float scaleFactor = 0.96f; viewpager1.setPageMargin(-15); viewpager1.setOffscreenPageLimit(2); viewpager1.setPageTransformer(false, new ViewPager.PageTransformer() { @Override public void transformPage(@NonNull View page1, float position) { page1.setScaleY((1 - Math.abs(position) * (1 - scaleFactor))); page1.setScaleX(scaleFactor + Math.abs(position) * (1 - scaleFactor)); } });
 		viewpager1.setAdapter(new Viewpager1Adapter(listmap));
 		scroll_time = new TimerTask() {
 			@Override
@@ -1363,7 +2056,7 @@ private TextView edittext4_textview_91;
 					public void run() {
 						viewpager1.setCurrentItem((int)count);
 						count++;
-						if (count == 2) {
+						if (count == listmap.size()) {
 							count = 0;
 						}
 					}
@@ -1415,14 +2108,14 @@ private TextView edittext4_textview_91;
 
 		@Override
 		public  Object instantiateItem(ViewGroup _container,  final int _position) {
-			View _view = LayoutInflater.from(_context).inflate(R.layout.slider, _container, false);
+			View _view = LayoutInflater.from(_context).inflate(R.layout.slider_big, _container, false);
 
 			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
 			final ImageView imageview1 = _view.findViewById(R.id.imageview1);
 
 
 			Glide.with(getApplicationContext())
-					.load(Uri.parse(listmap.get(_position).get("image").toString()))
+					.load(Uri.parse(Objects.requireNonNull(listmap.get(_position).get("img_url")).toString()))
 					.error(R.drawable.pyramids)
 					.placeholder(R.drawable.pyramids)
 					.thumbnail(0.01f)

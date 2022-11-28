@@ -52,7 +52,13 @@ public class NotificationActivity extends  AppCompatActivity  {
 	
 	private void initializeLogic() {
 	}
-	
+
+
+	public void close(View view){
+
+		finish();
+	}
+
 	@Override
 	protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
 		
@@ -116,4 +122,4 @@ public class NotificationActivity extends  AppCompatActivity  {
 		return getResources().getDisplayMetrics().heightPixels;
 	}
 	
-}
+}

@@ -6,9 +6,10 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 	<androidx.cardview.widget.CardView
+		app:cardBackgroundColor="#757474"
 		android:id="@+id/cardview1"
 		android:layout_width="match_parent"
-		android:layout_height="176dp"
+		android:layout_height="192dp"
 		app:cardElevation="5dp"
 		app:cardCornerRadius="0dp">
 		<ImageView

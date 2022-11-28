@@ -9,15 +9,288 @@
 		android:id="@+id/linear1"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:padding="8dp"
-		android:orientation="horizontal">
-		<TextView
-			android:id="@+id/textview1"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="8dp"
-			android:text="apply online"
-			android:textSize="12sp"
-			android:textColor="#000000"/>
+		android:padding="0dp"
+		android:orientation="vertical">
+
+
+		<LinearLayout
+			android:id="@+id/tool"
+			android:layout_width="match_parent"
+			android:layout_height="57dp"
+			android:padding="10dp"
+			android:background="#0091EA"
+			android:gravity="left|center_vertical"
+			android:orientation="horizontal">
+			<ImageView
+				android:onClick="close"
+				android:id="@+id/back"
+				android:layout_width="25dp"
+				android:layout_height="22dp"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="10dp"
+				android:src="@drawable/back2"
+				android:scaleType="centerInside"/>
+			<TextView
+				android:textStyle="bold"
+				android:id="@+id/textview1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="10dp"
+				android:gravity="left|center_vertical"
+				android:text="Apply Online"
+				android:textSize="17sp"
+				android:textColor="#FFFFFF"
+				android:layout_weight="1"/>
+				</LinearLayout>
+
+
+
+		<LinearLayout
+			android:id="@+id/relative"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="#FFFFFF"
+			android:orientation="vertical">
+			<LinearLayout
+				android:id="@+id/bottom"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+				<ImageView
+					android:id="@+id/imageview"
+					android:layout_width="match_parent"
+					android:layout_height="220dp"
+					android:background="#757575"
+					android:src="@drawable/default_image"
+					android:scaleType="centerCrop"/>
+			</LinearLayout>
+			<androidx.cardview.widget.CardView
+				android:id="@+id/top_cardview1"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:translationY="-30.0dp"
+				app:cardElevation="0dp"
+				app:cardCornerRadius="30dp">
+				<ScrollView
+					android:id="@+id/vscroll1"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:scrollbars="none">
+					<LinearLayout
+						android:id="@+id/bg"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical">
+
+						<LinearLayout
+
+							android:background="#ffffff"
+							android:layout_margin="10dp"
+							android:padding="8dp"
+
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:orientation="vertical">
+
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+
+
+								android:id="@+id/name"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="Applicant's name * "
+								android:textColorHint="#607D8B"/>
+
+							<EditText
+
+								android:maxLines="1"
+
+								android:layout_margin="4dp"
+
+								android:id="@+id/email"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="Email Id *"
+								android:textColorHint="#607D8B"/>
+
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+
+
+								android:id="@+id/mobile"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+								android:textColor="#000000"
+								android:hint="Mobile Number *"
+								android:textColorHint="#607D8B"/>
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+								android:id="@+id/national"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="Nationality *"
+								android:textColorHint="#607D8B"/>
+
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+								android:id="@+id/city"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="City *"
+								android:textColorHint="#607D8B"/>
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+								android:id="@+id/program"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="Program Applied For *"
+								android:textColorHint="#607D8B"/>
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+								android:id="@+id/subject"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="Specialization Subject"
+								android:textColorHint="#607D8B"/>
+
+
+
+						</LinearLayout>
+
+
+
+
+						<LinearLayout
+
+
+							android:id="@+id/bottom_"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:padding="10dp"
+							android:layout_marginBottom="40dp"
+							android:gravity="center"
+							android:orientation="horizontal">
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/submit"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:backgroundTint="#0061AE"
+
+								app:backgroundTint="@null"
+
+								android:layout_marginRight="15dp"
+								android:gravity="center"
+								android:padding="12dp"
+
+								android:layout_gravity="center_horizontal|center_vertical"
+								android:text="SUBMIT"
+								android:textSize="16sp"
+								android:textColor="#FFFFFF"
+								android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+								style="@style/Widget.MaterialComponents.Button"/>
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/reset"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:backgroundTint="#A83895"
+
+								style="@style/Widget.MaterialComponents.Button"
+								android:layout_marginLeft="15dp"
+								android:padding="12dp"
+
+								android:layout_gravity="center_horizontal|center_vertical"
+								android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+								android:text="RESET"
+								android:textSize="16sp"
+								android:textColor="#FFFFFF" />
+
+
+
+						</LinearLayout>
+
+					</LinearLayout>
+
+
+
+				</ScrollView>
+			</androidx.cardview.widget.CardView>
+
+
+
+		</LinearLayout>
+
+
+
+
+
 	</LinearLayout>
 </LinearLayout>

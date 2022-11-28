@@ -88,6 +88,8 @@ public class ProfileActivity extends  AppCompatActivity  {
 	
 	private void initializeLogic() {
 		_changeActivityFont("en_med");
+
+
 		{
 			HashMap<String, Object> _item = new HashMap<>();
 			_item.put("name", "Select College here..");
@@ -226,6 +228,11 @@ public class ProfileActivity extends  AppCompatActivity  {
 	public void showMessage(String _s) {
 		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_SHORT).show();
 	}
-	
+
+
+	public void close(View view){
+
+		finish();
+	}
 
 }

@@ -69,11 +69,19 @@ public class About extends  AppCompatActivity  {
 			}
 		};
 	}
-	
+
+
+
+	public void close(View view){
+
+		finish();
+	}
+
+
 	private void initializeLogic() {
 
-		_transparentStatusAndNavigation();
-		_NavStatusBarColor("#FFFFFF", "#FFFFFF");
+		//_transparentStatusAndNavigation();
+		//_NavStatusBarColor("#FFFFFF", "#FFFFFF");
 		_changeActivityFont("en_med");
 		_DARK_ICONS();
 

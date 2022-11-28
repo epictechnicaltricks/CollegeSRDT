@@ -102,7 +102,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\US
 	android:largeHeap
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:11:3-27
 	android:icon
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:10:3-36
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:10:3-32
 	android:allowBackup
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:8:3-29
 	android:theme
