@@ -133,7 +133,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	private HashMap<String, Object> api_map2 = new HashMap<>();
 
-private TextView edittext4_textview_91;
+	private TextView edittext4_textview_91;
 
 
 	private HashMap<String, Object> map = new HashMap<>();
@@ -1114,7 +1114,7 @@ private TextView edittext4_textview_91;
 		api_map2.put("field_4", _dob.trim());
 		api_map2.put("field_5", _addr.trim());
 
-		register_api.setParams(api_map2, RequestNetworkController.REQUEST_PARAM);
+		register_api.setParams(api_map2, RequestNetworkController.REQUEST_BODY);
 		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _register_api_listener);
 
 		//textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");

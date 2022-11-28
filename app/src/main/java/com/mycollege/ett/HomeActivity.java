@@ -58,7 +58,7 @@ public class HomeActivity extends  AppCompatActivity  {
 	private double count = 0;
 
 	private ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
-	private final ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
+	private  ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
 
 	private LinearLayout linear1;
 	private LinearLayout slider_layouf;
@@ -102,6 +102,16 @@ public class HomeActivity extends  AppCompatActivity  {
 	private TimerTask scroll_time;
 	private final Intent in = new Intent();
 
+
+	private RequestNetwork team_api;
+	private RequestNetwork.RequestListener _team_api_listener;
+
+	private HashMap<String, Object> api_map = new HashMap<>();
+	private String list = "";
+
+
+	private ArrayList<HashMap<String, Object>> results = new ArrayList<>();
+
 	String youtube_player_api ="AIzaSyBZtKZFJ5QFj7BrWGoW8qSzTJyebDM42AM";
 	private YouTubePlayerView ytPlayer;
 
@@ -138,6 +148,8 @@ public class HomeActivity extends  AppCompatActivity  {
 
 
 		slider_api = new RequestNetwork(this);
+        team_api = new RequestNetwork(this);
+
 
 
 		_app_bar = findViewById(R.id._app_bar);
@@ -234,6 +246,35 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 			}
 		};
+
+
+		_team_api_listener = new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+
+				api_map.clear();
+				api_map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
+				// must add resultSet
+				//" list " is a String datatype
+				list = (new Gson()).toJson(api_map.get("data"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+				listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+				recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
+				recyclerview1.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+				recyclerview1.setLayoutManager(new LinearLayoutManager(HomeActivity.this,LinearLayoutManager.HORIZONTAL, false));
+
+
+
+				// refresh the list or recycle or grid
+			}
+
+			@Override
+			public void onErrorResponse(String tag, String message) {
+
+			}
+		};
+
 
 		apply.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -464,6 +505,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 	}
 
 	private void initializeLogic() {
+
+		request_team();
+
 		_changeActivityFont("en_med");
 		_slider();
 		_hide();
@@ -562,34 +606,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 		linear1.setElevation((float)5);
 		notification.setColorFilter(0xFFFFFFFF);
 		drawer_open.setColorFilter(0xFFFFFFFF);
-		{
-			HashMap<String, Object> _item = new HashMap<>();
-			_item.put("image", "https://images.unsplash.com/photo-1567515004624-219c11d31f2e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwZ2xhc3Nlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1100&q=60");
-			listmap2.add(_item);
-		}
 
-		{
-			HashMap<String, Object> _item = new HashMap<>();
-			_item.put("image", "https://images.unsplash.com/photo-1618077360395-f3068be8e001?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bWFuJTIwZ2xhc3Nlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1100&q=60");
-			listmap2.add(_item);
-		}
 
-		{
-			HashMap<String, Object> _item = new HashMap<>();
-			_item.put("image", "https://images.unsplash.com/photo-1584607839936-b6c6964330ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWFuJTIwZ2xhc3Nlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1100&q=60");
-			listmap2.add(_item);
-		}
-
-		{
-			HashMap<String, Object> _item = new HashMap<>();
-			_item.put("image", "https://images.unsplash.com/photo-1567515004624-219c11d31f2e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwZ2xhc3Nlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1100&q=60");
-			listmap2.add(_item);
-		}
-
-		recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
-		recyclerview1.setLayoutManager(new LinearLayoutManager(this));
-		recyclerview1.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false));
-	}
+			}
 
 
 
@@ -598,6 +617,16 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 	protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
 
 		super.onActivityResult(_requestCode, _resultCode, _data);
+
+	}
+
+
+	private void request_team(){
+
+		team_api.startRequestNetwork(RequestNetworkController.GET,
+				"https://new.mlu.ac.in/api/v1/teams",
+				"no tag",
+				_team_api_listener);
 
 	}
 
@@ -781,7 +810,13 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
 			textview2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
-			Glide.with(getApplicationContext()).load(Uri.parse(listmap2.get(_position).get("image").toString())).into(imageview2);
+
+			//Glide.with(getApplicationContext()).load(Uri.parse(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString())).into(imageview2);
+		    textview1.setText(Objects.requireNonNull(listmap2.get(_position).get("name")).toString());
+			textview2.setText(Objects.requireNonNull(listmap2.get(_position).get("designation")).toString());
+
+
+
 		}
 		
 		@Override
