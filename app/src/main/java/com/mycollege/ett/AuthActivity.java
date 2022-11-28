@@ -435,9 +435,11 @@ private TextView edittext4_textview_91;
 					showMessage("Account created");
 					action_btn.performLongClick();
 					showMessage("Login Now");
+					success();
+
 
 				}else {
-
+					failure();
 					showMessage("Unable to create account");
 				}
 
@@ -446,6 +448,7 @@ private TextView edittext4_textview_91;
 			@Override
 			public void onErrorResponse(String tag, String message) {
 
+				failure();
 				Toast.makeText(AuthActivity.this, "No internet !", Toast.LENGTH_SHORT).show();
 
 			}
@@ -734,44 +737,43 @@ private TextView edittext4_textview_91;
 													in.putExtra("phone", edittext4.toString().trim());
 													startActivity(in);*/
 
-                       if(!name.getText().toString().equals("")
-							   || !email.getText().toString().equals("")
-			                   || !pass.getText().toString().equals("")
-			                   || !phone_edit.getText().toString().equals("")
-					           || !class_id.equals("")
-					           || !dept_id.equals("")
-							   || !year_id.equals("")
-							   || !roll.toString().equals("")
-							   || !fname.toString().equals("")
-							   || !mname.toString().equals("")
-							   || !blg_name.equals("")
-							   || !dob_value.getText().toString().equals("")
-							   || !addr.getText().toString().equals("")
+                              if(name.getText().toString().trim().equals("")
+							   || email.getText().toString().trim().equals("")
+			                   || pass.getText().toString().trim().equals("")
+			                   || phone_edit.getText().toString().trim().equals("")
+					           || class_id.equals("")
+					           || dept_id.equals("")
+							   || year_id.equals("")
+							   || roll.toString().trim().equals("")
+							   || fname.toString().trim().equals("")
+							   || mname.toString().trim().equals("")
+							   || blg_name.equals("")
+							   || dob_value.getText().toString().trim().equals("")
+							   || addr.getText().toString().trim().equals("")) {
 
-					   ) {
 
-						   _register_api_request(
-								   "4"
-								   ,name.getText().toString()
-								   ,email.getText().toString()
-								   ,pass.getText().toString()
-								   ,phone_edit.getText().toString()
-								   ,class_id
-								   ,dept_id
-								   ,roll.getText().toString()
-								   ,year_id
-								   ,fname.getText().toString()
-								   ,mname.getText().toString()
-								   ,blg_name
-								   ,dob_value.getText().toString()
-								   ,addr.getText().toString());
-
+								  failure();
+								  showMessage("Some fields are missing.. check it again ! ");
 
 
 
 					   } else {
+								  _register_api_request(
+										  "4"
+										  ,name.getText().toString()
+										  ,email.getText().toString()
+										  ,pass.getText().toString()
+										  ,phone_edit.getText().toString()
+										  ,class_id
+										  ,dept_id
+										  ,roll.getText().toString()
+										  ,year_id
+										  ,fname.getText().toString()
+										  ,mname.getText().toString()
+										  ,blg_name
+										  ,dob_value.getText().toString()
+										  ,addr.getText().toString());
 
-						   showMessage("Some fields are missing.. check it again ! ");
 
 					   }
 
@@ -1115,7 +1117,7 @@ private TextView edittext4_textview_91;
 		register_api.setParams(api_map2, RequestNetworkController.REQUEST_PARAM);
 		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _register_api_listener);
 
-		textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
+		//textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
 
 		//Toast.makeText(this, "Login complete", Toast.LENGTH_SHORT).show();
 	}
