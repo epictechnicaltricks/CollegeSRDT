@@ -216,6 +216,7 @@ com/mycollege/ett/HomeActivity.java
  com.mycollege.ett.HomeActivity$18
  com.mycollege.ett.HomeActivity$19
  com.mycollege.ett.HomeActivity$2
+ com.mycollege.ett.HomeActivity$2$1
  com.mycollege.ett.HomeActivity$20
  com.mycollege.ett.HomeActivity$20$1
  com.mycollege.ett.HomeActivity$3
@@ -422,12 +423,16 @@ com/mycollege/ett/AuthActivity.java
  com.mycollege.ett.AuthActivity$1$1
  com.mycollege.ett.AuthActivity$10
  com.mycollege.ett.AuthActivity$10$1
+ com.mycollege.ett.AuthActivity$10$1$1
+ com.mycollege.ett.AuthActivity$10$2
+ com.mycollege.ett.AuthActivity$10$2$1
  com.mycollege.ett.AuthActivity$11
  com.mycollege.ett.AuthActivity$12
  com.mycollege.ett.AuthActivity$13
  com.mycollege.ett.AuthActivity$14
  com.mycollege.ett.AuthActivity$15
- com.mycollege.ett.AuthActivity$15$1
+ com.mycollege.ett.AuthActivity$16
+ com.mycollege.ett.AuthActivity$16$1
  com.mycollege.ett.AuthActivity$2
  com.mycollege.ett.AuthActivity$2$1
  com.mycollege.ett.AuthActivity$3
@@ -436,12 +441,9 @@ com/mycollege/ett/AuthActivity.java
  com.mycollege.ett.AuthActivity$4$1
  com.mycollege.ett.AuthActivity$5
  com.mycollege.ett.AuthActivity$6
+ com.mycollege.ett.AuthActivity$6$1
  com.mycollege.ett.AuthActivity$7
  com.mycollege.ett.AuthActivity$8
- com.mycollege.ett.AuthActivity$8$1
- com.mycollege.ett.AuthActivity$8$1$1
- com.mycollege.ett.AuthActivity$8$2
- com.mycollege.ett.AuthActivity$8$2$1
  com.mycollege.ett.AuthActivity$9
  com.mycollege.ett.AuthActivity$DilatingDotDrawable
  com.mycollege.ett.AuthActivity$DilatingDotsProgressBar

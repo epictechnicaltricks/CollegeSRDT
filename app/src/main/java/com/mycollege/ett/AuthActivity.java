@@ -45,6 +45,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -142,29 +143,19 @@ private TextView edittext4_textview_91;
 	private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
 	private long mBackPressed;
 
-	private Spinner
-			 spinner_class_name
-			,spinner_department
-			,spinner_year
-			,spinner_blg;
+	private Spinner spinner_class_name,spinner_department,spinner_year,spinner_blg;
 
-	LinearLayout
-			linear_mname,
-			linear_name,
-			linear_fname,
-			linear_addr,
-			linear_phone,
-			linear_roll;
+	LinearLayout linear_mname, linear_name, linear_fname, linear_addr, linear_phone, linear_roll,spn_ln1,spn_ln2,spn_ln3,spn_ln4;
 
-	EditText
-			fname,
-			mname,
-			name,
-	         addr,
-			roll;
+	EditText fname, mname, name, addr, roll,phone_edit;
 
 	TextView
+			text_class_name_,
+			text_department_,
+			text_year_,
+			text_blg_,
 			dob_text,
+	dob_value,
 			fname_text,
 			mname_text,
 			name_text,
@@ -241,7 +232,7 @@ private TextView edittext4_textview_91;
 		listview2 =  findViewById(R.id.listview_dept);
 		listview3 =  findViewById(R.id.listview_year);
 		listview4 =  findViewById(R.id.listview_blg);
-
+		phone_edit = findViewById(R.id.phone_edit);
 
 
 
@@ -349,29 +340,138 @@ private TextView edittext4_textview_91;
   };
 
 
-
-  ////////////////////////////////////////////////////////////////////////
-
-
-
-
-		linear_mname = findViewById(R.id.linear_mname);
-		linear_name  = findViewById(R.id.linear_name);
-		linear_fname = findViewById(R.id.linear_fname);
-
-		linear_addr  = findViewById(R.id.linear_addr);
-		linear_phone = findViewById(R.id.linear_phone);
-		linear_roll  = findViewById(R.id.linear_roll);
+		_register_api_listener = new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+				Log.d("login_register", response);
 
 
-		fname      = findViewById(R.id.fname);
-		mname      = findViewById(R.id.mname);
-		name       = findViewById(R.id.name);
-		dob_text   = findViewById(R.id.dob); // textview
-		addr       = findViewById(R.id.addr);
-		roll       = findViewById(R.id.roll);
+				if(response.contains("success")) {
+
+					showMessage("Account created");
+					action_btn.performLongClick();
+					showMessage("Login Now");
+
+				}else {
+
+					showMessage("Unable to create account");
+				}
+
+			}
+
+			@Override
+			public void onErrorResponse(String tag, String message) {
+
+				Toast.makeText(AuthActivity.this, "No internet !", Toast.LENGTH_SHORT).show();
+
+			}
+		};
+
+		_login_api_listener = new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+				///showMessage(""+response);
+
+				Log.d("login",response);
+
+				if(response.contains("avatar")) {
+
+					map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
 
 
+
+
+					SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+					SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+
+					myEdit.putString("name", Objects.requireNonNull(map.get("name")).toString());
+					myEdit.putString("userId", Objects.requireNonNull(map.get("userId")).toString());
+					myEdit.putString("roleId",  Objects.requireNonNull(map.get("roleId")).toString());
+					myEdit.putString("token", Objects.requireNonNull(map.get("token")).toString());
+					myEdit.putString("role", Objects.requireNonNull(map.get("role")).toString());
+					myEdit.putString("avatar", Objects.requireNonNull(map.get("avatar")).toString());
+					myEdit.putString("API", Objects.requireNonNull(api));
+
+
+
+
+					myEdit.apply();
+
+
+					success();
+
+				} else {
+
+					failure();
+					showMessage("Email or password not valid");
+				}
+
+
+
+			}
+
+			@Override
+			public void onErrorResponse(String tag, String message) {
+
+				failure();
+				showMessage(message);
+
+
+			}
+		};
+
+
+
+
+
+
+
+		////////////////////////////////////////////////////////////////////////
+
+
+
+
+		linear_mname = findViewById(R.id.linear_mname_);
+		linear_name  = findViewById(R.id.linear_name_);
+		linear_fname = findViewById(R.id.linear_fname_);
+
+		linear_addr  = findViewById(R.id.linear_addr_);
+		linear_phone = findViewById(R.id.linear_phone_);
+		linear_roll  = findViewById(R.id.linear_roll_);
+
+
+
+		spn_ln1 = findViewById(R.id.spn_ln1);
+		spn_ln2 = findViewById(R.id.spn_ln2);
+		spn_ln3 = findViewById(R.id.spn_ln3);
+		spn_ln4 = findViewById(R.id.spn_ln4);
+
+
+
+
+		fname      = findViewById(R.id.fname_);
+		mname      = findViewById(R.id.mname_);
+		name       = findViewById(R.id.name_);
+
+		addr       = findViewById(R.id.addr_);
+		roll       = findViewById(R.id.roll_);
+
+
+
+		        dob_text   = findViewById(R.id.text_dob); // textview
+				fname_text = findViewById(R.id.text_father_); // textview
+				mname_text = findViewById(R.id.text_mother); // textview
+				name_text = findViewById(R.id.stu_name); // textview
+				addr_text = findViewById(R.id.text_addr); // textview
+				roll_text = findViewById(R.id.text_roll_); // textview
+
+		        text_class_name_ = findViewById(R.id.text_class_name_);
+				text_department_ = findViewById(R.id.text_department_);
+				text_year_ = findViewById(R.id.text_year_);
+				text_blg_ = findViewById(R.id.text_blg_);
+				dob_value = findViewById(R.id.dob);
 
 		linear2 = findViewById(R.id.linear2);
 		vscroll1 = findViewById(R.id.vscroll1);
@@ -415,11 +515,11 @@ private TextView edittext4_textview_91;
 		register_api = new RequestNetwork(this);
 
 
-		dob_text.setOnClickListener(new View.OnClickListener() {
+		dob_value.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-				_DateDialog(dob_text);
+				_DateDialog(dob_value);
 
 			}
 		});
@@ -549,11 +649,12 @@ private TextView edittext4_textview_91;
 													startActivity(in);*/
 
 
-													_register_api_request("4"
+													_register_api_request(
+															"4"
 															,name.getText().toString()
 															,email.getText().toString()
 															,pass.getText().toString()
-															,edittext4.getText().toString()
+															,phone_edit.getText().toString()
 															,class_id
 															,dept_id
 															,year_id
@@ -561,7 +662,7 @@ private TextView edittext4_textview_91;
 															fname.getText().toString(),
 															mname.getText().toString(),
 															blg_name,
-															dob_text.getText().toString(),
+															dob_value.getText().toString(),
 															addr.getText().toString());
 
 
@@ -655,6 +756,10 @@ private TextView edittext4_textview_91;
 
 					edittext4.setVisibility(View.GONE);  //phone no
 					edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
+
+					gone();
+
+
 					edittext3.setVisibility(View.GONE);
 					linear7.setVisibility(View.GONE);
 					checkbox1.setVisibility(View.GONE);
@@ -674,70 +779,15 @@ private TextView edittext4_textview_91;
 					edittext3.setVisibility(View.VISIBLE);
 					edittext4.setVisibility(View.VISIBLE);  //phone no
 					edittext4_textview_91.setVisibility(View.VISIBLE); // phone +91 text
+
+					visible();
+
 					linear7.setVisibility(View.VISIBLE);
 					//checkbox1.setVisibility(View.VISIBLE);
 					textview5.setVisibility(View.GONE);
 				}
 			}
 		});
-
-
-
-		_login_api_listener = new RequestNetwork.RequestListener() {
-			@Override
-			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
-
-				///showMessage(""+response);
-
-				Log.d("login",response);
-
-				if(response.contains("avatar")) {
-
-					map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
-
-
-
-
-					SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-					SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
-
-					myEdit.putString("name", Objects.requireNonNull(map.get("name")).toString());
-					myEdit.putString("userId", Objects.requireNonNull(map.get("userId")).toString());
-					myEdit.putString("roleId",  Objects.requireNonNull(map.get("roleId")).toString());
-					myEdit.putString("token", Objects.requireNonNull(map.get("token")).toString());
-					myEdit.putString("role", Objects.requireNonNull(map.get("role")).toString());
-					myEdit.putString("avatar", Objects.requireNonNull(map.get("avatar")).toString());
-					myEdit.putString("API", Objects.requireNonNull(api));
-
-
-
-
-					myEdit.apply();
-
-
-					success();
-
-				} else {
-
-					failure();
-				}
-
-
-
-			}
-
-			@Override
-			public void onErrorResponse(String tag, String message) {
-
-				failure();
-				showMessage(message);
-
-
-			}
-		};
-
-
 
 
 
@@ -862,7 +912,7 @@ private TextView edittext4_textview_91;
 	private void request_slider_API(){
 
 
-		year_api.startRequestNetwork(RequestNetworkController.GET,
+		slider_api.startRequestNetwork(RequestNetworkController.GET,
 				api_mlu+"slider",
 				"no tag",
 				_slider_api_listener);
@@ -934,28 +984,29 @@ private TextView edittext4_textview_91;
 
 	{
 		linear7.setVisibility(View.VISIBLE);
-		api_map.clear();
-		api_map = new HashMap<>();
+		api_map2.clear();
+		api_map2 = new HashMap<>();
 
-		api_map.put("role", _role.trim());
-		api_map.put("name", _name.trim());
-		api_map.put("email", _email.trim());
-		api_map.put("password", _pass.trim());
-		api_map.put("mobile", _mob.trim());
-		api_map.put("classname", _class_name.trim());
-		api_map.put("department", _department.trim());
-		api_map.put("roll", _roll.trim());
-		api_map.put("year", _year.trim());
 
-		api_map.put("field_1", _fname.trim());
-		api_map.put("field_2", _mname.trim());
-		api_map.put("field_3", _blg.trim());
-		api_map.put("field_4", _dob.trim());
-		api_map.put("field_5", _addr.trim());
+		api_map2.put("role", _role.trim());
+		api_map2.put("name", _name.trim());
+		api_map2.put("email", _email.trim());
+		api_map2.put("password", _pass.trim());
+		api_map2.put("mobile", _mob.trim());
+		api_map2.put("classname", _class_name.trim());
+		api_map2.put("department", _department.trim());
+		api_map2.put("roll", _roll.trim());
+		api_map2.put("year", _year.trim());
+		api_map2.put("field_1", _fname.trim());
+		api_map2.put("field_2", _mname.trim());
+		api_map2.put("field_3", _blg.trim());
+		api_map2.put("field_4", _dob.trim());
+		api_map2.put("field_5", _addr.trim());
 
-		register_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
-		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _login_api_listener);
+		register_api.setParams(api_map2, RequestNetworkController.REQUEST_PARAM);
+		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _register_api_listener);
 
+		textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
 
 		//Toast.makeText(this, "Login complete", Toast.LENGTH_SHORT).show();
 	}
@@ -1936,8 +1987,7 @@ private TextView edittext4_textview_91;
 		edittext4_textview_91.setVisibility(View.GONE); // phone +91 text
 
 
-
-
+		gone();
 
 
 
@@ -1949,11 +1999,86 @@ private TextView edittext4_textview_91;
 
 	private void gone(){
 
+		          dob_text.setVisibility(View.GONE);
+				fname_text.setVisibility(View.GONE);
+				mname_text.setVisibility(View.GONE);
+				 name_text.setVisibility(View.GONE);
+				 addr_text.setVisibility(View.GONE);
+				 roll_text.setVisibility(View.GONE);
+
+		        fname.setVisibility(View.GONE);
+				mname.setVisibility(View.GONE);
+				name.setVisibility(View.GONE);
+				addr.setVisibility(View.GONE);
+				roll.setVisibility(View.GONE);
+
+				spinner_class_name.setVisibility(View.GONE);
+				spinner_department.setVisibility(View.GONE);
+	         	spinner_year.setVisibility(View.GONE);
+				spinner_blg.setVisibility(View.GONE);
+
+
+		        linear_mname.setVisibility(View.GONE);
+				linear_name.setVisibility(View.GONE);
+				linear_fname.setVisibility(View.GONE);
+				linear_addr.setVisibility(View.GONE);
+				linear_phone.setVisibility(View.GONE);
+				linear_roll.setVisibility(View.GONE);
+
+		text_class_name_.setVisibility(View.GONE);
+		text_department_.setVisibility(View.GONE);
+		text_year_ .setVisibility(View.GONE);
+		text_blg_ .setVisibility(View.GONE);
+		dob_value .setVisibility(View.GONE);
+
+
+
+		spn_ln1.setVisibility(View.GONE);
+		spn_ln2.setVisibility(View.GONE);
+		spn_ln3.setVisibility(View.GONE);
+		spn_ln4.setVisibility(View.GONE);
 
 	}
 
 	private void visible(){
 
+		  dob_text.setVisibility(View.VISIBLE);
+		fname_text.setVisibility(View.VISIBLE);
+		mname_text.setVisibility(View.VISIBLE);
+		 name_text.setVisibility(View.VISIBLE);
+		 addr_text.setVisibility(View.VISIBLE);
+		 roll_text.setVisibility(View.VISIBLE);
+
+		fname.setVisibility(View.VISIBLE);
+		mname.setVisibility(View.VISIBLE);
+		 name.setVisibility(View.VISIBLE);
+		 addr.setVisibility(View.VISIBLE);
+		 roll.setVisibility(View.VISIBLE);
+
+		spinner_class_name.setVisibility(View.VISIBLE);
+		spinner_department.setVisibility(View.VISIBLE);
+		      spinner_year.setVisibility(View.VISIBLE);
+		       spinner_blg.setVisibility(View.VISIBLE);
+
+
+		 linear_mname.setVisibility(View.VISIBLE);
+		  linear_name.setVisibility(View.VISIBLE);
+		 linear_fname.setVisibility(View.VISIBLE);
+		  linear_addr.setVisibility(View.VISIBLE);
+		 linear_phone.setVisibility(View.VISIBLE);
+		  linear_roll.setVisibility(View.VISIBLE);
+
+		text_class_name_.setVisibility(View.VISIBLE);
+		text_department_.setVisibility(View.VISIBLE);
+		     text_year_ .setVisibility(View.VISIBLE);
+		      text_blg_ .setVisibility(View.VISIBLE);
+		      dob_value .setVisibility(View.VISIBLE);
+
+
+		spn_ln1.setVisibility(View.VISIBLE);
+		spn_ln2.setVisibility(View.VISIBLE);
+		spn_ln3.setVisibility(View.VISIBLE);
+		spn_ln4.setVisibility(View.VISIBLE);
 
 	}
 
@@ -1972,11 +2097,11 @@ private TextView edittext4_textview_91;
 		_EditTexts(edittext3, textview9, linear7);
 		_EditTexts(edittext4, textview10, linear_phone);
 
-	//_EditTexts(fname, fname_text, linear_fname);
-	//_EditTexts(mname, mname_text, linear_mname);
-	//_EditTexts(name,  name_text,  linear_name);
-	//_EditTexts(addr,  addr_text,  linear_addr);
-	//_EditTexts(roll,  roll_text,  linear_roll);
+	_EditTexts(fname, fname_text, linear_fname);
+	_EditTexts(mname, mname_text, linear_mname);
+	_EditTexts(name,  name_text,  linear_name);
+	_EditTexts(addr,  addr_text,  linear_addr);
+	_EditTexts(roll,  roll_text,  linear_roll);
 
 
 		pass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());

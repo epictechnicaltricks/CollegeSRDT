@@ -94,7 +94,7 @@
 
 					<TextView
 						android:layout_marginStart="7dp"
-						android:id="@+id/text_name"
+						android:id="@+id/stu_name"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="35dp"
@@ -105,7 +105,7 @@
 
 
 					<EditText
-						android:id="@+id/name"
+						android:id="@+id/name_"
 						android:paddingTop="12dp"
 						android:background="@android:color/transparent"
 						android:textSize="14sp"
@@ -118,7 +118,7 @@
 						android:textColorHint="#607D8B"/>
 
 					<LinearLayout
-						android:id="@+id/linear_name"
+						android:id="@+id/linear_name_"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -136,7 +136,7 @@
 
 					<TextView
 						android:layout_marginStart="7dp"
-						android:id="@+id/text_roll"
+						android:id="@+id/text_roll_"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="35dp"
@@ -147,7 +147,7 @@
 
 
 					<EditText
-						android:id="@+id/roll"
+						android:id="@+id/roll_"
 						android:paddingTop="12dp"
 						android:background="@android:color/transparent"
 						android:textSize="14sp"
@@ -160,7 +160,7 @@
 						android:textColorHint="#607D8B"/>
 
 					<LinearLayout
-						android:id="@+id/linear_roll"
+						android:id="@+id/linear_roll_"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -255,7 +255,7 @@
 							android:inputType="numberSigned"
 							android:background="@android:color/transparent"
 							android:textSize="14sp"
-							android:id="@+id/edittext4"
+							android:id="@+id/phone_edit"
 							android:text=""
 							android:layout_weight="1"
 							android:layout_width="match_parent"
@@ -273,7 +273,7 @@
 
 
 					<LinearLayout
-						android:id="@+id/linear_phone"
+						android:id="@+id/linear_phone_"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -379,7 +379,7 @@
 					<TextView
 						android:layout_marginStart="7dp"
 						android:textStyle="bold"
-						android:id="@+id/text_class_name"
+						android:id="@+id/text_class_name_"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="35dp"
@@ -397,7 +397,7 @@
 						android:spinnerMode="dropdown"/>
 
 					<LinearLayout
-						android:id="@+id/linear_name3423"
+						android:id="@+id/spn_ln1"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -410,7 +410,7 @@
 					<TextView
 						android:layout_marginStart="7dp"
 						android:textStyle="bold"
-						android:id="@+id/text_department"
+						android:id="@+id/text_department_"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="35dp"
@@ -428,7 +428,7 @@
 						android:spinnerMode="dropdown"/>
 
 					<LinearLayout
-						android:id="@+id/linear_name33"
+						android:id="@+id/spn_ln2"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -439,7 +439,7 @@
 					<TextView
 						android:layout_marginStart="7dp"
 						android:textStyle="bold"
-						android:id="@+id/text_year"
+						android:id="@+id/text_year_"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="35dp"
@@ -458,7 +458,7 @@
 
 
 					<LinearLayout
-						android:id="@+id/linear_name3234"
+						android:id="@+id/spn_ln3"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -471,7 +471,7 @@
 					<TextView
 						android:layout_marginTop="35dp"
 						android:layout_marginStart="7dp"
-						android:id="@+id/text_father"
+						android:id="@+id/text_father_"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 
@@ -482,7 +482,7 @@
 
 
 					<EditText
-						android:id="@+id/fname"
+						android:id="@+id/fname_"
 						android:paddingTop="12dp"
 						android:background="@android:color/transparent"
 						android:textSize="14sp"
@@ -496,7 +496,7 @@
 
 					<LinearLayout
 
-						android:id="@+id/linear_fname"
+						android:id="@+id/linear_fname_"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -525,7 +525,7 @@
 
 
 					<EditText
-						android:id="@+id/mname"
+						android:id="@+id/mname_"
 						android:paddingTop="12dp"
 						android:background="@android:color/transparent"
 						android:textSize="14sp"
@@ -539,7 +539,7 @@
 
 					<LinearLayout
 
-						android:id="@+id/linear_mname"
+						android:id="@+id/linear_mname_"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -558,7 +558,7 @@
 					<TextView
 						android:layout_marginTop="35dp"
 						android:layout_marginStart="7dp"
-						android:id="@+id/text_blg"
+						android:id="@+id/text_blg_"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 
@@ -577,7 +577,7 @@
 						android:spinnerMode="dropdown"/>
 
 					<LinearLayout
-						android:id="@+id/linear_name873"
+						android:id="@+id/spn_ln4"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -655,13 +655,14 @@
 
 
 					<EditText
-						android:id="@+id/addr"
+						android:id="@+id/addr_"
+						android:gravity="left"
 						android:maxLines="6"
 						android:paddingTop="12dp"
 						android:background="@android:color/transparent"
 						android:textSize="14sp"
 						android:layout_width="match_parent"
-						android:layout_height="40dp"
+						android:layout_height="80dp"
 						android:padding="8dp"
 
 						android:textColor="#000000"
@@ -669,8 +670,8 @@
 						android:textColorHint="#607D8B"/>
 
 					<LinearLayout
-						android:layout_marginBottom="35dp"
-						android:id="@+id/linear_addr"
+
+						android:id="@+id/linear_addr_"
 						android:paddingBottom="12dp"
 						android:layout_width="match_parent"
 						android:layout_height="1dp"
@@ -690,7 +691,7 @@
 						android:id="@+id/textview5"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginTop="15dp"
+
 						android:layout_marginBottom="35dp"
 						android:gravity="right|center_vertical"
 						android:text="Forget password \?"

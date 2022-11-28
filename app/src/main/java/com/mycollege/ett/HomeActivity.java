@@ -39,6 +39,8 @@ import com.bumptech.glide.Glide;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.graphics.Typeface;
 
@@ -55,7 +57,7 @@ public class HomeActivity extends  AppCompatActivity  {
 	private final String typeace = "";
 	private double count = 0;
 
-	private final ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
+	private ArrayList<HashMap<String, Object>> listmap = new ArrayList<>();
 	private final ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
 
 	private LinearLayout linear1;
@@ -115,6 +117,12 @@ public class HomeActivity extends  AppCompatActivity  {
 			skill,
 			call;
 
+
+	private RequestNetwork slider_api;
+	private RequestNetwork.RequestListener _slider_api_listener;
+
+	String api_mlu = "https://new.mlu.ac.in/api/v1/";
+
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
@@ -128,6 +136,8 @@ public class HomeActivity extends  AppCompatActivity  {
 
 
 
+
+		slider_api = new RequestNetwork(this);
 
 
 		_app_bar = findViewById(R.id._app_bar);
@@ -206,7 +216,24 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 		call= findViewById(R.id.call);
 
 
+		_slider_api_listener = new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+				Log.d("api slider",response);
 
+
+				listmap = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+				_slider();
+
+			}
+
+			@Override
+			public void onErrorResponse(String tag, String message) {
+
+				Toast.makeText(HomeActivity.this, "No Internet !", Toast.LENGTH_SHORT).show();
+
+			}
+		};
 
 		apply.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -425,12 +452,23 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 		});
 	}
 
+
+	private void request_slider_API(){
+
+
+		slider_api.startRequestNetwork(RequestNetworkController.GET,
+				api_mlu+"slider",
+				"no tag",
+				_slider_api_listener);
+
+	}
+
 	private void initializeLogic() {
 		_changeActivityFont("en_med");
 		_slider();
 		_hide();
 
-
+     request_slider_API();
 
 		SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
 
@@ -615,7 +653,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 
 	public void _slider () {
-		{
+	/*	{
 			HashMap<String, Object> _item = new HashMap<>();
 			_item.put("image", "https://new.mlu.ac.in/assets/uploads/media-uploader/mluslider31668096628.jpg");
 			listmap.add(_item);
@@ -625,9 +663,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			HashMap<String, Object> _item = new HashMap<>();
 			_item.put("image", "https://new.mlu.ac.in/assets/uploads/media-uploader/mluslider21668096623.jpg");
 			listmap.add(_item);
-		}
+		}*/
 
-		final float scaleFactor = 0.96f; viewpager1.setPageMargin(-15); viewpager1.setOffscreenPageLimit(2); viewpager1.setPageTransformer(false, new ViewPager.PageTransformer() { @Override public void transformPage(@NonNull View page1, float position) { page1.setScaleY((1 - Math.abs(position) * (1 - scaleFactor))); page1.setScaleX(scaleFactor + Math.abs(position) * (1 - scaleFactor)); } });
+		//final float scaleFactor = 0.96f; viewpager1.setPageMargin(-15); viewpager1.setOffscreenPageLimit(2); viewpager1.setPageTransformer(false, new ViewPager.PageTransformer() { @Override public void transformPage(@NonNull View page1, float position) { page1.setScaleY((1 - Math.abs(position) * (1 - scaleFactor))); page1.setScaleX(scaleFactor + Math.abs(position) * (1 - scaleFactor)); } });
 		viewpager1.setAdapter(new Viewpager1Adapter(listmap));
 		scroll_time = new TimerTask() {
 			@Override
@@ -637,7 +675,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 					public void run() {
 						viewpager1.setCurrentItem((int)count);
 						count++;
-						if (count == 4) {
+						if (count == listmap.size()) {
 							count = 0;
 						}
 					}
@@ -701,9 +739,16 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			
 			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
 			final ImageView imageview1 = _view.findViewById(R.id.imageview1);
-			
-			Glide.with(getApplicationContext()).load(Uri.parse(listmap.get(_position).get("image").toString())).into(imageview1);
-			
+
+
+			Glide.with(getApplicationContext())
+					.load(Uri.parse(Objects.requireNonNull(listmap.get(_position).get("img_url")).toString()))
+					.error(R.drawable.pyramids)
+					.placeholder(R.drawable.pyramids)
+					.thumbnail(0.01f)
+					.into(imageview1);
+
+
 			_container.addView(_view);
 			return _view;
 		}
