@@ -1,5 +1,6 @@
 package com.mycollege.ett;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -21,9 +23,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,8 +51,17 @@ public class news extends  AppCompatActivity  {
 
 	private TimerTask timer;
 	private Intent toAuth = new Intent();
-	private RequestNetwork in;
-	private RequestNetwork.RequestListener _in_request_listener;
+	private RequestNetwork news_api;
+	private RequestNetwork.RequestListener _news_request_listener;
+
+	private HashMap<String, Object> api_map = new HashMap<>();
+
+
+	RecyclerView recyclerview1;
+
+	private  ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
+	private String list = "";
+
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
@@ -56,14 +75,70 @@ public class news extends  AppCompatActivity  {
 
 		linear8 = (LinearLayout) findViewById(R.id.linear8);
 		imageview1 = (ImageView) findViewById(R.id.imageview1);
-		in = new RequestNetwork(this);
+		news_api = new RequestNetwork(this);
 
-		_in_request_listener = new RequestNetwork.RequestListener() {
+
+		recyclerview1 = findViewById(R.id.recyclerview1);
+
+
+		_news_request_listener = new RequestNetwork.RequestListener() {
 			@Override
 			public void onResponse(String _param1, String _param2, HashMap<String, Object> _param3) {
 				final String _tag = _param1;
 				final String _response = _param2;
 				final HashMap<String, Object> _responseHeaders = _param3;
+
+
+				api_map.clear();
+				api_map = new Gson().fromJson(_response, new TypeToken<HashMap<String, Object>>(){}.getType());
+				// must add resultSet
+				//" list " is a String datatype
+				list = (new Gson()).toJson(api_map.get("data"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+				// Log.d("img_obj", list);
+				//listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+
+				try {
+
+					listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+
+
+                  /*  api_map2.clear();
+					listmap2.clear();
+					String responseUltered = "{\n\"items\": ".concat(list.concat("}"));
+
+
+					org.json.JSONObject object = new org.json.JSONObject(responseUltered);
+					org.json.JSONArray array = object.getJSONArray("items");
+
+					Log.d("img_obj_array", String.valueOf(array));
+
+					for(int i=0;i<array.length();i++){
+
+						org.json.JSONObject obj = array.getJSONObject(i);
+						name = obj.getString("name");
+						designation = obj.getString("designation");
+
+						img_url = obj.getJSONObject("image").getString("img_url");
+						api_map2 = new HashMap<>();
+						api_map2.put("name", name);
+						api_map2.put("designation", designation);
+						api_map2.put("img_url", img_url);
+						listmap2.add(api_map);
+					}
+*/
+
+					Collections.reverse(listmap2);
+					recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
+					recyclerview1.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+
+				} catch (Exception ex) {
+					showMessage("303 line "+ex.toString());
+					ex.printStackTrace();
+				}
 
 			}
 
@@ -78,23 +153,28 @@ public class news extends  AppCompatActivity  {
 
 	private void initializeLogic() {
 
-		_transparentStatusAndNavigation();
-		_NavStatusBarColor("#FFFFFF", "#FFFFFF");
-		_changeActivityFont("en_light");
-		_DARK_ICONS();
+		request_news();
+		_changeActivityFont("en_med");
+
+		//_transparentStatusAndNavigation();
+		//_NavStatusBarColor("#FFFFFF", "#FFFFFF");
+
+		//_DARK_ICONS();
 
 	}
+	private void request_news(){
 
+		news_api.startRequestNetwork(RequestNetworkController.GET,
+				"https://new.mlu.ac.in/api/v1/news-events",
+				"no tag",
+				_news_request_listener);
+
+	}
 	@Override
 	protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
 
 		super.onActivityResult(_requestCode, _resultCode, _data);
 
-		switch (_requestCode) {
-
-			default:
-				break;
-		}
 	}
 
 
@@ -122,17 +202,7 @@ public class news extends  AppCompatActivity  {
 
 
 
-	public void _NavStatusBarColor (final String _color1, final String _color2) {
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-			Window w = this.getWindow();	w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);	w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-			w.setStatusBarColor(Color.parseColor("#" + _color1.replace("#", "")));	w.setNavigationBarColor(Color.parseColor("#" + _color2.replace("#", "")));
-		}
-	}
 
-
-	public void _DARK_ICONS () {
-		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-	}
 
 
 	public void _changeActivityFont (final String _fontname) {
@@ -187,6 +257,107 @@ public class news extends  AppCompatActivity  {
 	@Deprecated
 	public void showMessage(String _s) {
 		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_SHORT).show();
+	}
+
+
+	public class Recyclerview1Adapter extends RecyclerView.Adapter<Recyclerview1Adapter.ViewHolder> {
+		ArrayList<HashMap<String, Object>> _data;
+		public Recyclerview1Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public Recyclerview1Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _v = _inflater.inflate(R.layout.news_custom, null);
+			RecyclerView.LayoutParams _lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			_v.setLayoutParams(_lp);
+			return new Recyclerview1Adapter.ViewHolder(_v);
+		}
+
+
+
+		@Override
+		public void onBindViewHolder(Recyclerview1Adapter.ViewHolder _holder, final int _position) {
+			View _view = _holder.itemView;
+
+			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
+			final LinearLayout linear1 = _view.findViewById(R.id.linear1);
+			final ImageView imageview2 = _view.findViewById(R.id.imageview2);
+			final TextView c_name = _view.findViewById(R.id.c_name);
+			final TextView view = _view.findViewById(R.id.view);
+			final TextView desc = _view.findViewById(R.id.desc);
+			final TextView date = _view.findViewById(R.id.date);
+
+
+			c_name.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
+			view.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
+			desc.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+			date.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+
+
+			try{
+
+
+				c_name.setText(Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
+				desc.setText(Objects.requireNonNull(listmap2.get(_position).get("content")).toString());
+				String dt = Objects.requireNonNull(listmap2.get(_position).get("created_at")).toString();
+				date.setText("Date : "+dt.substring(0,10));
+
+				view.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+
+						Intent in = new Intent();
+						in.putExtra("title", Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
+						in.putExtra("img","https://images.unsplash.com/photo-1664575196079-9ac04582854b?ixid=MnwyMjE5NDl8MXwxfGFsbHwxfHx8fHx8Mnx8MTY2OTY5NTU2Ng");
+						in.putExtra("desc", Objects.requireNonNull(listmap2.get(_position).get("content")).toString());
+						in.putExtra("news", "true");
+						in.setClass(getApplicationContext(),about_course.class);
+						startActivity(in);
+
+					}
+				});
+
+
+				/*String img_url = Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString();
+				Glide.with(getApplicationContext())
+						.load(Uri.parse(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString()))
+						.error(R.drawable.person)
+						.placeholder(R.drawable.person)
+						.thumbnail(0.01f)
+						.into(_drawer_profile_image);*/
+
+
+				/*ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+				ClipData clip = ClipData.newPlainText("Copied Text", img_url );
+				clipboard.setPrimaryClip(clip);
+
+				Log.d("img_obj", img_url);*/
+
+
+
+			}catch (Exception e)
+			{
+				showMessage("339 line "+e.toString());
+			}
+
+
+
+		}
+
+		@Override
+		public int getItemCount() {
+			return _data.size();
+		}
+
+		public class ViewHolder extends RecyclerView.ViewHolder{
+			public ViewHolder(View v){
+				super(v);
+			}
+		}
+
 	}
 
 

@@ -32,7 +32,7 @@
 				android:scaleType="centerInside"/>
 			<TextView
 				android:textStyle="bold"
-				android:id="@+id/textview1"
+				android:id="@+id/heading"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginRight="10dp"
@@ -89,7 +89,7 @@
 							android:layout_marginTop="20dp"
 							android:id="@+id/title__"
 							android:textStyle="bold"
-							android:textSize="18dp"
+							android:textSize="23dp"
 							android:textColor="#000"
 							android:text="Docker for absolute beginners : Learn Docker from scratch"
 							android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
 							android:id="@+id/desc"
 							android:textStyle="normal"
 							android:textColor="#8E8B8B"
-							android:textSize="14dp"
+							android:textSize="15dp"
 							android:text="Do commanded an shameless we disposing do. Indulgence ten remarkably nor are impression out. Power is lived means oh every in we quiet. Remainder provision an in intention. Saw supported too joy promotion engrossed propriety. Me till like it sure no sons"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"/>

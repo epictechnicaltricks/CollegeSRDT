@@ -1,0 +1,101 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<androidx.cardview.widget.CardView
+
+
+		android:id="@+id/cardview1"
+		android:layout_margin="10dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:cardElevation="4dp"
+		app:cardCornerRadius="8dp">
+		<LinearLayout
+			android:id="@+id/linear1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="6dp"
+			android:orientation="vertical">
+			<ImageView
+				android:layout_gravity="center"
+				android:background="#918F8F"
+				android:id="@+id/imageview2"
+				android:focusable="false"
+				android:layout_width="match_parent"
+				android:layout_height="160dp"
+				android:src="@drawable/school"
+				android:scaleType="centerInside"/>
+			<TextView
+				android:id="@+id/c_name"
+				android:focusable="false"
+				android:gravity="left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="6dp"
+
+				android:maxLines="2"
+				android:ellipsize="end"
+				android:paddingLeft="8dp"
+				android:paddingTop="3dp"
+				android:paddingRight="8dp"
+				android:text="New organization are continually added and seal there single"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:textColor="#000000"/>
+			<TextView
+				android:maxLines="3"
+				android:ellipsize="end"
+				android:id="@+id/desc"
+				android:focusable="false"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="6dp"
+				android:layout_marginBottom="8dp"
+				android:padding="8dp"
+				android:text="Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin."
+				android:textSize="14sp"
+				android:textColor="#757575"/>
+
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+
+					android:layout_gravity="right"
+					android:layout_weight="1"
+					android:id="@+id/date"
+					android:focusable="false"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="12dp"
+					android:layout_marginBottom="8dp"
+					android:padding="8dp"
+					android:text="2020-06-09"
+					android:textSize="12sp"
+					android:textColor="#172E45"/>
+
+				<TextView
+					android:background="#3296ED"
+					android:layout_gravity="right"
+					android:id="@+id/view"
+					android:focusable="false"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="12dp"
+					android:layout_marginBottom="8dp"
+					android:padding="8dp"
+					android:text="View more"
+					android:textSize="14sp"
+					android:textColor="#F6F6F6"/>
+			</LinearLayout>
+
+
+		</LinearLayout>
+	</androidx.cardview.widget.CardView>
+</LinearLayout>

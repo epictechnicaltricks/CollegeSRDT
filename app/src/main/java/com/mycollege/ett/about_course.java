@@ -28,7 +28,7 @@ public class about_course extends  AppCompatActivity  {
 	
 	
 	private LinearLayout linear1;
-	private TextView title,desc;
+	private TextView title,desc,heading;
 
 	String fontName="";
 	Button apply;
@@ -51,11 +51,18 @@ public class about_course extends  AppCompatActivity  {
 		desc = findViewById(R.id.desc);
 		apply = findViewById(R.id.apply_btn);
 		img = findViewById(R.id.imageview_course);
-
+         heading = findViewById(R.id.heading);
 	}
 	
 	private void initializeLogic() {
 
+
+		if(getIntent().getStringExtra("news").equals("true")){
+
+			apply.setVisibility(View.GONE);
+			heading.setText("News Details");
+
+		}
 
 		title.setText(getIntent().getStringExtra("title"));
 		desc.setText(getIntent().getStringExtra("desc"));

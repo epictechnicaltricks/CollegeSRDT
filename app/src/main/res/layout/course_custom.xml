@@ -85,7 +85,7 @@
 					android:layout_height="wrap_content"
 					android:textColor="#2374B1"
 					android:layout_margin="10dp"
-					android:text="View Details now"
+					android:text="View details now"
 					android:layout_gravity="right"/>
 
 

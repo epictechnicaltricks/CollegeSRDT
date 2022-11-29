@@ -25,16 +25,20 @@
 				android:background="#918F8F"
 				android:id="@+id/imageview2"
 				android:focusable="false"
-				android:layout_width="170dp"
+				android:layout_width="match_parent"
 				android:layout_height="160dp"
 				android:src="@drawable/school"
 				android:scaleType="centerInside"/>
 			<TextView
 				android:id="@+id/textview1"
 				android:focusable="false"
+				android:gravity="left"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="6dp"
+				android:layout_margin="6dp"
+
+				android:maxLines="2"
+				android:ellipsize="end"
 				android:paddingLeft="8dp"
 				android:paddingTop="3dp"
 				android:paddingRight="8dp"

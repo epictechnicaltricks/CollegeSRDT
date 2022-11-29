@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
@@ -114,7 +115,7 @@ public class programs extends  AppCompatActivity  {
 						listmap2.add(api_map);
 					}
 */
-
+					Collections.reverse(listmap2);
 					recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
 					recyclerview1.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
@@ -207,6 +208,8 @@ public class programs extends  AppCompatActivity  {
 						in.putExtra("title", Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
 						in.putExtra("img","https://images.unsplash.com/photo-1664575196079-9ac04582854b?ixid=MnwyMjE5NDl8MXwxfGFsbHwxfHx8fHx8Mnx8MTY2OTY5NTU2Ng");
 						in.putExtra("desc", Objects.requireNonNull(listmap2.get(_position).get("description")).toString());
+						in.putExtra("news", "");
+
 						in.setClass(getApplicationContext(),about_course.class);
 						startActivity(in);
 

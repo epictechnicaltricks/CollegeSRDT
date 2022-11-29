@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,6 +24,10 @@ public class gallery extends  AppCompatActivity  {
 	
 	private LinearLayout linear1;
 	private TextView textview1;
+
+	private TabLayout tablayout1;
+	private RecyclerView recyclerview1;
+
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
@@ -32,8 +39,13 @@ public class gallery extends  AppCompatActivity  {
 	
 	private void initialize(Bundle _savedInstanceState) {
 		
-		linear1 = (LinearLayout) findViewById(R.id.linear1);
-		textview1 = (TextView) findViewById(R.id.textview1);
+		linear1 = findViewById(R.id.linear1);
+
+
+		tablayout1 = findViewById(R.id.tablayout1);
+		recyclerview1 = findViewById(R.id.recyclerview1);
+
+
 	}
 	
 	private void initializeLogic() {

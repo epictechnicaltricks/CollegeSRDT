@@ -1023,6 +1023,7 @@ drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
 drawable default_image
+drawable demo
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1151,6 +1152,7 @@ id alertTitle
 id all
 id always
 id apply
+id apply_btn
 id async
 id auto
 id back
@@ -1161,6 +1163,7 @@ id bottom
 id bottom_
 id bottom_bg
 id buttonPanel
+id c_name
 id call
 id cardview1
 id center
@@ -1182,8 +1185,10 @@ id cpass
 id custom
 id customPanel
 id dark
+id date
 id decor_content_parent
 id default_activity_button
+id desc
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1219,6 +1224,7 @@ id get_otp_layout
 id ghost_view
 id glide_custom_view_target_tag
 id group_divider
+id heading
 id home
 id homeAsUp
 id icon
@@ -1235,6 +1241,8 @@ id imageview3
 id imageview4
 id imageview5
 id imageview6
+id imageview_bg
+id imageview_course
 id info
 id italic
 id item_touch_helper_previous_elevation
@@ -1417,6 +1425,7 @@ id textview9
 id time
 id title
 id titleDividerNoCustom
+id title__
 id title_template
 id tool
 id top
@@ -1435,6 +1444,7 @@ id up
 id useLogo
 id verify_otp
 id verify_otp_layout
+id view
 id view_offset_helper
 id viewpager1
 id visible
@@ -1499,11 +1509,13 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout about
+layout about_course
 layout affiliate
 layout apply_online_layout
 layout auth
 layout clg_list_cus
 layout contact
+layout course_custom
 layout custom_dialog
 layout custom_slide
 layout design_bottom_navigation_item
@@ -1528,6 +1540,7 @@ layout main
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout news
+layout news_custom
 layout notification
 layout notification_action
 layout notification_action_tombstone

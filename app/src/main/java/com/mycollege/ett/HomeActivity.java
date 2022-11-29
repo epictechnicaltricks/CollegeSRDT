@@ -753,7 +753,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 				});
 			}
 		};
-		_timer.scheduleAtFixedRate(scroll_time, 1500, 2000);
+		_timer.scheduleAtFixedRate(scroll_time, 3000, 3000);
 	}
 
 
