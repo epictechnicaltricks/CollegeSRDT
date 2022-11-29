@@ -1,0 +1,140 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<LinearLayout
+		android:id="@+id/linear1"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="0dp"
+		android:orientation="vertical">
+
+
+		<LinearLayout
+			android:id="@+id/tool"
+			android:layout_width="match_parent"
+			android:layout_height="57dp"
+			android:padding="10dp"
+			android:background="#0091EA"
+			android:gravity="left|center_vertical"
+			android:orientation="horizontal">
+			<ImageView
+				android:onClick="close"
+				android:id="@+id/back"
+				android:layout_width="25dp"
+				android:layout_height="22dp"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="10dp"
+				android:src="@drawable/back2"
+				android:scaleType="centerInside"/>
+			<TextView
+				android:textStyle="bold"
+				android:id="@+id/textview1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="10dp"
+				android:gravity="left|center_vertical"
+				android:text="Details of course"
+				android:textSize="17sp"
+				android:textColor="#FFFFFF"
+				android:layout_weight="1"/>
+		</LinearLayout>
+
+
+
+		<LinearLayout
+			android:id="@+id/relative"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="#FFFFFF"
+			android:orientation="vertical">
+			<LinearLayout
+				android:id="@+id/bottom"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+				<ImageView
+					android:id="@+id/imageview_course"
+					android:layout_width="match_parent"
+					android:layout_height="220dp"
+					android:background="#757575"
+					android:src="@drawable/demo"
+					android:scaleType="centerCrop"/>
+			</LinearLayout>
+			<androidx.cardview.widget.CardView
+				app:cardBackgroundColor="#F8F8F8"
+				android:id="@+id/top_cardview1"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:translationY="-30.0dp"
+				app:cardElevation="0dp"
+				app:cardCornerRadius="30dp">
+				<ScrollView
+					android:id="@+id/vscroll1"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:scrollbars="none">
+					<LinearLayout
+						android:id="@+id/bg"
+						android:padding="12dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical">
+
+						<TextView
+							android:layout_marginTop="20dp"
+							android:id="@+id/title__"
+							android:textStyle="bold"
+							android:textSize="18dp"
+							android:textColor="#000"
+							android:text="Docker for absolute beginners : Learn Docker from scratch"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+
+						<TextView
+
+							android:layout_marginTop="10dp"
+							android:id="@+id/desc"
+							android:textStyle="normal"
+							android:textColor="#8E8B8B"
+							android:textSize="14dp"
+							android:text="Do commanded an shameless we disposing do. Indulgence ten remarkably nor are impression out. Power is lived means oh every in we quiet. Remainder provision an in intention. Saw supported too joy promotion engrossed propriety. Me till like it sure no sons"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+
+						<Button
+							android:elevation="5dp"
+							android:id="@+id/apply_btn"
+							android:layout_marginTop="40dp"
+							android:layout_gravity="center"
+							android:layout_width="wrap_content"
+							android:padding="10dp"
+							android:layout_height="wrap_content"
+                                     android:text="Apply now"
+							android:background="#2C73CA"
+							android:textColor="#fff"/>
+
+
+
+
+					</LinearLayout>
+
+
+
+				</ScrollView>
+			</androidx.cardview.widget.CardView>
+
+
+
+		</LinearLayout>
+
+
+
+
+
+	</LinearLayout>
+</LinearLayout>

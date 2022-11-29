@@ -44,6 +44,8 @@ import com.google.gson.reflect.TypeToken;
 
 import android.graphics.Typeface;
 
+import org.json.JSONException;
+
 
 public class HomeActivity extends  AppCompatActivity  {
 
@@ -107,10 +109,10 @@ public class HomeActivity extends  AppCompatActivity  {
 	private RequestNetwork.RequestListener _team_api_listener;
 
 	private HashMap<String, Object> api_map = new HashMap<>();
+
+	private HashMap<String, Object> api_map2 = new HashMap<>();
 	private String list = "";
 
-
-	private ArrayList<HashMap<String, Object>> results = new ArrayList<>();
 
 	String youtube_player_api ="AIzaSyBZtKZFJ5QFj7BrWGoW8qSzTJyebDM42AM";
 	private YouTubePlayerView ytPlayer;
@@ -130,6 +132,9 @@ public class HomeActivity extends  AppCompatActivity  {
 
 	private RequestNetwork slider_api;
 	private RequestNetwork.RequestListener _slider_api_listener;
+
+
+	String name, designation, img_url;
 
 	String api_mlu = "https://new.mlu.ac.in/api/v1/";
 
@@ -252,21 +257,58 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-
 				api_map.clear();
 				api_map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
 				// must add resultSet
 				//" list " is a String datatype
 				list = (new Gson()).toJson(api_map.get("data"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
-				listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
-				recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
-				recyclerview1.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-				recyclerview1.setLayoutManager(new LinearLayoutManager(HomeActivity.this,LinearLayoutManager.HORIZONTAL, false));
+			   // Log.d("img_obj", list);
+			//listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
 
+				try {
 
-				// refresh the list or recycle or grid
+					listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+
+
+                  /*  api_map2.clear();
+					listmap2.clear();
+					String responseUltered = "{\n\"items\": ".concat(list.concat("}"));
+
+
+					org.json.JSONObject object = new org.json.JSONObject(responseUltered);
+					org.json.JSONArray array = object.getJSONArray("items");
+
+					Log.d("img_obj_array", String.valueOf(array));
+
+					for(int i=0;i<array.length();i++){
+
+						org.json.JSONObject obj = array.getJSONObject(i);
+						name = obj.getString("name");
+						designation = obj.getString("designation");
+
+						img_url = obj.getJSONObject("image").getString("img_url");
+						api_map2 = new HashMap<>();
+						api_map2.put("name", name);
+						api_map2.put("designation", designation);
+						api_map2.put("img_url", img_url);
+						listmap2.add(api_map);
+					}
+*/
+
+					recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
+					recyclerview1.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+					recyclerview1.setLayoutManager(new LinearLayoutManager(HomeActivity.this,LinearLayoutManager.HORIZONTAL, false));
+
+
+				} catch (Exception ex) {
+					showMessage("303 line "+ex.toString());
+					ex.printStackTrace();
+				}
+
+
 			}
 
 			@Override
@@ -793,7 +835,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 		public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View _v = _inflater.inflate(R.layout.custom_slide, null);
-			RecyclerView.LayoutParams _lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			RecyclerView.LayoutParams _lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 			_v.setLayoutParams(_lp);
 			return new ViewHolder(_v);
 		}
@@ -811,9 +853,37 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
 			textview2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
 
-			//Glide.with(getApplicationContext()).load(Uri.parse(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString())).into(imageview2);
-		    textview1.setText(Objects.requireNonNull(listmap2.get(_position).get("name")).toString());
-			textview2.setText(Objects.requireNonNull(listmap2.get(_position).get("designation")).toString());
+
+			try{
+
+
+				textview1.setText(Objects.requireNonNull(listmap2.get(_position).get("name")).toString());
+				textview2.setText(Objects.requireNonNull(listmap2.get(_position).get("designation")).toString());
+
+
+
+
+				/*String img_url = Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString();
+				Glide.with(getApplicationContext())
+						.load(Uri.parse(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString()))
+						.error(R.drawable.person)
+						.placeholder(R.drawable.person)
+						.thumbnail(0.01f)
+						.into(_drawer_profile_image);*/
+
+
+				/*ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+				ClipData clip = ClipData.newPlainText("Copied Text", img_url );
+				clipboard.setPrimaryClip(clip);
+
+				Log.d("img_obj", img_url);*/
+
+
+
+			}catch (Exception e)
+			{
+				showMessage("887 line "+e.toString());
+			}
 
 
 

@@ -84,12 +84,12 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-xxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_affilite.png.flat",
-        "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\drawable-xhdpi\\affilite.png"
-    },
-    {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_affilite.png.flat",
+        "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\drawable-xhdpi\\affilite.png"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
@@ -372,12 +372,12 @@
         "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\layout\\profile.xml"
     },
     {
-        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_48dp.png.flat",
-        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-xhdpi-v4\\abc_ic_star_black_48dp.png"
-    },
-    {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_fade_in.xml.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_48dp.png.flat",
+        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-xhdpi-v4\\abc_ic_star_black_48dp.png"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -536,6 +536,10 @@
         "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\drawable-xhdpi\\login_user.png"
     },
     {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\layout_course_custom.xml.flat",
+        "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\layout\\course_custom.xml"
+    },
+    {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
@@ -624,12 +628,12 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\f4059abfd9d213dff62bfb5ea58f098c\\transformed\\res\\animator\\design_fab_hide_motion_spec.xml"
     },
     {
-        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\layout_affiliate.xml.flat",
         "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\layout\\affiliate.xml"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_checkbox_checked_mtrl.xml.flat",
@@ -772,12 +776,12 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_color_highlight_material.xml.flat",
-        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\color-v23\\abc_color_highlight_material.xml"
-    },
-    {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_color_highlight_material.xml.flat",
+        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\color-v23\\abc_color_highlight_material.xml"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\animator-v21_design_appbar_state_list_animator.xml.flat",
@@ -1444,12 +1448,12 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-mdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
-    },
-    {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_call.png.flat",
         "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\drawable-xhdpi\\call.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-mdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_design_ic_visibility.png.flat",
@@ -1486,6 +1490,10 @@
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_radio_to_off_mtrl_ring_outer_animation.xml.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\anim\\btn_radio_to_off_mtrl_ring_outer_animation.xml"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\layout_about_course.xml.flat",
+        "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\layout\\about_course.xml"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
@@ -2116,12 +2124,12 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-xxxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
-    },
-    {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_result.png.flat",
         "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\drawable-xhdpi\\result.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-mdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -2266,6 +2274,10 @@
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\250b0ea8c1c759036867e0079924887f\\transformed\\res\\drawable-mdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_demo.jpg.flat",
+        "source": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\src\\main\\res\\drawable-xhdpi\\demo.jpg"
     },
     {
         "merged": "C:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
