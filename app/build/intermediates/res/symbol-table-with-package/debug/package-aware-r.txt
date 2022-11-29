@@ -1220,6 +1220,7 @@ id fixed
 id fname_
 id forever
 id gallery
+id gallery_view
 id get_otp_layout
 id ghost_view
 id glide_custom_view_target_tag
@@ -1256,6 +1257,7 @@ id linear1
 id linear10
 id linear2
 id linear3
+id linear31
 id linear4
 id linear5
 id linear6
@@ -1387,6 +1389,7 @@ id submenuarrow
 id submit
 id submit_area
 id tabMode
+id tablayout1
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -1444,11 +1447,13 @@ id up
 id useLogo
 id verify_otp
 id verify_otp_layout
+id video_view
 id view
 id view_offset_helper
 id viewpager1
 id visible
 id vscroll1
+id webview1
 id wide
 id withText
 id wrap_content
@@ -1535,6 +1540,8 @@ layout design_text_input_password_icon
 layout exam_layout
 layout forgot_pass
 layout gallery
+layout gallery_image_custom
+layout gallery_video_custom
 layout home
 layout main
 layout mtrl_layout_snackbar
