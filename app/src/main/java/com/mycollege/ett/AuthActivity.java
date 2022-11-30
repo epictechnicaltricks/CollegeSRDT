@@ -425,6 +425,8 @@ public class AuthActivity extends  AppCompatActivity  {
 	  @Override
 	  public void onErrorResponse(String tag, String message) {
 
+
+
 	  }
   };
 
@@ -453,6 +455,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				Log.d("login_register", response);
 
 
+				//Log.d("signup",response);
 				if(response.contains("success")) {
 
 					showMessage("Account created");
@@ -1137,7 +1140,7 @@ public class AuthActivity extends  AppCompatActivity  {
 		api_map2.put("field_4", _dob.trim());
 		api_map2.put("field_5", _addr.trim());
 
-		register_api.setParams(api_map2, RequestNetworkController.REQUEST_BODY);
+		register_api.setParams(api_map2, RequestNetworkController.REQUEST_PARAM);
 		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _register_api_listener);
 
 		//textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");

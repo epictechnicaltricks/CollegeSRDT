@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,9 +46,17 @@ public class apply_online extends  AppCompatActivity  {
 
 	Spinner programs_list_spinner;
 
-	String program_id, program_name;
+	Spinner gender_spinner;
+	Spinner religion_spinner;
+	Spinner nation_spinner;
+	Spinner state_spinner;
+	Spinner city_spinner;
 
-	private ListView listview1;
+
+
+	private ListView listview1,listview2,listview3,listview4,listview5,listview6;
+
+
 
 	private RequestNetwork program_api;
 	private RequestNetwork.RequestListener _program_api_listener;
@@ -63,9 +72,14 @@ public class apply_online extends  AppCompatActivity  {
 
 
 	String api_mlu = "https://new.mlu.ac.in/api/v1/";
-	String submit_api = "https://nft.digitallinkcard.xyz/api/course/inquiry/insert";
+	String submit_api = "https://exam.infydemo.in/api/course/inquiry/insert";
 
 	ProgressBar prog;
+
+	String program_name,
+	gender_name,religion_name, nation_name,state_name,city_name;
+
+
 
 
 	private RequestNetwork submit_api_call;
@@ -106,11 +120,15 @@ public class apply_online extends  AppCompatActivity  {
 		name_     = findViewById(R.id.  name_       );
 		email_    = findViewById(R.id.  email_      );
 		mobile_   = findViewById(R.id.  mobile_     );
-		gender_   = findViewById(R.id.  gender_     );
-		cast_     = findViewById(R.id.  cast_       );
-		national_ = findViewById(R.id.  national_   );
-		state_    = findViewById(R.id.  state_      );
-		city_     = findViewById(R.id.  city_       );
+
+
+
+
+		//gender_   = findViewById(R.id.  gender_     );
+		//cast_     = findViewById(R.id.  cast_       );
+		//national_ = findViewById(R.id.  national_   );
+		//state_    = findViewById(R.id.  state_      );
+		//city_     = findViewById(R.id.  city_       );
 		qual_     = findViewById(R.id.  qual_       );
 
 
@@ -118,8 +136,29 @@ public class apply_online extends  AppCompatActivity  {
 		textview1 = findViewById(R.id.textview1);
 		back = findViewById(R.id.back);
 		imageview = findViewById(R.id.imageview);
+
 		listview1 =  findViewById(R.id.listview_program);
+		listview2 =  findViewById(R.id.listview_gender);
+		listview3 =  findViewById(R.id.listview_religion);
+		listview4 =  findViewById(R.id.listview_nationality);
+		listview5 =  findViewById(R.id.listview_state);
+		listview6 =  findViewById(R.id.listview_city);
+
+
+
+
 		programs_list_spinner = findViewById(R.id.spinner_program);
+
+
+
+		gender_spinner= findViewById(R.id.spinner_gender);
+				religion_spinner= findViewById(R.id.spinner_religion);
+		nation_spinner= findViewById(R.id.spinner_nationality);
+				state_spinner= findViewById(R.id.spinner_state);
+		city_spinner= findViewById(R.id.spinner_city);
+
+
+
         prog = findViewById(R.id.prog_);
 
 		_program_api_listener = new RequestNetwork.RequestListener() {
@@ -198,8 +237,8 @@ public class apply_online extends  AppCompatActivity  {
 
 			if(!Objects.requireNonNull(listmap2.get(_position).get("title")).toString().equals("")){
 
-				program_id = Objects.requireNonNull(listmap2.get(_position).get("title")).toString();
-				showMessage(program_id);
+				program_name = Objects.requireNonNull(listmap2.get(_position).get("title")).toString();
+				showMessage(program_name);
 			}
 
 		}
@@ -216,9 +255,17 @@ public class apply_online extends  AppCompatActivity  {
 		@Override
 		public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-
+			Log.d("submit",response);
 
 			prog.setVisibility(View.GONE);
+			if(response.contains("success")){
+
+				showMessage("Submitted Successfully");
+			} else {
+
+				showMessage("Failed to submit\n\n"+response);
+			}
+
 
 		}
 
@@ -317,7 +364,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 		submit_map.put("nationality", _nationality.trim());
 		submit_map.put("state", _state);
 		submit_map.put("city", _city.trim());
-		submit_map.put("program", program_id);
+		submit_map.put("program", program_name);
 		submit_map.put("qualification", _qualification.trim());
 		submit_map.put("gender", _gender.trim());
 		submit_map.put("caste", _caste.trim());

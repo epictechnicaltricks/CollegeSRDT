@@ -1,19 +1,23 @@
 #Internal package file, do not edit.
-#Thu Nov 24 19:58:50 IST 2022
+#Wed Nov 30 15:44:48 IST 2022
 3.set=DEX
 3.path=classes.dex
-2.base=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+2.base=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\merged_assets\\debug\\out
 0.path=fonts/en_light.ttf
-count=4
+4.path=classes.dex
+count=5
 1.set=ASSET
-2.path=classes.dex
+2.path=fonts/en_med.ttf
 2.baseType=DIRECTORY
 0.base=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\merged_assets\\debug\\out
-2.set=DEX
-3.base=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+2.set=ASSET
+3.base=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
 1.baseType=DIRECTORY
 3.baseType=DIRECTORY
-1.path=fonts/en_med.ttf
+1.path=aff.webp
+4.base=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+4.set=DEX
 0.baseType=DIRECTORY
 1.base=C\:\\Users\\USER\\Downloads\\MLU 1ST\\MLU\\app\\build\\intermediates\\merged_assets\\debug\\out
+4.baseType=DIRECTORY
 0.set=ASSET

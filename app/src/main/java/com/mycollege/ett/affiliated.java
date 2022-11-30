@@ -83,10 +83,17 @@ public class affiliated extends  AppCompatActivity  {
 				.thumbnail(0.01f)
 				.into(img_view_aff);
 
-		webview1.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-		webview1.loadUrl("https://docs.google.com/document/d/1elbahgChVmf6MCeBrFLs974NEcal0idG/edit?usp=drivesdk&ouid=108529704222139358892&rtpof=true&sd=true");
 
-		_ZoomWebView(webview1,true);
+		webview1.getSettings().setLoadWithOverviewMode(true);
+		webview1.getSettings().setUseWideViewPort(true);
+		final WebSettings webSettings = webview1.getSettings();
+		final String newUserAgent;
+		newUserAgent = "Mozilla/5.0 (Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36";
+		webSettings.setUserAgentString(newUserAgent);
+
+		webview1.loadUrl("file:///android_asset/aff.webp");
+
+        _ZoomWebView(webview1,true);
 
 
 	}
@@ -135,7 +142,8 @@ public class affiliated extends  AppCompatActivity  {
 	}
 
 	public void _ZoomWebView (final WebView _web, final boolean _ballon) {
-		_web.getSettings().setBuiltInZoomControls(_ballon);_web.getSettings().setDisplayZoomControls(!_ballon);
+		_web.getSettings().setBuiltInZoomControls(_ballon);
+		_web.getSettings().setDisplayZoomControls(!_ballon);
 	}
 
 	public void _Open_url (final String _url) {
