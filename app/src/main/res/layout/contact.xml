@@ -104,6 +104,20 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"/>
 
+				<TextView
+					android:text="GET DIRECTION ON MAP"
+					android:id="@+id/location"
+					android:background="#2A87EC"
+					android:padding="12dp"
+					android:textColor="#fff"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content">
+
+
+				</TextView>
+
+
+
 			</LinearLayout>
 
 

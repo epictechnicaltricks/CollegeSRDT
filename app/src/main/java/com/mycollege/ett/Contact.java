@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
@@ -43,6 +44,10 @@ public class Contact extends  AppCompatActivity  {
 	private Intent toAuth = new Intent();
 	private RequestNetwork in;
 	private RequestNetwork.RequestListener _in_request_listener;
+
+
+	TextView locatio;
+
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
@@ -56,6 +61,9 @@ public class Contact extends  AppCompatActivity  {
 		
 		linear8 = (LinearLayout) findViewById(R.id.linear8);
 		imageview1 = (ImageView) findViewById(R.id.imageview1);
+
+		locatio = findViewById(R.id.location);
+
 		in = new RequestNetwork(this);
 		
 		_in_request_listener = new RequestNetwork.RequestListener() {
@@ -80,6 +88,18 @@ public class Contact extends  AppCompatActivity  {
 
 		//_transparentStatusAndNavigation();
 		//_NavStatusBarColor("#FFFFFF", "#FFFFFF");
+
+		locatio.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse("https://www.google.com/maps/dir/22.6137625,88.4339117/madhusudan+law+university/@21.5534454,86.0474097,8z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3a190d7b43761949:0xf0c3a473db1bded!2m2!1d85.8982267!2d20.4664566"));
+				startActivity(i);
+			}
+		});
+
+
 		_changeActivityFont("en_med");
 		_DARK_ICONS();
 
