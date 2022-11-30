@@ -51,10 +51,19 @@ public class apply_online extends  AppCompatActivity  {
 	Spinner nation_spinner;
 	Spinner state_spinner;
 	Spinner city_spinner;
+	Spinner qualification_spinner;
 
 
 
-	private ListView listview1,listview2,listview3,listview4,listview5,listview6;
+	private ListView
+
+			listview1,
+			listview2,
+			listview3,
+			listview4,
+			listview5,
+			listview6,
+			listview7;
 
 
 
@@ -76,8 +85,14 @@ public class apply_online extends  AppCompatActivity  {
 
 	ProgressBar prog;
 
-	String program_name,
-	gender_name,religion_name, nation_name,state_name,city_name;
+	String
+			program_name,
+	        gender_name,
+			religion_name,
+			nation_name,
+			state_name="Odisha",
+			city_name="Bubaneswar",
+			qualification_name;
 
 
 
@@ -97,6 +112,17 @@ public class apply_online extends  AppCompatActivity  {
 			qual_;
 
 
+	ArrayList<HashMap<String, Object>> gender_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> religion_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> nation_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> state_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> city_list = new ArrayList<>();
+
+	ArrayList<HashMap<String, Object>> qualification_list = new ArrayList<>();
 
 
 	@Override
@@ -129,7 +155,7 @@ public class apply_online extends  AppCompatActivity  {
 		//national_ = findViewById(R.id.  national_   );
 		//state_    = findViewById(R.id.  state_      );
 		//city_     = findViewById(R.id.  city_       );
-		qual_     = findViewById(R.id.  qual_       );
+		//qual_     = findViewById(R.id.  qual_       );
 
 
 		linear1 = findViewById(R.id.linear1);
@@ -143,6 +169,7 @@ public class apply_online extends  AppCompatActivity  {
 		listview4 =  findViewById(R.id.listview_nationality);
 		listview5 =  findViewById(R.id.listview_state);
 		listview6 =  findViewById(R.id.listview_city);
+		listview7 =  findViewById(R.id.listview_qualification);
 
 
 
@@ -152,10 +179,12 @@ public class apply_online extends  AppCompatActivity  {
 
 
 		gender_spinner= findViewById(R.id.spinner_gender);
-				religion_spinner= findViewById(R.id.spinner_religion);
+		religion_spinner= findViewById(R.id.spinner_religion);
 		nation_spinner= findViewById(R.id.spinner_nationality);
-				state_spinner= findViewById(R.id.spinner_state);
+		state_spinner= findViewById(R.id.spinner_state);
 		city_spinner= findViewById(R.id.spinner_city);
+
+		qualification_spinner = findViewById(R.id.spinner_qualification);
 
 
 
@@ -238,7 +267,7 @@ public class apply_online extends  AppCompatActivity  {
 			if(!Objects.requireNonNull(listmap2.get(_position).get("title")).toString().equals("")){
 
 				program_name = Objects.requireNonNull(listmap2.get(_position).get("title")).toString();
-				showMessage(program_name);
+				//showMessage(program_name);
 			}
 
 		}
@@ -250,8 +279,119 @@ public class apply_online extends  AppCompatActivity  {
 	});
 
 
+		gender_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
 
-	_submit_api_listener = new RequestNetwork.RequestListener() {
+				if(!Objects.requireNonNull(gender_list.get(_position).get("title")).toString().equals("")){
+
+					gender_name = Objects.requireNonNull(gender_list.get(_position).get("title")).toString();
+					//showMessage();
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+
+		religion_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
+
+				if(!Objects.requireNonNull(religion_list.get(_position).get("title")).toString().equals("")){
+
+					religion_name = Objects.requireNonNull(religion_list.get(_position).get("title")).toString();
+					//showMessage(program_name);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+
+		nation_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
+
+				if(!Objects.requireNonNull(nation_list.get(_position).get("title")).toString().equals("")){
+
+					nation_name = Objects.requireNonNull(nation_list.get(_position).get("title")).toString();
+					//showMessage(program_name);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+
+		state_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
+
+				if(!Objects.requireNonNull(state_list.get(_position).get("title")).toString().equals("")){
+
+					state_name = Objects.requireNonNull(state_list.get(_position).get("title")).toString();
+					//showMessage(program_name);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+
+		city_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
+
+				if(!Objects.requireNonNull(city_list.get(_position).get("title")).toString().equals("")){
+
+					city_name = Objects.requireNonNull(city_list.get(_position).get("title")).toString();
+					//showMessage(program_name);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+
+		qualification_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
+
+				if(!Objects.requireNonNull(qualification_list.get(_position).get("title")).toString().equals("")){
+
+					qualification_name = Objects.requireNonNull(qualification_list.get(_position).get("title")).toString();
+					//showMessage(program_name);
+				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+
+
+
+
+
+		_submit_api_listener = new RequestNetwork.RequestListener() {
 		@Override
 		public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
@@ -284,15 +424,19 @@ public class apply_online extends  AppCompatActivity  {
 		public void onClick(View v) {
 
 
-			         if( name_      .getText().toString().trim().equals("") ||
-					     email_     .getText().toString().trim().equals("") ||
-						 mobile_    .getText().toString().trim().equals("") ||
-						 gender_    .getText().toString().trim().equals("") ||
-						 cast_      .getText().toString().trim().equals("") ||
-						 national_  .getText().toString().trim().equals("") ||
-						 state_     .getText().toString().trim().equals("") ||
-						 city_      .getText().toString().trim().equals("") ||
-							 qual_      .getText().toString().trim().equals("")){
+			         if( program_name          .equals("") ||
+					     gender_name           .equals("Select here..") ||
+						 religion_name         .equals("Select here..") ||
+						 nation_name           .equals("Select here..") ||
+						 state_name            .equals("Select here..") ||
+						 city_name             .equals("Select here..") ||
+						 qualification_name    .equals("Select here..") ||
+							 name_              .getText().toString().trim().equals("") ||
+							 email_             .getText().toString().trim().equals("")||
+							 mobile_            .getText().toString().trim().equals("")
+
+
+					 ){
 
 
 			showMessage("Some fields are empty..");
@@ -302,15 +446,16 @@ public class apply_online extends  AppCompatActivity  {
 						 if(mobile_    .getText().toString().trim().length() == 10){
 
 							 _submit_api_request(
-									 national_.getText().toString()
+									  nation_name
 									 , name_.getText().toString()
 									 , email_.getText().toString()
-									 , state_.getText().toString()
+									 , state_name
 									 , mobile_.getText().toString()
-									 , city_.getText().toString()
-									 , qual_.getText().toString()
-									 , gender_.getText().toString()
-									 , cast_.getText().toString());
+									 , city_name
+									 , program_name
+									 , qualification_name
+									 , gender_name
+									 , religion_name);
 
 						 } else {
 
@@ -351,7 +496,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 	public void _submit_api_request(String _nationality,
 									  String _name,
 									  String _email, String _state,
-									  String _mob, String _city,
+									  String _mob, String _city, String _program_name,
 									  String _qualification,
 									  String _gender,
 									  String _caste) {
@@ -364,12 +509,12 @@ reset.setOnClickListener(new View.OnClickListener() {
 		submit_map.put("nationality", _nationality.trim());
 		submit_map.put("state", _state);
 		submit_map.put("city", _city.trim());
-		submit_map.put("program", program_name);
+		submit_map.put("program", _program_name);
 		submit_map.put("qualification", _qualification.trim());
 		submit_map.put("gender", _gender.trim());
 		submit_map.put("caste", _caste.trim());
 
-		submit_api_call.setParams(submit_map, RequestNetworkController.REQUEST_BODY);
+		submit_api_call.setParams(submit_map, RequestNetworkController.REQUEST_PARAM);
 		submit_api_call.startRequestNetwork(RequestNetworkController.POST, submit_api, "no tag", _submit_api_listener);
 
 		//textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
@@ -386,6 +531,14 @@ reset.setOnClickListener(new View.OnClickListener() {
 	
 	private void initializeLogic() {
 		_changeActivityFont("en_med");
+		gender_data();
+		nation_data();
+		qualify_data();
+		religion_data();
+		city_data();
+		state_data();
+
+
 
        request_program_API();
 
@@ -463,7 +616,250 @@ reset.setOnClickListener(new View.OnClickListener() {
 		super.onActivityResult(_requestCode, _resultCode, _data);
 
 	}
-	
+
+
+
+	private void gender_data()
+	{
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Select here..");
+			gender_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "MALE");
+			gender_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "FEMALE");
+			gender_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "OTHER");
+			gender_list.add(_item);
+		}
+
+
+
+		listview2.setAdapter(new Listview4Adapter(gender_list));
+		((BaseAdapter)listview2.getAdapter()).notifyDataSetChanged();
+		gender_spinner.setAdapter(new Listview2Adapter(gender_list));
+
+	}
+
+	private void religion_data()
+	{
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Select here..");
+			religion_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Hindu");
+			religion_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Muslim");
+			religion_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Christian");
+			religion_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Buddhist");
+			religion_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Jain");
+			religion_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Other");
+			religion_list.add(_item);
+		}
+
+		listview3.setAdapter(new Listview4Adapter(religion_list));
+		((BaseAdapter)listview3.getAdapter()).notifyDataSetChanged();
+		religion_spinner.setAdapter(new Listview3Adapter(religion_list));
+
+	}
+
+	private void state_data()
+	{
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Select here..");
+			state_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Odisha");
+			state_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Telangana");
+			state_list.add(_item);
+		}
+
+
+		listview5.setAdapter(new Listview5Adapter(state_list));
+		((BaseAdapter)listview5.getAdapter()).notifyDataSetChanged();
+		state_spinner.setAdapter(new Listview5Adapter(state_list));
+
+	}
+
+
+
+	private void city_data()
+	{
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Select here..");
+			city_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Bhubaneswar");
+			city_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Cuttack");
+			city_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Puri");
+			city_list.add(_item);
+		}
+
+
+		listview6.setAdapter(new Listview6Adapter(city_list));
+		((BaseAdapter)listview6.getAdapter()).notifyDataSetChanged();
+		city_spinner.setAdapter(new Listview6Adapter(city_list));
+
+	}
+
+	private void nation_data()
+	{
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Select here..");
+			nation_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "INDIAN");
+			nation_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "OTHER");
+			nation_list.add(_item);
+		}
+
+
+		listview4.setAdapter(new Listview4Adapter(nation_list));
+		((BaseAdapter)listview4.getAdapter()).notifyDataSetChanged();
+		nation_spinner.setAdapter(new Listview4Adapter(nation_list));
+
+	}
+
+
+
+	private void qualify_data()
+	{
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Select here..");
+			qualification_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "BE/B.Tech");
+			qualification_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "BE/M.Tech");
+			qualification_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "B.Arch");
+			qualification_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "LL.B.");
+			qualification_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "LL.M.");
+			qualification_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "B.Sc/BCA");
+			qualification_list.add(_item);
+		}
+
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "BBA/MBA");
+			qualification_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "B.Com/M.Com");
+			qualification_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Ph.D.");
+			qualification_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "MBL-LLM/ MBA-LLM");
+			qualification_list.add(_item);
+		}
+		{
+			HashMap<String, Object> _item = new HashMap<>();
+			_item.put("title", "Other");
+			qualification_list.add(_item);
+		}
+
+
+
+
+		listview7.setAdapter(new Listview7Adapter(qualification_list));
+		((BaseAdapter)listview7.getAdapter()).notifyDataSetChanged();
+		qualification_spinner.setAdapter(new Listview7Adapter(qualification_list));
+
+	}
+
+
 	@Deprecated
 	public void showMessage(String _s) {
 		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_SHORT).show();
@@ -507,5 +903,236 @@ reset.setOnClickListener(new View.OnClickListener() {
 			return _view;
 		}
 	}
+	public class Listview2Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview2Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(gender_list.get((int) _position).get("title")).toString());
+
+
+			return _view;
+		}
+	}
+	public class Listview3Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview3Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(religion_list.get((int) _position).get("title")).toString());
+
+
+			return _view;
+		}
+	}
+	public class Listview4Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview4Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(nation_list.get((int) _position).get("title")).toString());
+
+
+			return _view;
+		}
+	}
+	public class Listview5Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview5Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(state_list.get((int) _position).get("title")).toString());
+
+
+			return _view;
+		}
+	}
+	public class Listview6Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview6Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(city_list.get((int) _position).get("title")).toString());
+
+
+			return _view;
+		}
+	}
+	public class Listview7Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview7Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(qualification_list.get((int) _position).get("title")).toString());
+
+
+			return _view;
+		}
+	}
+
+
+
 	
 }

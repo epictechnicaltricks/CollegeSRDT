@@ -1282,6 +1282,7 @@ id listview_dept
 id listview_gender
 id listview_nationality
 id listview_program
+id listview_qualification
 id listview_religion
 id listview_state
 id listview_year
@@ -1330,7 +1331,6 @@ id progress_circular
 id progress_horizontal
 id progressbar1
 id progressbar2
-id qual_
 id radio
 id recyclerview1
 id relative
@@ -1383,6 +1383,7 @@ id spinner_department
 id spinner_gender
 id spinner_nationality
 id spinner_program
+id spinner_qualification
 id spinner_religion
 id spinner_state
 id spinner_year
@@ -1412,6 +1413,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id te_
+id te_e6
 id text
 id text2
 id textSpacerNoButtons

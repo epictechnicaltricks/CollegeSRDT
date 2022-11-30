@@ -18,7 +18,6 @@
         android:icon="@drawable/logo"
         android:label="MLU"
         android:largeHeap="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
