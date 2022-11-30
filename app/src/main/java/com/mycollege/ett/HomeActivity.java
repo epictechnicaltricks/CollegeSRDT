@@ -117,6 +117,7 @@ public class HomeActivity extends  AppCompatActivity  {
 	String youtube_player_api ="AIzaSyBZtKZFJ5QFj7BrWGoW8qSzTJyebDM42AM";
 	private YouTubePlayerView ytPlayer;
 
+	private HashMap<String, Object> api_map3 = new HashMap<>();
 
 	LinearLayout
 			apply,
@@ -273,7 +274,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 
 
-                  /*  api_map2.clear();
+                    api_map2.clear();
 					listmap2.clear();
 					String responseUltered = "{\n\"items\": ".concat(list.concat("}"));
 
@@ -289,14 +290,13 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 						name = obj.getString("name");
 						designation = obj.getString("designation");
 
-						img_url = obj.getJSONObject("image").getString("img_url");
+						String img_url_obj = obj.getString("image");
 						api_map2 = new HashMap<>();
 						api_map2.put("name", name);
 						api_map2.put("designation", designation);
-						api_map2.put("img_url", img_url);
-						listmap2.add(api_map);
+						api_map2.put("img_url", img_url_obj);
+						listmap2.add(api_map2);
 					}
-*/
 
 					recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
 					recyclerview1.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
@@ -863,13 +863,17 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 
 
-				/*String img_url = Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString();
+				api_map3 = new Gson().fromJson(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString(), new TypeToken<HashMap<String, Object>>(){}.getType());
+
+
+				String img_url = Objects.requireNonNull(api_map3.get("img_url")).toString();
+
 				Glide.with(getApplicationContext())
-						.load(Uri.parse(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString()))
+						.load(Uri.parse(img_url))
 						.error(R.drawable.person)
 						.placeholder(R.drawable.person)
 						.thumbnail(0.01f)
-						.into(_drawer_profile_image);*/
+						.into(imageview2);
 
 
 				/*ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -882,7 +886,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 			}catch (Exception e)
 			{
-				showMessage("887 line "+e.toString());
+				//showMessage("887 line "+e.toString());
 			}
 
 

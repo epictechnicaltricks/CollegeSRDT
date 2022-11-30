@@ -53,6 +53,11 @@ public class programs extends  AppCompatActivity  {
 	private  ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
 	private String list = "";
 
+	private HashMap<String, Object> api_map3 = new HashMap<>();
+
+	private HashMap<String, Object> api_map2 = new HashMap<>();
+
+
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
@@ -91,7 +96,7 @@ public class programs extends  AppCompatActivity  {
 
 
 
-                  /*  api_map2.clear();
+                    api_map2.clear();
 					listmap2.clear();
 					String responseUltered = "{\n\"items\": ".concat(list.concat("}"));
 
@@ -99,22 +104,25 @@ public class programs extends  AppCompatActivity  {
 					org.json.JSONObject object = new org.json.JSONObject(responseUltered);
 					org.json.JSONArray array = object.getJSONArray("items");
 
-					Log.d("img_obj_array", String.valueOf(array));
+					String img_url, title , content, created_at;
+					//Log.d("img_obj_array", String.valueOf(array));
 
 					for(int i=0;i<array.length();i++){
 
 						org.json.JSONObject obj = array.getJSONObject(i);
-						name = obj.getString("name");
-						designation = obj.getString("designation");
+						title = obj.getString("title");
+						content = obj.getString("description");
+						//created_at = obj.getString("created_at");
 
-						img_url = obj.getJSONObject("image").getString("img_url");
+						String img_url_obj = obj.getString("image");
+
 						api_map2 = new HashMap<>();
-						api_map2.put("name", name);
-						api_map2.put("designation", designation);
-						api_map2.put("img_url", img_url);
-						listmap2.add(api_map);
+						api_map2.put("title", title);
+						api_map2.put("description", content);
+						api_map2.put("img_url", img_url_obj);
+						//api_map2.put("created_at", created_at);
+						listmap2.add(api_map2);
 					}
-*/
 					Collections.reverse(listmap2);
 					recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
 					recyclerview1.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -199,17 +207,32 @@ public class programs extends  AppCompatActivity  {
 				c_name.setText(Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
 				desc.setText(Objects.requireNonNull(listmap2.get(_position).get("description")).toString());
 
+				api_map3 = new Gson().fromJson(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString(), new TypeToken<HashMap<String, Object>>(){}.getType());
+
+
+				String img_url = Objects.requireNonNull(api_map3.get("img_url")).toString();
+
+				Glide.with(getApplicationContext())
+						.load(Uri.parse(img_url))
+						.error(R.drawable.school)
+						.placeholder(R.drawable.school)
+						.thumbnail(0.01f)
+						.into(imageview2);
+
+
 
 				view.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 
+						api_map3 = new Gson().fromJson(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString(), new TypeToken<HashMap<String, Object>>(){}.getType());
+						String img_url = Objects.requireNonNull(api_map3.get("img_url")).toString();
+
 						Intent in = new Intent();
 						in.putExtra("title", Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
-						in.putExtra("img","https://images.unsplash.com/photo-1664575196079-9ac04582854b?ixid=MnwyMjE5NDl8MXwxfGFsbHwxfHx8fHx8Mnx8MTY2OTY5NTU2Ng");
+						in.putExtra("img",img_url);
 						in.putExtra("desc", Objects.requireNonNull(listmap2.get(_position).get("description")).toString());
 						in.putExtra("news", "");
-
 						in.setClass(getApplicationContext(),about_course.class);
 						startActivity(in);
 

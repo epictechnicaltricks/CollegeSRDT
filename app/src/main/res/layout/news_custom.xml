@@ -28,7 +28,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="160dp"
 				android:src="@drawable/school"
-				android:scaleType="centerInside"/>
+				android:scaleType="centerCrop"/>
 			<TextView
 				android:id="@+id/c_name"
 				android:focusable="false"

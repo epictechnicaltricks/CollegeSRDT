@@ -1104,7 +1104,7 @@ public class AuthActivity extends  AppCompatActivity  {
 		api_map2.put("email", _email.trim());
 		api_map2.put("password", _pass.trim());
 		api_map2.put("mobile", _mob.trim());
-		api_map2.put("classname", _class_name.trim());
+		api_map2.put("class_name", _class_name.trim());
 		api_map2.put("department", _department.trim());
 		api_map2.put("roll", _roll.trim());
 		api_map2.put("year", _year.trim());

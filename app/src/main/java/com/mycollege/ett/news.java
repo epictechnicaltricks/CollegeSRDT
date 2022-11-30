@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
@@ -26,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -61,6 +63,11 @@ public class news extends  AppCompatActivity  {
 
 	private  ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
 	private String list = "";
+
+
+	private HashMap<String, Object> api_map3 = new HashMap<>();
+
+	private HashMap<String, Object> api_map2 = new HashMap<>();
 
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -103,9 +110,9 @@ public class news extends  AppCompatActivity  {
 
 					listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
+					String img_url, title , content, created_at;
 
-
-                  /*  api_map2.clear();
+                    api_map2.clear();
 					listmap2.clear();
 					String responseUltered = "{\n\"items\": ".concat(list.concat("}"));
 
@@ -113,22 +120,24 @@ public class news extends  AppCompatActivity  {
 					org.json.JSONObject object = new org.json.JSONObject(responseUltered);
 					org.json.JSONArray array = object.getJSONArray("items");
 
-					Log.d("img_obj_array", String.valueOf(array));
+					//Log.d("img_obj_array", String.valueOf(array));
 
 					for(int i=0;i<array.length();i++){
 
 						org.json.JSONObject obj = array.getJSONObject(i);
-						name = obj.getString("name");
-						designation = obj.getString("designation");
+						title = obj.getString("title");
+						content = obj.getString("content");
+						created_at = obj.getString("created_at");
 
-						img_url = obj.getJSONObject("image").getString("img_url");
+						String img_url_obj = obj.getString("image");
+
 						api_map2 = new HashMap<>();
-						api_map2.put("name", name);
-						api_map2.put("designation", designation);
-						api_map2.put("img_url", img_url);
-						listmap2.add(api_map);
+						api_map2.put("title", title);
+						api_map2.put("content", content);
+						api_map2.put("img_url", img_url_obj);
+						api_map2.put("created_at", created_at);
+						listmap2.add(api_map2);
 					}
-*/
 
 					Collections.reverse(listmap2);
 					recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
@@ -305,13 +314,29 @@ public class news extends  AppCompatActivity  {
 				String dt = Objects.requireNonNull(listmap2.get(_position).get("created_at")).toString();
 				date.setText("Date : "+dt.substring(0,10));
 
+				api_map3 = new Gson().fromJson(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString(), new TypeToken<HashMap<String, Object>>(){}.getType());
+
+
+				String img_url = Objects.requireNonNull(api_map3.get("img_url")).toString();
+
+				Glide.with(getApplicationContext())
+						.load(Uri.parse(img_url))
+						.error(R.drawable.school)
+						.placeholder(R.drawable.school)
+						.thumbnail(0.01f)
+						.into(imageview2);
+
+
 				view.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 
+						api_map3 = new Gson().fromJson(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString(), new TypeToken<HashMap<String, Object>>(){}.getType());
+						String img_url = Objects.requireNonNull(api_map3.get("img_url")).toString();
+
 						Intent in = new Intent();
 						in.putExtra("title", Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
-						in.putExtra("img","https://images.unsplash.com/photo-1664575196079-9ac04582854b?ixid=MnwyMjE5NDl8MXwxfGFsbHwxfHx8fHx8Mnx8MTY2OTY5NTU2Ng");
+						in.putExtra("img",img_url);
 						in.putExtra("desc", Objects.requireNonNull(listmap2.get(_position).get("content")).toString());
 						in.putExtra("news", "true");
 						in.setClass(getApplicationContext(),about_course.class);
@@ -320,14 +345,6 @@ public class news extends  AppCompatActivity  {
 					}
 				});
 
-
-				/*String img_url = Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString();
-				Glide.with(getApplicationContext())
-						.load(Uri.parse(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString()))
-						.error(R.drawable.person)
-						.placeholder(R.drawable.person)
-						.thumbnail(0.01f)
-						.into(_drawer_profile_image);*/
 
 
 				/*ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -340,7 +357,7 @@ public class news extends  AppCompatActivity  {
 
 			}catch (Exception e)
 			{
-				showMessage("339 line "+e.toString());
+				//showMessage("354 line "+e.toString());
 			}
 
 

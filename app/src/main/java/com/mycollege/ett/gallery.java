@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -29,9 +30,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,9 +65,17 @@ public class gallery extends  AppCompatActivity  {
 
 	String fontName="";
 	private  ArrayList<HashMap<String, Object>> listmap2 = new ArrayList<>();
+
+	private  ArrayList<HashMap<String, Object>> demo_listmap2 = new ArrayList<>();
+
 	private String list = "";
 
 	private HashMap<String, Object> api_map = new HashMap<>();
+
+	private HashMap<String, Object> api_map2 = new HashMap<>();
+
+	private HashMap<String, Object> api_map3 = new HashMap<>();
+
 
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -151,47 +164,73 @@ public class gallery extends  AppCompatActivity  {
 		//" list " is a String datatype
 		list = (new Gson()).toJson(api_map.get("data"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
+		//api_map3.get("img_url")).toString()
 		// Log.d("img_obj", list);
 		//listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+		//listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+
+
 
 
 		try {
 
-			listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+			String img_url, name , designation, embaded_code;
 
 
 
-                  /*  api_map2.clear();
-					listmap2.clear();
+
 					String responseUltered = "{\n\"items\": ".concat(list.concat("}"));
-
 
 					org.json.JSONObject object = new org.json.JSONObject(responseUltered);
 					org.json.JSONArray array = object.getJSONArray("items");
 
-					Log.d("img_obj_array", String.valueOf(array));
+
+
+					//Log.d("img_obj_array", String.valueOf(array));
 
 					for(int i=0;i<array.length();i++){
 
 						org.json.JSONObject obj = array.getJSONObject(i);
-						name = obj.getString("name");
-						designation = obj.getString("designation");
 
-						img_url = obj.getJSONObject("image").getString("img_url");
-						api_map2 = new HashMap<>();
-						api_map2.put("name", name);
-						api_map2.put("designation", designation);
-						api_map2.put("img_url", img_url);
-						listmap2.add(api_map);
+
+
+						if(gallery_view){
+
+							api_map3.clear();
+							name = obj.getString("title");
+							String img_url_obj = obj.getString("image");
+
+							api_map = new HashMap<>();
+							api_map.put("title", name);
+							api_map.put("img_url", img_url_obj);
+							listmap2.add(api_map);
+
+
+						} else  {
+
+
+							embaded_code = obj.getString("embed_code");
+							api_map = new HashMap<>();
+							api_map.put("embed_code", embaded_code);
+							listmap2.add(api_map);
+
+
+						}
+
 					}
-*/
+
 			Collections.reverse(listmap2);
 			recyclerview1.setAdapter(new Recyclerview1Adapter(listmap2));
 			recyclerview1.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
 
 		} catch (Exception ex) {
-			showMessage("303 line "+ex.toString());
+
+			Log.d("json_error_g",ex.toString());
+			showMessage("303 line "+ex);
 			ex.printStackTrace();
 		}
 	}
@@ -338,25 +377,10 @@ public class gallery extends  AppCompatActivity  {
 			});
 
 
-			if(gallery_view){
-
-				gallery_layout.setVisibility(View.VISIBLE);
-				video_layout.setVisibility(View.GONE);
-				c_name.setText(Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
 
 
-			} else  {
+			//showMessage(api_map3.get("img_url").toString());
 
-				String video_code = Objects.requireNonNull(listmap2.get(_position).get("embed_code")).toString();
-				wb.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-				wb.loadUrl("data:text/html ,<html>".concat(video_code.concat("<html>")));
-
-				video_layout.setVisibility(View.VISIBLE);
-				gallery_layout.setVisibility(View.GONE);
-
-			}
-
-			c_name.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
 
 
 
@@ -364,17 +388,38 @@ public class gallery extends  AppCompatActivity  {
 
 
 
+				if(gallery_view){
+
+					gallery_layout.setVisibility(View.VISIBLE);
+					video_layout.setVisibility(View.GONE);
+					c_name.setText(Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
+
+					api_map3 = new Gson().fromJson(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString(), new TypeToken<HashMap<String, Object>>(){}.getType());
 
 
+					String img_url = Objects.requireNonNull(api_map3.get("img_url")).toString();
+
+					Glide.with(getApplicationContext())
+							.load(Uri.parse(img_url))
+							.error(R.drawable.person)
+							.placeholder(R.drawable.person)
+							.thumbnail(0.01f)
+							.into(imageview2);
 
 
-				/*String img_url = Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString();
-				Glide.with(getApplicationContext())
-						.load(Uri.parse(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString()))
-						.error(R.drawable.person)
-						.placeholder(R.drawable.person)
-						.thumbnail(0.01f)
-						.into(_drawer_profile_image);*/
+				} else  {
+
+					String video_code = Objects.requireNonNull(listmap2.get(_position).get("embed_code")).toString();
+					wb.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+					wb.loadUrl("data:text/html ,<html>".concat(video_code.concat("<html>")));
+
+					video_layout.setVisibility(View.VISIBLE);
+					gallery_layout.setVisibility(View.GONE);
+
+				}
+
+				c_name.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
+
 
 
 				/*ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -387,7 +432,7 @@ public class gallery extends  AppCompatActivity  {
 
 			}catch (Exception e)
 			{
-				showMessage("887 line "+e.toString());
+				//showMessage("887 line "+ e);
 			}
 
 

@@ -155,6 +155,42 @@
 
 								android:maxLines="1"
 								android:layout_margin="4dp"
+								android:id="@+id/gender"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="Gender *"
+								android:textColorHint="#607D8B"/>
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+								android:id="@+id/cast"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="Cast *"
+								android:textColorHint="#607D8B"/>
+
+
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
 								android:id="@+id/national"
 								android:paddingTop="12dp"
 
@@ -167,6 +203,25 @@
 								android:textColor="#000000"
 								android:hint="Nationality *"
 								android:textColorHint="#607D8B"/>
+
+
+							<EditText
+
+								android:maxLines="1"
+								android:layout_margin="4dp"
+								android:id="@+id/state"
+								android:paddingTop="12dp"
+
+								android:background="@drawable/shape"
+								android:textSize="16sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#000000"
+								android:hint="State *"
+								android:textColorHint="#607D8B"/>
+
 
 
 							<EditText
@@ -186,11 +241,37 @@
 								android:hint="City *"
 								android:textColorHint="#607D8B"/>
 
+
+
+							<TextView
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+								android:id="@+id/text_class_name_"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="5dp"
+								android:text="Program Applied For *"
+								android:textSize="14sp"
+								android:textColor="#737272"/>
+
+							<Spinner
+
+								android:layout_margin="4dp"
+								android:background="@drawable/shape"
+								android:id="@+id/spinner_program"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:padding="8dp"
+								android:spinnerMode="dropdown"/>
+
+
+
+
 							<EditText
 
 								android:maxLines="1"
 								android:layout_margin="4dp"
-								android:id="@+id/program"
+								android:id="@+id/qual"
 								android:paddingTop="12dp"
 
 								android:background="@drawable/shape"
@@ -200,24 +281,7 @@
 								android:padding="8dp"
 
 								android:textColor="#000000"
-								android:hint="Program Applied For *"
-								android:textColorHint="#607D8B"/>
-
-							<EditText
-
-								android:maxLines="1"
-								android:layout_margin="4dp"
-								android:id="@+id/subject"
-								android:paddingTop="12dp"
-
-								android:background="@drawable/shape"
-								android:textSize="16sp"
-								android:layout_width="match_parent"
-								android:layout_height="40dp"
-								android:padding="8dp"
-
-								android:textColor="#000000"
-								android:hint="Specialization Subject"
+								android:hint="Qualification"
 								android:textColorHint="#607D8B"/>
 
 
