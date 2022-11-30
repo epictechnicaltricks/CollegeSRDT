@@ -401,6 +401,9 @@ public class apply_online extends  AppCompatActivity  {
 			if(response.contains("success")){
 
 				showMessage("Submitted Successfully");
+				startActivity(new Intent(getApplicationContext(), apply_online.class));
+				finish();
+
 			} else {
 
 				showMessage("Failed to submit\n\n"+response);
@@ -432,14 +435,14 @@ public class apply_online extends  AppCompatActivity  {
 						 city_name             .equals("Select here..") ||
 						 qualification_name    .equals("Select here..") ||
 							 name_              .getText().toString().trim().equals("") ||
-							 email_             .getText().toString().trim().equals("")||
+							 !email_             .getText().toString().trim().contains("@")||
 							 mobile_            .getText().toString().trim().equals("")
 
 
 					 ){
 
 
-			showMessage("Some fields are empty..");
+			showMessage("Some fields are empty.. or invalid");
 
 			} else {
 
@@ -476,15 +479,8 @@ reset.setOnClickListener(new View.OnClickListener() {
 	@Override
 	public void onClick(View v) {
 
-		national_.setText("");
-		name_.setText("");
-		email_.setText("");
-		state_.setText("");
-		mobile_.setText("");
-		city_.setText("");
-		qual_.setText("");
-		gender_.setText("");
-		cast_.setText("");
+		startActivity(new Intent(getApplicationContext(), apply_online.class));
+		finish();
 	}
 });
 
@@ -862,7 +858,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 
 	@Deprecated
 	public void showMessage(String _s) {
-		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_LONG).show();
 	}
 
 	public class Listview1Adapter extends BaseAdapter {
