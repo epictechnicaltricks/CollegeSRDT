@@ -331,20 +331,29 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 
+		  try {
 
-		  class_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
-		  // refresh the list or recycle or grid	  Log.d("class_Api",list);
+			  class_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+			  // refresh the list or recycle or grid	  Log.d("class_Api",list);
 
 
 
-		  listview1.setAdapter(new Listview1Adapter(class_list));
-		  ((BaseAdapter)listview1.getAdapter()).notifyDataSetChanged();
-		  spinner_class_name.setAdapter(new
-				  Listview1Adapter(class_list));
+			  listview1.setAdapter(new Listview1Adapter(class_list));
+			  ((BaseAdapter)listview1.getAdapter()).notifyDataSetChanged();
+			  spinner_class_name.setAdapter(new
+					  Listview1Adapter(class_list));
 
 		 /* String name = Objects.requireNonNull(class_list.get(0).get("name")).toString();
 		  Toast.makeText(AuthActivity.this, name, Toast.LENGTH_SHORT).show();*/
 
+
+
+
+
+		  }catch (Exception e){
+
+			  showMessage(e.toString());
+		  }
 
 
 
@@ -364,14 +373,21 @@ public class AuthActivity extends  AppCompatActivity  {
 	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 		  Log.d("api depart",response);
 
-		  department_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
-		  // refresh the list or recycle or grid
+		  try {
+			  department_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+			  // refresh the list or recycle or grid
 
 
-		  listview2.setAdapter(new Listview1Adapter(department_list));
-		  ((BaseAdapter)listview2.getAdapter()).notifyDataSetChanged();
-		  spinner_department.setAdapter(new
-				  Listview2Adapter(department_list));
+			  listview2.setAdapter(new Listview1Adapter(department_list));
+			  ((BaseAdapter)listview2.getAdapter()).notifyDataSetChanged();
+			  spinner_department.setAdapter(new
+					  Listview2Adapter(department_list));
+
+		  }catch (Exception e){
+
+			  showMessage(e.toString());
+		  }
+
 
 
 	  }
@@ -388,14 +404,21 @@ public class AuthActivity extends  AppCompatActivity  {
 	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 		  Log.d("api year",response);
 
-		  year_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
-		  // refresh the list or recycle or grid
+		  try {
+			  year_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+			  // refresh the list or recycle or grid
 
 
-		  listview2.setAdapter(new Listview1Adapter(year_list));
-		  ((BaseAdapter)listview2.getAdapter()).notifyDataSetChanged();
-		  spinner_year.setAdapter(new
-				  Listview3Adapter(year_list));
+			  listview2.setAdapter(new Listview1Adapter(year_list));
+			  ((BaseAdapter)listview2.getAdapter()).notifyDataSetChanged();
+			  spinner_year.setAdapter(new
+					  Listview3Adapter(year_list));
+
+
+		  }catch (Exception e){
+
+			  showMessage(e.toString());
+		  }
 
 	  }
 

@@ -94,9 +94,7 @@ public class programs extends  AppCompatActivity  {
 
 					listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
-
-
-                    api_map2.clear();
+					api_map2.clear();
 					listmap2.clear();
 					String responseUltered = "{\n\"items\": ".concat(list.concat("}"));
 

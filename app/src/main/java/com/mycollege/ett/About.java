@@ -3,6 +3,7 @@ package com.mycollege.ett;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 
 import java.util.HashMap;
 import java.util.Timer;
@@ -37,6 +40,10 @@ public class About extends  AppCompatActivity  {
 	private final Intent toAuth = new Intent();
 	private RequestNetwork in;
 	private RequestNetwork.RequestListener _in_request_listener;
+
+	ImageView imageview_aff;
+
+
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
@@ -51,6 +58,8 @@ public class About extends  AppCompatActivity  {
 		linear8 = findViewById(R.id.linear8);
 		imageview1 = findViewById(R.id.imageview1);
 		in = new RequestNetwork(this);
+
+		imageview_aff = findViewById(R.id.imageview_aff);
 		
 		_in_request_listener = new RequestNetwork.RequestListener() {
 			@Override
@@ -84,6 +93,13 @@ public class About extends  AppCompatActivity  {
 		//_NavStatusBarColor("#FFFFFF", "#FFFFFF");
 		_changeActivityFont("en_med");
 		_DARK_ICONS();
+
+		Glide.with(getApplicationContext())
+				.load(Uri.parse("https://mlu.ac.in/wp-content/uploads/2022/01/mlu-cuttack-main-gate-for-website.jpg"))
+				.error(R.drawable.person)
+				.placeholder(R.drawable.person)
+				.thumbnail(0.01f)
+				.into(imageview_aff);
 
 	}
 	

@@ -147,6 +147,8 @@
 
 
 					<EditText
+						android:inputType="numberSigned"
+						android:digits="1234567890"
 						android:id="@+id/roll_"
 						android:paddingTop="12dp"
 						android:background="@android:color/transparent"
@@ -251,6 +253,7 @@
 
 
 						<EditText
+							android:digits="1234567890"
 							android:paddingTop="12dp"
 							android:inputType="numberSigned"
 							android:background="@android:color/transparent"
