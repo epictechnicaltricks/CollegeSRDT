@@ -199,6 +199,9 @@ public class AuthActivity extends  AppCompatActivity  {
 	   String api = "https://exam.infydemo.in/api/";
 	   String api_mlu = "https://new.mlu.ac.in/api/v1/";
 
+	   //https://nft.digitallinkcard.xyz/api/
+	   //https://exam.infydemo.in/api/
+
 	////////////////////////////////////////////////
 
 	@Override

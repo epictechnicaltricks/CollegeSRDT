@@ -414,7 +414,8 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 				{
 
 					showMessage("Please login to continue..");
-					startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+					startActivity(new Intent(getApplicationContext(), exam.class));
+					//startActivity(new Intent(getApplicationContext(), AuthActivity.class));
 
 				} else {
 
@@ -435,7 +436,8 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 				{
 
 					showMessage("Please login to continue..");
-					startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+					//startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+					startActivity(new Intent(getApplicationContext(), result.class));
 
 				} else {
 

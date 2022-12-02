@@ -29,6 +29,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -122,6 +125,9 @@ public class apply_online extends  AppCompatActivity  {
 
 	ArrayList<HashMap<String, Object>> city_list = new ArrayList<>();
 
+	ArrayList<HashMap<String, Object>> city_list_filtered = new ArrayList<>();
+
+
 	ArrayList<HashMap<String, Object>> qualification_list = new ArrayList<>();
 
 
@@ -131,7 +137,13 @@ public class apply_online extends  AppCompatActivity  {
 		setContentView(R.layout.apply_online_layout);
 		initialize(_savedInstanceState);
 		com.google.firebase.FirebaseApp.initializeApp(this);
-		initializeLogic();
+		try {
+			initializeLogic();
+		}catch (IOException e){
+
+			showMessage(e.toString());
+		}
+
 	}
 	
 	private void initialize(Bundle _savedInstanceState) {
@@ -244,8 +256,8 @@ public class apply_online extends  AppCompatActivity  {
 					programs_list_spinner.setAdapter(new Listview1Adapter(listmap2));
 
 
-				} catch (Exception ex) {
-					showMessage("303 line "+ex.toString());
+				} catch (JSONException ex) {
+					showMessage("255 line "+ex.toString());
 					ex.printStackTrace();
 				}
 
@@ -337,9 +349,44 @@ public class apply_online extends  AppCompatActivity  {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
 
-				if(!Objects.requireNonNull(state_list.get(_position).get("title")).toString().equals("")){
+				city_list_filtered.clear();
 
-					state_name = Objects.requireNonNull(state_list.get(_position).get("title")).toString();
+				if(!Objects.requireNonNull(state_list.get(_position).get("name")).toString().equals("")){
+
+					state_name = Objects.requireNonNull(state_list.get(_position).get("name")).toString();
+
+					try {
+						java.io.InputStream inputstream1 = getAssets().open("city.json");
+						city_list = new Gson().fromJson(Util.copyFromInputStream(inputstream1), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+
+
+						for(int x=0; city_list.size()>x; x++) {
+
+
+							if(Objects.requireNonNull(city_list.get(x).get("state")).toString().equals(state_name)){
+								{
+									HashMap<String, Object> _item = new HashMap<>();
+									_item.put("name", Objects.requireNonNull(city_list.get(x).get("name")).toString());
+									city_list_filtered.add(_item);
+								}
+
+							}
+
+						}
+						//showMessage("refresh");
+						Util.sortListMap(city_list_filtered,"name",false,true);
+						listview6.setAdapter(new Listview6Adapter(city_list_filtered));
+						((BaseAdapter)listview6.getAdapter()).notifyDataSetChanged();
+						city_spinner.setAdapter(new Listview6Adapter(city_list_filtered));
+
+					}catch (Exception e){
+
+
+					}
+
+
+
 					//showMessage(program_name);
 				}
 
@@ -355,9 +402,9 @@ public class apply_online extends  AppCompatActivity  {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
 
-				if(!Objects.requireNonNull(city_list.get(_position).get("title")).toString().equals("")){
+				if(!Objects.requireNonNull(city_list.get(_position).get("name")).toString().equals("")){
 
-					city_name = Objects.requireNonNull(city_list.get(_position).get("title")).toString();
+					city_name = Objects.requireNonNull(city_list.get(_position).get("name")).toString();
 					//showMessage(program_name);
 				}
 
@@ -398,6 +445,8 @@ public class apply_online extends  AppCompatActivity  {
 			Log.d("submit",response);
 
 			prog.setVisibility(View.GONE);
+
+
 			if(response.contains("success")){
 
 				showMessage("Submitted Successfully");
@@ -434,15 +483,16 @@ public class apply_online extends  AppCompatActivity  {
 						 state_name            .equals("Select here..") ||
 						 city_name             .equals("Select here..") ||
 						 qualification_name    .equals("Select here..") ||
-							 name_              .getText().toString().trim().equals("") ||
-							 !email_             .getText().toString().trim().contains("@")||
-							 mobile_            .getText().toString().trim().equals("")
+							 name_             .getText().toString().trim().equals("") ||
+							 !email_           .getText().toString().trim().contains("@")||
+							 mobile_           .getText().toString().trim().equals("")
 
 
 					 ){
 
 
 			showMessage("Some fields are empty.. or invalid");
+			//
 
 			} else {
 
@@ -462,6 +512,7 @@ public class apply_online extends  AppCompatActivity  {
 
 						 } else {
 
+						 	 //
 							 showMessage("Invalid mobile no.");
 						 }
 
@@ -499,6 +550,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 		prog.setVisibility(View.VISIBLE);
 		submit_map.clear();
 		submit_map = new HashMap<>();
+
 		submit_map.put("name",  _name.trim());
 		submit_map.put("email", _email.trim());
 		submit_map.put("mobile",  _mob.trim());
@@ -513,6 +565,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 		submit_api_call.setParams(submit_map, RequestNetworkController.REQUEST_PARAM);
 		submit_api_call.startRequestNetwork(RequestNetworkController.POST, submit_api, "no tag", _submit_api_listener);
 
+
 		//textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
 
 		//Toast.makeText(this, "Login complete", Toast.LENGTH_SHORT).show();
@@ -525,18 +578,36 @@ reset.setOnClickListener(new View.OnClickListener() {
 		finish();
 	}
 	
-	private void initializeLogic() {
+	private void initializeLogic() throws IOException {
 		_changeActivityFont("en_med");
 		gender_data();
 		nation_data();
 		qualify_data();
 		religion_data();
-		city_data();
-		state_data();
+		//city_data();
+		//state_data();
+
+
+		//PROJECT BY SHUBHAMJIT ON 2022 DEC 1
+		// 3RD SEM BTECH FROM RAAJDHANI ENGINEERING COLLEGE, BBSR , ODISHA
+		try {
+			java.io.InputStream inputstream1 = getAssets().open("state.json");
+			state_list = new Gson().fromJson(Util.copyFromInputStream(inputstream1), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
+			//Util.sortListMap(state_list,"name",false,true);
+			listview5.setAdapter(new Listview5Adapter(state_list));
+			((BaseAdapter)listview5.getAdapter()).notifyDataSetChanged();
+			state_spinner.setAdapter(new Listview5Adapter(state_list));
+
+
+		}catch (Exception e){
+
+
+		}
 
 
 
-       request_program_API();
+		request_program_API();
 
 		Glide.with(getApplicationContext())
 				.load(Uri.parse("https://images.unsplash.com/photo-1598257006675-0aaec40301f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=40"))
@@ -567,7 +638,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 		fontName = "fonts/".concat(_fontname.concat(".ttf"));
 		overrideFonts(this,getWindow().getDecorView());
 	}
-	private void overrideFonts(final android.content.Context context, final View v) {
+	private void overrideFonts(final Context context, final View v) {
 
 		try {
 			Typeface
@@ -692,8 +763,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 
 	}
 
-	private void state_data()
-	{
+	private void state_data() {
 		{
 			HashMap<String, Object> _item = new HashMap<>();
 			_item.put("title", "Select here..");
@@ -720,8 +790,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 
 
 
-	private void city_data()
-	{
+	private void city_data() {
 		{
 			HashMap<String, Object> _item = new HashMap<>();
 			_item.put("title", "Select here..");
@@ -1041,11 +1110,13 @@ reset.setOnClickListener(new View.OnClickListener() {
 				_view = _inflater.inflate(R.layout.clg_list_cus, null);
 			}
 
-			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+			final TextView textview1 = _view.findViewById(R.id.textview1);
+
 
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
 
-			textview1.setText(Objects.requireNonNull(state_list.get((int) _position).get("title")).toString());
+			//if(state_list.get(_position).get("state")).toString().contains())
+			textview1.setText(Objects.requireNonNull(state_list.get(_position).get("name")).toString());
 
 
 			return _view;
@@ -1083,7 +1154,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
 
-			textview1.setText(Objects.requireNonNull(city_list.get((int) _position).get("title")).toString());
+			textview1.setText(Objects.requireNonNull(city_list_filtered.get((int) _position).get("name")).toString());
 
 
 			return _view;

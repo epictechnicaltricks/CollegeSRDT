@@ -1206,12 +1206,15 @@ id edittext4_textview_91
 id email
 id email_
 id end
+id end_form_date
 id enterAlways
 id enterAlwaysCollapsed
 id exam
+id exam_date
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fees
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1219,11 +1222,13 @@ id filled
 id fixed
 id fname_
 id forever
+id form_fill_date
 id gallery
 id gallery_view
 id get_otp_layout
 id ghost_view
 id glide_custom_view_target_tag
+id grade
 id group_divider
 id heading
 id home
@@ -1245,11 +1250,14 @@ id imageview6
 id imageview_aff
 id imageview_bg
 id imageview_course
+id imageview_exam
+id imageview_result
 id info
 id italic
 id item_touch_helper_previous_elevation
 id labeled
 id largeLabel
+id late_fees
 id left
 id light
 id line1
@@ -1289,6 +1297,7 @@ id listview_year
 id location
 id login
 id logout
+id mark
 id masked
 id materialbutton1
 id message
@@ -1320,6 +1329,7 @@ id parentPanel
 id parent_matrix
 id pass
 id pay
+id perfom
 id phone_edit
 id phone_no
 id pin
@@ -1337,6 +1347,7 @@ id recyclerview1
 id relative
 id resend_otp
 id reset_
+id result
 id right
 id right_icon
 id right_side
@@ -1362,6 +1373,7 @@ id search_src_text
 id search_voice_btn
 id select_dialog_listview
 id selected
+id semister
 id send_otp
 id shortcut
 id showCustom
@@ -1400,6 +1412,7 @@ id standard
 id start
 id stretch
 id stu_name
+id subject
 id submenuarrow
 id submit_
 id submit_area
@@ -1415,6 +1428,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id te_
 id te_e6
+id term
 id text
 id text2
 id textSpacerNoButtons
@@ -1449,6 +1463,7 @@ id textview433
 id textview5
 id textview6
 id textview7
+id textview8
 id textview9
 id time
 id title
@@ -1562,6 +1577,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout exam_cus
 layout exam_layout
 layout forgot_pass
 layout gallery
@@ -1582,6 +1598,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout profile
 layout programs
+layout result_cus
 layout result_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
