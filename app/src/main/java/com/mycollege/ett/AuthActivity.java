@@ -462,7 +462,6 @@ public class AuthActivity extends  AppCompatActivity  {
 				if(response.contains("success")) {
 
 					showMessage("Account created");
-					action_btn.performLongClick();
 					showMessage("Login Now");
 					success();
 
@@ -1145,6 +1144,8 @@ public class AuthActivity extends  AppCompatActivity  {
 
 		register_api.setParams(api_map2, RequestNetworkController.REQUEST_PARAM);
 		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _register_api_listener);
+
+		showMessage(_dob);
 
 		//textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
 
