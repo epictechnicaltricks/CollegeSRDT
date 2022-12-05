@@ -686,8 +686,7 @@ reset.setOnClickListener(new View.OnClickListener() {
 
 
 
-	private void gender_data()
-	{
+	private void gender_data() {
 		{
 			HashMap<String, Object> _item = new HashMap<>();
 			_item.put("title", "Select here..");

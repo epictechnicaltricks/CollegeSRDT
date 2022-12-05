@@ -209,14 +209,15 @@
 					android:layout_weight="1"/>
 			</LinearLayout>
 			<TextView
+
 				android:id="@+id/result"
 				android:focusable="false"
 				android:layout_width="match_parent"
-				android:layout_height="0dp"
-				android:padding="8dp"
-				android:background="#0D47A1"
+				android:layout_height="wrap_content"
+				android:padding="12dp"
+				android:background="#1CA306"
 				android:gravity="center_horizontal|center_vertical"
-				android:text="View Result"
+				android:text="Apply now"
 				android:textSize="16sp"
 				android:textColor="#FFFFFF"
 				android:layout_gravity="right"/>

@@ -1,7 +1,6 @@
 package com.mycollege.ett;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.*;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.appbar.AppBarLayout;
@@ -9,7 +8,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
-import android.annotation.SuppressLint;
 import android.widget.LinearLayout;
 import android.os.*;
 import android.view.*;
@@ -36,15 +34,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import com.bumptech.glide.Glide;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import android.graphics.Typeface;
-
-import org.json.JSONException;
 
 
 public class HomeActivity extends  AppCompatActivity  {
@@ -322,10 +316,9 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onClick(View v) {
 
-				startActivity(new Intent(getApplicationContext(), apply_online.class));
 
 
-				/*	SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+					SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
 
 
 
@@ -337,9 +330,10 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 				} else {
 
+	startActivity(new Intent(getApplicationContext(), apply_online.class));
 
 
-				}*/
+				}
 			}
 		});
 		program .setOnClickListener(new View.OnClickListener() {
@@ -414,8 +408,8 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 				{
 
 					showMessage("Please login to continue..");
-					startActivity(new Intent(getApplicationContext(), exam.class));
-					//startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+					//startActivity(new Intent(getApplicationContext(), exam.class));
+					startActivity(new Intent(getApplicationContext(), AuthActivity.class));
 
 				} else {
 
@@ -436,12 +430,12 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 				{
 
 					showMessage("Please login to continue..");
-					//startActivity(new Intent(getApplicationContext(), AuthActivity.class));
-					startActivity(new Intent(getApplicationContext(), result.class));
+					startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+					//startActivity(new Intent(getApplicationContext(), resultActivity.class));
 
 				} else {
 
-					startActivity(new Intent(getApplicationContext(), result.class));
+					startActivity(new Intent(getApplicationContext(), resultActivity.class));
 
 				}
 
@@ -687,7 +681,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 		fontName = "fonts/".concat(_fontname.concat(".ttf"));
 		overrideFonts(this,getWindow().getDecorView());
 	}
-	private void overrideFonts(final android.content.Context context, final View v) {
+	private void overrideFonts(final Context context, final View v) {
 
 		try {
 			Typeface

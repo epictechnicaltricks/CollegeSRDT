@@ -2,11 +2,10 @@ package com.mycollege.ett;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 
 public class exam extends  AppCompatActivity  {
@@ -38,7 +35,7 @@ public class exam extends  AppCompatActivity  {
 	private LinearLayout linear1;
 	private TextView textview1;
 
-	private final ArrayList<HashMap<String, Object>> exam_map = new ArrayList<>();
+	private ArrayList<HashMap<String, Object>> exam_map = new ArrayList<>();
 
 	private RecyclerView recyclerview1;
 	private ProgressBar progressbar1;
@@ -48,10 +45,12 @@ public class exam extends  AppCompatActivity  {
 
 	private HashMap<String, Object> api_map = new HashMap<>();
 
-	private  ArrayList<HashMap<String, Object>> exam_listmap = new ArrayList<>();
+	//private  ArrayList<HashMap<String, Object>> exam_listmap = new ArrayList<>();
 
 	private RequestNetwork exam_api;
 	private RequestNetwork.RequestListener _exam_request_listener;
+
+	HashMap<String, Object> authorization = new HashMap<>();
 
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -79,20 +78,23 @@ public class exam extends  AppCompatActivity  {
 		_exam_request_listener = new RequestNetwork.RequestListener() {
 			@Override
 			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
-				//api_map.clear();
-				//api_map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
+
+				Toast.makeText(exam.this, response, Toast.LENGTH_SHORT).show();
+
+				api_map.clear();
+				api_map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
 
 
 				// must add resultSet
 				//" list " is a String datatype
-				//list = (new Gson()).toJson(api_map.get("exams"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+				list = (new Gson()).toJson(api_map.get("exams"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
 				//api_map3.get("img_url")).toString()
 				// Log.d("img_obj", list);
-				//exam_listmap = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+				exam_map = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
-				//recyclerview1.setAdapter(new Recyclerview1Adapter(exam_map));
-				//recyclerview1.setLayoutManager(new LinearLayoutManager(this));
+				recyclerview1.setAdapter(new Recyclerview1Adapter(exam_map));
+				recyclerview1.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
 
 			}
@@ -107,7 +109,7 @@ public class exam extends  AppCompatActivity  {
 	}
 	
 	private void initializeLogic() {
-		for(int _repeat10 = 0; _repeat10 < 10; _repeat10++) {
+	/*	for(int _repeat10 = 0; _repeat10 < 10; _repeat10++) {
 			{
 				HashMap<String, Object> _item = new HashMap<>();
 				_item.put("bv", "");
@@ -116,11 +118,11 @@ public class exam extends  AppCompatActivity  {
 
 		}
 		recyclerview1.setAdapter(new Recyclerview1Adapter(exam_map));
-		recyclerview1.setLayoutManager(new LinearLayoutManager(this));
+		recyclerview1.setLayoutManager(new LinearLayoutManager(this));*/
 		_changeActivityFont("en_med");
 
 
-		req_exam_api("exam/get");
+		req_exam_api();
 
 
 		Glide.with(getApplicationContext())
@@ -133,9 +135,21 @@ public class exam extends  AppCompatActivity  {
 	}
 
 
-	private void req_exam_api(String _method)
+	private void req_exam_api()
 	{
-		exam_api.startRequestNetwork(RequestNetworkController.GET, "https://new.mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
+		SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+//sh.getString("token", "")
+		authorization.clear();
+		authorization.put("Authorization","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwicm9sZSI6IjQiLCJyb2xlVGV4dCI6IlN0dWRlbnQiLCJuYW1lIjoiRGViZW5kcmEgS3VtYXIgU2Fob28iLCJsYXN0TG9naW4iOiIyMDIyLTExLTI0IDA0OjQ1OjQ4IiwiaXNMb2dnZWRJbiI6dHJ1ZSwiQVBJX1RJTUUiOjE2Njk5ODE0MzJ9.GnZXnMKufGFEx9GHklORreKyIzenyg9KtuH0Q15bMU4");
+		exam_api.setHeaders(authorization);
+		//exam_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
+		exam_api.startRequestNetwork(RequestNetworkController.GET, "https://exam.infydemo.in/api/exam/get", "no tag",_exam_request_listener);
+
+		//api_map.clear();
+
+
+
+		//exam_api.startRequestNetwork(RequestNetworkController.GET, "https://new.mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
 
 	}
 
@@ -225,16 +239,21 @@ public class exam extends  AppCompatActivity  {
 			final TextView textview8 = _view.findViewById(R.id.textview8);
 			final TextView late_fees = _view.findViewById(R.id.late_fees);
 
-			/*
-name.setText(exam_map.get((int)_position).get("name").toString());
-semister.setText(exam_map.get((int)_position).get("semistar").toString());
-term.setText(exam_map.get((int)_position).get("term").toString());
-exam_date.setText(exam_map.get((int)_position).get("exam_date").toString());
-form_fill_date.setText(exam_map.get((int)_position).get("form_fillup_start_date").toString());
-end_form_date.setText(exam_map.get((int)_position).get("form_fillup_last_date").toString());
-fees.setText(exam_map.get((int)_position).get("form_fee").toString());
-late_fees.setText(exam_map.get((int)_position).get("late_fee").toString());
-*/
+
+
+
+            name.setText(exam_map.get((int)_position).get("name").toString());
+            semister.setText(exam_map.get((int)_position).get("semistar").toString());
+            term.setText(exam_map.get((int)_position).get("term").toString());
+            exam_date.setText(exam_map.get((int)_position).get("exam_date").toString());
+            form_fill_date.setText(exam_map.get((int)_position).get("form_fillup_start_date").toString());
+            end_form_date.setText(exam_map.get((int)_position).get("form_fillup_last_date").toString());
+            fees.setText(exam_map.get((int)_position).get("form_fee").toString());
+            late_fees.setText(exam_map.get((int)_position).get("late_fee").toString());
+
+
+
+
 			textview2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.BOLD);
 			     name.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.BOLD);
 			textview3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.BOLD);

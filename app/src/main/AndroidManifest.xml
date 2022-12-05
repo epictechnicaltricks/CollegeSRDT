@@ -120,14 +120,16 @@
 			android:screenOrientation="portrait"/>
 
 		<activity
-			android:name=".result"
+			android:name=".about_course"
 			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 			android:hardwareAccelerated="true"
 			android:supportsPictureInPicture="true"
 			android:screenOrientation="portrait"/>
 
+
+
 		<activity
-			android:name=".about_course"
+			android:name=".resultActivity"
 			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 			android:hardwareAccelerated="true"
 			android:supportsPictureInPicture="true"

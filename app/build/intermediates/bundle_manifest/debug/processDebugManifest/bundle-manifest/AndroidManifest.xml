@@ -18,7 +18,6 @@
         android:icon="@drawable/logo"
         android:label="MLU"
         android:largeHeap="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
@@ -115,13 +114,13 @@
             android:screenOrientation="portrait"
             android:supportsPictureInPicture="true" />
         <activity
-            android:name="com.mycollege.ett.result"
+            android:name="com.mycollege.ett.about_course"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:supportsPictureInPicture="true" />
         <activity
-            android:name="com.mycollege.ett.about_course"
+            android:name="com.mycollege.ett.resultActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"

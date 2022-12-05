@@ -46,8 +46,8 @@ public class NotificationActivity extends  AppCompatActivity  {
 	
 	private void initialize(Bundle _savedInstanceState) {
 		
-		linear1 = (LinearLayout) findViewById(R.id.linear1);
-		textview1 = (TextView) findViewById(R.id.textview1);
+		linear1 = findViewById(R.id.linear1);
+		textview1 = findViewById(R.id.textview1);
 	}
 	
 	private void initializeLogic() {
