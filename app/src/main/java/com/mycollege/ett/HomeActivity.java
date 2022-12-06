@@ -866,8 +866,8 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 				Glide.with(getApplicationContext())
 						.load(Uri.parse(img_url))
-						.error(R.drawable.person)
-						.placeholder(R.drawable.person)
+						.error(R.drawable.school2)
+						.placeholder(R.drawable.school2)
 						.thumbnail(0.01f)
 						.into(imageview2);
 

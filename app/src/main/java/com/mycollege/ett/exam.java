@@ -79,7 +79,7 @@ public class exam extends  AppCompatActivity  {
 			@Override
 			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-				Toast.makeText(exam.this, response, Toast.LENGTH_SHORT).show();
+				//Toast.makeText(exam.this, response, Toast.LENGTH_SHORT).show();
 
 				api_map.clear();
 				api_map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
@@ -241,9 +241,18 @@ public class exam extends  AppCompatActivity  {
 
 
 
+result.setOnClickListener(new View.OnClickListener() {
+	@Override
+	public void onClick(View v) {
 
+		Intent i = new Intent();
+		i.setClass(getApplicationContext(),payment.class);
+		startActivity(i);
+
+	}
+});
             name.setText(exam_map.get((int)_position).get("name").toString());
-            semister.setText(exam_map.get((int)_position).get("semistar").toString());
+            semister.setText("Semester "+exam_map.get((int)_position).get("semistar").toString());
             term.setText(exam_map.get((int)_position).get("term").toString());
             exam_date.setText(exam_map.get((int)_position).get("exam_date").toString());
             form_fill_date.setText(exam_map.get((int)_position).get("form_fillup_start_date").toString());

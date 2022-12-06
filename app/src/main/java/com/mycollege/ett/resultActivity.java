@@ -242,7 +242,7 @@ public class resultActivity extends  AppCompatActivity  {
 						//" list " is a String datatype
 
 
-						title.setText(api_map_result.get("Exam").toString());
+						title.setText(api_map_result.get("Exam").toString()+" Result");
 						gpa.setText("GPA :"+api_map_result.get("gpa").toString());
 						tmark.setText("Total mark :"+api_map_result.get("totalmark").toString().replaceAll("[.]0",""));
 
@@ -267,7 +267,7 @@ public class resultActivity extends  AppCompatActivity  {
 							performance.setText(Objects.requireNonNull(result.get(0).get("")).toString());*/
 
 
-							recyclerview1.getLayoutParams().height=(int)(getDip(70)*result.size());
+							recyclerview1.getLayoutParams().height=(int)(getDip(72)*result.size());
 							recyclerview1.setAdapter(new Recyclerview1Adapter(result));
 							recyclerview1.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 							result_linear_layout.setVisibility(View.VISIBLE);
@@ -275,6 +275,7 @@ public class resultActivity extends  AppCompatActivity  {
 
 
 						}else {
+
 							Toast.makeText(resultActivity.this, "No result found.", Toast.LENGTH_LONG).show();
 							result_linear_layout.setVisibility(View.GONE);
 							msg.setVisibility(View.VISIBLE);

@@ -370,19 +370,21 @@
 
 
 						<TextView
+							android:visibility="visible"
 							android:textStyle="bold"
 							android:id="@+id/title_"
-							android:gravity="center"
+							android:gravity="left"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:padding="8dp"
 							android:text="Exam: 1st Term Exam (+2 Arts)"
-							android:textSize="22sp"
+							android:textSize="18sp"
 							android:textColor="#000000"/>
 
 
 						<androidx.recyclerview.widget.RecyclerView
 
+							android:layout_marginTop="10dp"
 							android:id="@+id/recyclerview1"
 							android:layout_width="match_parent"
 							android:layout_height="300dp"

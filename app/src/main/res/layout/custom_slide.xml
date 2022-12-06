@@ -26,9 +26,9 @@
 				android:id="@+id/imageview2"
 				android:focusable="false"
 				android:layout_width="match_parent"
-				android:layout_height="160dp"
+				android:layout_height="200dp"
 				android:src="@drawable/school"
-				android:scaleType="center"/>
+				android:scaleType="fitXY"/>
 			<TextView
 				android:id="@+id/textview1"
 				android:focusable="false"

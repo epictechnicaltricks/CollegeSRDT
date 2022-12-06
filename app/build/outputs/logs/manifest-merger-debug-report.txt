@@ -1,14 +1,19 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\USER\.gradle\caches\transforms-3\f4059abfd9d213dff62bfb5ea58f098c\transformed\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\USER\.gradle\caches\transforms-3\250b0ea8c1c759036867e0079924887f\transformed\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:17:1-42:12
 MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\USER\.gradle\caches\transforms-3\a2c3711dbe0701ba6c4599be3345bb74\transformed\AndroidManifest.xml:2:1-12:12
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:2:1-32:12
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\USER\.gradle\caches\transforms-3\406999c5c56298e0984086a7389a7a27\transformed\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] C:\Users\USER\.gradle\caches\transforms-3\5c69b6eaf4f500f010c226746032ef00\transformed\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:17:1-39:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\60cbdcae47fe056a68deeccfdf1e5abf\transformed\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\a6b58fe8a304a824d9ba15b48d4c556f\transformed\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\3a8ee74913254d5a6a1914d55dbf73c7\transformed\AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\4d04d5f26f3942df3e87eca73bb1341c\transformed\AndroidManifest.xml:2:1-19:12
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\5b89ae68da79348329e35f1422e61082\transformed\AndroidManifest.xml:2:1-9:12
@@ -46,25 +51,27 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\USER\.gradle\caches\
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\USER\.gradle\caches\transforms-3\aa8465075f18fa45c1889811caff3277\transformed\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\USER\.gradle\caches\transforms-3\0610b807a636011aacbcf79d9a40bdb4\transformed\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\USER\.gradle\caches\transforms-3\beeac7a1047acb33f34fa5ee3de25775\transformed\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
-INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
+INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
 	package
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:4:2-29
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-158:12
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:2:1-201:12
 		INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:3:2-60
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:5:2-63
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:9:5-67
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:9:5-67
 	android:name
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:5:19-61
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -72,15 +79,19 @@ ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:6:19-73
 application
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:7:2-157:16
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:7:2-200:16
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\USER\.gradle\caches\transforms-3\f4059abfd9d213dff62bfb5ea58f098c\transformed\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\USER\.gradle\caches\transforms-3\f4059abfd9d213dff62bfb5ea58f098c\transformed\AndroidManifest.xml:22:5-20
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:23:5-40:19
 MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\USER\.gradle\caches\transforms-3\a2c3711dbe0701ba6c4599be3345bb74\transformed\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\USER\.gradle\caches\transforms-3\a2c3711dbe0701ba6c4599be3345bb74\transformed\AndroidManifest.xml:10:5-20
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:11:5-30:19
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:11:5-30:19
 MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] C:\Users\USER\.gradle\caches\transforms-3\5c69b6eaf4f500f010c226746032ef00\transformed\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] C:\Users\USER\.gradle\caches\transforms-3\5c69b6eaf4f500f010c226746032ef00\transformed\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\3a8ee74913254d5a6a1914d55dbf73c7\transformed\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\3a8ee74913254d5a6a1914d55dbf73c7\transformed\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\4d04d5f26f3942df3e87eca73bb1341c\transformed\AndroidManifest.xml:11:5-17:19
@@ -315,48 +326,96 @@ ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:133:4-97
 	android:name
 		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:132:4-34
+activity#com.mycollege.ett.payment
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:140:3-146:42
+	android:screenOrientation
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:146:4-40
+	android:hardwareAccelerated
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:144:4-38
+	android:exported
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:141:4-27
+	android:supportsPictureInPicture
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:145:4-43
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:143:4-97
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:142:4-27
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:139:3-141:59
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:153:3-155:59
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\f06e9e45515f7c0add2be29f364b1403\transformed\AndroidManifest.xml:23:9-25:69
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\f06e9e45515f7c0add2be29f364b1403\transformed\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:141:4-57
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:155:4-57
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:140:4-49
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:154:4-49
 provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:142:3-146:29
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:156:3-160:29
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\4d04d5f26f3942df3e87eca73bb1341c\transformed\AndroidManifest.xml:12:9-16:39
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\4d04d5f26f3942df3e87eca73bb1341c\transformed\AndroidManifest.xml:12:9-16:39
 	android:authorities
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:144:4-64
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:158:4-64
 	android:exported
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:145:4-28
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:159:4-28
 	android:initOrder
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:146:4-27
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:160:4-27
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:143:4-68
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:157:4-68
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:147:3-153:13
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:161:3-169:13
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:33:9-39:19
 	android:exported
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:149:4-28
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:163:4-28
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:148:4-75
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:162:4-75
 meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:150:4-152:72
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:164:4-166:72
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:36:13-38:85
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:36:13-38:85
 	android:value
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:152:5-70
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:166:5-70
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:151:5-97
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:165:5-97
+activity#com.razorpay.CheckoutActivity
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:172:3-183:14
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:18:9-29:20
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:18:9-29:20
+	android:exported
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:175:4-27
+	android:configChanges
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:174:4-74
+	android:theme
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:176:4-40
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:173:4-48
+intent-filter#action:name:android.intent.action.MAIN+data:host:rzp.io+data:scheme:io.rzp
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:177:4-182:20
+data
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:179:5-181:32
+	android:host
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:180:6-27
+	android:scheme
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:181:6-29
+receiver#com.razorpay.RzpTokenReceiver
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:186:3-192:14
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:12:9-16:20
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:12:9-16:20
+	android:exported
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:188:4-28
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:187:4-48
+intent-filter#action:name:rzp.device_token.share
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:189:4-191:20
+action#rzp.device_token.share
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:190:5-53
+	android:name
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:190:13-50
 uses-library#org.apache.http.legacy
-ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:154:3-156:30
+ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:197:3-199:30
 	android:required
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:156:4-28
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:199:4-28
 	android:name
-		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:155:4-41
+		ADDED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml:198:4-41
 uses-sdk
 INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\USER\Downloads\MLU 1ST\MLU\app\src\main\AndroidManifest.xml
@@ -369,8 +428,18 @@ MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\cac
 MERGED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:21:5-44
 MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\USER\.gradle\caches\transforms-3\a2c3711dbe0701ba6c4599be3345bb74\transformed\AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\USER\.gradle\caches\transforms-3\a2c3711dbe0701ba6c4599be3345bb74\transformed\AndroidManifest.xml:6:5-8:41
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:5:5-7:41
+MERGED from [com.razorpay:checkout:1.6.4] C:\Users\USER\.gradle\caches\transforms-3\c4b45a78d274709a1a25bfc3a770b7fc\transformed\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\USER\.gradle\caches\transforms-3\406999c5c56298e0984086a7389a7a27\transformed\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\USER\.gradle\caches\transforms-3\406999c5c56298e0984086a7389a7a27\transformed\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] C:\Users\USER\.gradle\caches\transforms-3\5c69b6eaf4f500f010c226746032ef00\transformed\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] C:\Users\USER\.gradle\caches\transforms-3\5c69b6eaf4f500f010c226746032ef00\transformed\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\60cbdcae47fe056a68deeccfdf1e5abf\transformed\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\60cbdcae47fe056a68deeccfdf1e5abf\transformed\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\a6b58fe8a304a824d9ba15b48d4c556f\transformed\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\a6b58fe8a304a824d9ba15b48d4c556f\transformed\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\3a8ee74913254d5a6a1914d55dbf73c7\transformed\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\3a8ee74913254d5a6a1914d55dbf73c7\transformed\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\4d04d5f26f3942df3e87eca73bb1341c\transformed\AndroidManifest.xml:6:5-8:41
@@ -471,6 +540,24 @@ ADDED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\cach
 		ADDED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:31:13-47
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:19.0.0] C:\Users\USER\.gradle\caches\transforms-3\107046cd464dfd0439b2e1f8580cddfd\transformed\AndroidManifest.xml:25:13-85
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:33:9-36:110
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:35:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\USER\.gradle\caches\transforms-3\fddea8c2211da97cfee78a65da420caf\transformed\AndroidManifest.xml:34:13-89
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\USER\.gradle\caches\transforms-3\3a8ee74913254d5a6a1914d55dbf73c7\transformed\AndroidManifest.xml:23:9-26:75
 	android:exported

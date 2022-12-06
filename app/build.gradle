@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+repositories {
+	mavenCentral()
+}
 
 android {
 	useLibrary 'org.apache.http.legacy'
@@ -17,6 +20,12 @@ android {
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 		}
 	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+
 }
 
 dependencies {
@@ -34,7 +43,17 @@ dependencies {
     //Glide
 	implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-    // table lib
+	//payment gateway razorpay
+	//implementation 'com.razorpay:checkout:1.6.26'
+
+
+	implementation 'com.razorpay:checkout:1.6.4'
+
+	//rezor pay
+	implementation 'com.android.support:multidex:1.0.3'
+
+
+	// table lib
 	//implementation 'com.github.salehyarahmadi:DataTable:v1.0.1'
 
 
