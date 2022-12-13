@@ -53,6 +53,8 @@ dependencies {
 	//razorpay don't remove this this will show an error on payment
 	implementation 'com.android.support:multidex:1.0.3'
 
+	def lottieVersion = "3.4.0"
+	implementation "com.airbnb.android:lottie:$lottieVersion"
 
 	// table lib
 	//implementation 'com.github.salehyarahmadi:DataTable:v1.0.1'

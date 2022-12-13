@@ -79,8 +79,8 @@
 
 							android:background="#fff"
 							android:id="@+id/webview1"
-							android:scaleX="1.1"
-							android:scaleY="1.1"
+							android:scaleX="1.03"
+							android:scaleY="1.03"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"/>
 

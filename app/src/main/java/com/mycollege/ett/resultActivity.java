@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -96,7 +97,7 @@ public class resultActivity extends  AppCompatActivity  {
 
 	private TextView performance;
 
-	ProgressBar prog1;
+	LottieAnimationView prog1;
 	TextView msg;
 
 	@Override
@@ -115,7 +116,7 @@ public class resultActivity extends  AppCompatActivity  {
 		//linear1 = findViewById(R.id.linear1);
 		//textview1 = findViewById(R.id.textview1);
 
-		prog1 = findViewById(R.id.progressbar1);
+		prog1 = findViewById(R.id.progress);
 
 		msg = findViewById(R.id.msg);
 

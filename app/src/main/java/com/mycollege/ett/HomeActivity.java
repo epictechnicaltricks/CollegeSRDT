@@ -3,6 +3,8 @@ package com.mycollege.ett;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.appbar.AppBarLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -132,6 +134,10 @@ public class HomeActivity extends  AppCompatActivity  {
 
 	String name, designation, img_url;
 
+LinearLayout top_layout;
+
+LottieAnimationView animationView;
+
 	String api_mlu = "https://mlu.ac.in/api/v1/";
 
 	@Override
@@ -144,14 +150,33 @@ public class HomeActivity extends  AppCompatActivity  {
 	}
 
 	private void initialize(Bundle _savedInstanceState) {
+		animationView = findViewById(R.id.animationView);
 
+top_layout = findViewById(R.id.top_layout);
+		top_layout.setVisibility(View.GONE);
+
+		new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				/* Create an Intent that will start the MainActivity. */
+				if(Util.isConnected(getApplicationContext())) {
+					animationView.setVisibility(View.GONE);
+					top_layout.setVisibility(View.VISIBLE);
+
+				}else{
+
+					Toast.makeText(HomeActivity.this, "No internet!, Please restart", Toast.LENGTH_LONG).show();
+				}
+
+			}
+		}, 4000);
 
 
 
 		slider_api = new RequestNetwork(this);
         team_api = new RequestNetwork(this);
 
-		CookieManager.getInstance().setAcceptCookie(true);
+
 
 
 		_app_bar = findViewById(R.id._app_bar);
