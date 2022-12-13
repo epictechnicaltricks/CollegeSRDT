@@ -83,8 +83,8 @@ public class apply_online extends  AppCompatActivity  {
 	String list="";
 
 
-	String api_mlu = "https://new.mlu.ac.in/api/v1/";
-	String submit_api = "https://exam.infydemo.in/api/course/inquiry/insert";
+	String api_mlu = "https://mlu.ac.in/api/v1/";
+	String submit_api = "https://student.mlu.ac.in/api/course/inquiry/insert";
 
 	ProgressBar prog;
 

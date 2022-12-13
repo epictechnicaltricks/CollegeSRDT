@@ -174,7 +174,7 @@ public class news extends  AppCompatActivity  {
 	private void request_news(){
 
 		news_api.startRequestNetwork(RequestNetworkController.GET,
-				"https://new.mlu.ac.in/api/v1/news-events",
+				"https://mlu.ac.in/api/v1/news-events",
 				"no tag",
 				_news_request_listener);
 

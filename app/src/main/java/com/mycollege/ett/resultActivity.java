@@ -157,7 +157,7 @@ public class resultActivity extends  AppCompatActivity  {
 					// id
 
 					prog1.setVisibility(View.VISIBLE);
-				req_result_api(exam_id,"20",sh.getString("token", ""));
+				    req_result_api(exam_id,"20",sh.getString("token", ""));
 
 				//String st = 	exam_id+"\n\n"+sh.getString("userId", "")+"\n\n"+sh.getString("token", "");
 
@@ -331,7 +331,9 @@ public class resultActivity extends  AppCompatActivity  {
 */
 
 		result_linear_layout.setVisibility(View.GONE);
+
 		req_exam_api();
+
 		_changeActivityFont("en_med");
 		Glide.with(getApplicationContext())
 				.load(Uri.parse("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"))
@@ -355,19 +357,16 @@ public class resultActivity extends  AppCompatActivity  {
 		authorization.put("Authorization",sh.getString("token", ""));
 		exam_api.setHeaders(authorization);
 		//exam_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
-		exam_api.startRequestNetwork(RequestNetworkController.GET, "https://exam.infydemo.in/api/exam/get", "no tag",_exam_request_listener);
+		exam_api.startRequestNetwork(RequestNetworkController.GET, "https://student.mlu.ac.in/api/exam/get", "no tag",_exam_request_listener);
 
 		//api_map.clear();
 
-
-
-		//exam_api.startRequestNetwork(RequestNetworkController.GET, "https://new.mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
+		//exam_api.startRequestNetwork(RequestNetworkController.GET, "https://mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
 
 	}
 
 
-	private void req_result_api(String _exam_id, String _sid, String _token)
-	{
+	private void req_result_api(String _exam_id, String _sid, String _token) {
 		SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
 		//sh.getString("token", "")
 		result_map.clear();
@@ -382,13 +381,13 @@ public class resultActivity extends  AppCompatActivity  {
 
 		result_api.setHeaders(authorization);
 		result_api.setParams(result_map, RequestNetworkController.REQUEST_PARAM);
-		result_api.startRequestNetwork(RequestNetworkController.POST, "https://exam.infydemo.in/api/user/result", "no tag",_result_request_listener);
+		result_api.startRequestNetwork(RequestNetworkController.POST, "https://student.mlu.ac.in/api/user/result", "no tag",_result_request_listener);
 
 		//api_map.clear();
 
 
 
-		//exam_api.startRequestNetwork(RequestNetworkController.GET, "https://new.mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
+		//exam_api.startRequestNetwork(RequestNetworkController.GET, "https://mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
 
 	}
 
@@ -527,13 +526,10 @@ public class resultActivity extends  AppCompatActivity  {
 				header_top.setVisibility(View.GONE);
 			}
 
-
-
-
-subject.setText(result.get((int)_position).get("Subject").toString());
-mark.setText(result.get((int)_position).get("Obtaine mark").toString());
-grade.setText(result.get((int)_position).get("Grade").toString());
-perfom.setText(result.get((int)_position).get("").toString());
+               subject.setText(result.get((int)_position).get("Subject").toString());
+               mark.setText(result.get((int)_position).get("Obtaine mark").toString());
+               grade.setText(result.get((int)_position).get("Grade").toString());
+               perfom.setText(result.get((int)_position).get("").toString());
 		}
 
 		@Override

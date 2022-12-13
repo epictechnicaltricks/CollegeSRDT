@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
+import android.webkit.CookieManager;
 import android.widget.LinearLayout;
 import android.os.*;
 import android.view.*;
@@ -131,7 +132,7 @@ public class HomeActivity extends  AppCompatActivity  {
 
 	String name, designation, img_url;
 
-	String api_mlu = "https://new.mlu.ac.in/api/v1/";
+	String api_mlu = "https://mlu.ac.in/api/v1/";
 
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -150,6 +151,7 @@ public class HomeActivity extends  AppCompatActivity  {
 		slider_api = new RequestNetwork(this);
         team_api = new RequestNetwork(this);
 
+		CookieManager.getInstance().setAcceptCookie(true);
 
 
 		_app_bar = findViewById(R.id._app_bar);
@@ -234,8 +236,16 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 				Log.d("api slider",response);
 
 
-				listmap = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
-				_slider();
+				try {
+					listmap = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+					_slider();
+				}catch (Exception e)
+				{
+
+					showMessage("API ERROR 243 \n\n"+e);
+
+				}
+
 
 			}
 
@@ -252,17 +262,18 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-				api_map.clear();
-				api_map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
-				// must add resultSet
-				//" list " is a String datatype
-				list = (new Gson()).toJson(api_map.get("data"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+
 
 			   // Log.d("img_obj", list);
 			//listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
 
 				try {
+					api_map.clear();
+					api_map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>(){}.getType());
+					// must add resultSet
+					//" list " is a String datatype
+					list = (new Gson()).toJson(api_map.get("data"), new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
 					listmap2 = new Gson().fromJson(list, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
@@ -298,7 +309,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 
 
 				} catch (Exception ex) {
-					showMessage("303 line "+ex.toString());
+					showMessage("API error 303  "+ex.toString());
 					ex.printStackTrace();
 				}
 
@@ -662,7 +673,7 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 	private void request_team(){
 
 		team_api.startRequestNetwork(RequestNetworkController.GET,
-				"https://new.mlu.ac.in/api/v1/teams",
+				"https://mlu.ac.in/api/v1/teams",
 				"no tag",
 				_team_api_listener);
 
@@ -807,15 +818,18 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			final androidx.cardview.widget.CardView cardview1 = _view.findViewById(R.id.cardview1);
 			final ImageView imageview1 = _view.findViewById(R.id.imageview1);
 
+try {
 
-			Glide.with(getApplicationContext())
-					.load(Uri.parse(Objects.requireNonNull(listmap.get(_position).get("img_url")).toString()))
-					.error(R.drawable.pyramids)
-					.placeholder(R.drawable.pyramids)
-					.thumbnail(0.01f)
-					.into(imageview1);
+	Glide.with(getApplicationContext())
+			.load(Uri.parse(Objects.requireNonNull(listmap.get(_position).get("img_url")).toString()))
+			.error(R.drawable.pyramids)
+			.placeholder(R.drawable.pyramids)
+			.thumbnail(0.01f)
+			.into(imageview1);
 
-
+}catch (Exception e) {
+	showMessage("823 Line \n\n"+ e);
+}
 			_container.addView(_view);
 			return _view;
 		}

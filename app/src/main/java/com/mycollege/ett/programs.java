@@ -158,7 +158,7 @@ public class programs extends  AppCompatActivity  {
 	private void request_course(){
 
 		course_api.startRequestNetwork(RequestNetworkController.GET,
-				"https://new.mlu.ac.in/api/v1/courses",
+				"https://mlu.ac.in/api/v1/courses",
 				"no tag",
 				_course_api_listener);
 

@@ -203,9 +203,9 @@
 								android:id="@+id/spinner_gender"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								android:layout_margin="4dp"
+								android:layout_margin="0dp"
 								android:layout_marginBottom="8dp"
-								android:padding="8dp"
+								android:padding="0dp"
 								android:spinnerMode="dropdown" />
 
 							<ListView
@@ -233,11 +233,11 @@
 							<Spinner
 
 								android:layout_marginBottom="8dp"
-								android:layout_margin="4dp"
+								android:layout_margin="0dp"
 								android:id="@+id/spinner_religion"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								android:padding="8dp"
+								android:padding="0dp"
 								android:spinnerMode="dropdown"/>
 
 
@@ -268,11 +268,11 @@
 							<Spinner
 
 								android:layout_marginBottom="8dp"
-								android:layout_margin="4dp"
+								android:layout_margin="0dp"
 								android:id="@+id/spinner_nationality"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								android:padding="8dp"
+								android:padding="0dp"
 								android:spinnerMode="dropdown"/>
 
 
@@ -301,11 +301,11 @@
 							<Spinner
 
 								android:layout_marginBottom="8dp"
-								android:layout_margin="4dp"
+								android:layout_margin="0dp"
 								android:id="@+id/spinner_state"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								android:padding="8dp"
+								android:padding="0dp"
 								android:spinnerMode="dropdown"/>
 
 
@@ -335,11 +335,11 @@
 							<Spinner
 
 								android:layout_marginBottom="8dp"
-								android:layout_margin="4dp"
+								android:layout_margin="0dp"
 								android:id="@+id/spinner_city"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								android:padding="8dp"
+								android:padding="0dp"
 								android:spinnerMode="dropdown"/>
 
 
@@ -371,11 +371,11 @@
 							<Spinner
 
 								android:layout_marginBottom="8dp"
-								android:layout_margin="4dp"
+								android:layout_margin="0dp"
 								android:id="@+id/spinner_program"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								android:padding="8dp"
+								android:padding="0dp"
 								android:spinnerMode="dropdown"/>
 
 
@@ -410,7 +410,7 @@
 								android:id="@+id/spinner_qualification"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								android:padding="8dp"
+								android:padding="0dp"
 								android:spinnerMode="dropdown"/>
 
 

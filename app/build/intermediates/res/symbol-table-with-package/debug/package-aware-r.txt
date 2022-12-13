@@ -1302,6 +1302,7 @@ id listview1
 id listview_blg
 id listview_city
 id listview_class
+id listview_college
 id listview_dept
 id listview_exam_
 id listview_gender
@@ -1417,6 +1418,7 @@ id spinner1
 id spinner_blg
 id spinner_city
 id spinner_class_name
+id spinner_college_name
 id spinner_department
 id spinner_exam
 id spinner_gender
@@ -1427,6 +1429,7 @@ id spinner_religion
 id spinner_state
 id spinner_year
 id split_action_bar
+id spn_ln0
 id spn_ln1
 id spn_ln2
 id spn_ln3
@@ -1471,6 +1474,7 @@ id text_clar445643
 id text_clas_
 id text_class_n_
 id text_class_name_
+id text_college_name_
 id text_department_
 id text_dob
 id text_father_

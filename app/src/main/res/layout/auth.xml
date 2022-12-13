@@ -382,6 +382,45 @@
 					<TextView
 						android:layout_marginStart="7dp"
 						android:textStyle="bold"
+						android:id="@+id/text_college_name_"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="35dp"
+						android:text="Select College"
+						android:textSize="14sp"
+						android:textColor="#737272"/>
+
+					<Spinner
+
+
+						android:id="@+id/spinner_college_name"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:padding="0dp"
+						android:spinnerMode="dropdown"/>
+
+					<LinearLayout
+						android:id="@+id/spn_ln0"
+						android:paddingBottom="12dp"
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:padding="8dp"
+						android:background="#EEEEEE"
+						android:orientation="horizontal"/>
+
+
+					<ListView
+						android:visibility="gone"
+						android:layout_width="match_parent"
+						android:layout_height="0dp"
+						android:id="@+id/listview_college"/>
+
+
+
+
+					<TextView
+						android:layout_marginStart="7dp"
+						android:textStyle="bold"
 						android:id="@+id/text_class_name_"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
@@ -396,7 +435,7 @@
 						android:id="@+id/spinner_class_name"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:padding="8dp"
+						android:padding="0dp"
 						android:spinnerMode="dropdown"/>
 
 					<LinearLayout
@@ -427,7 +466,7 @@
 						android:id="@+id/spinner_department"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:padding="8dp"
+						android:padding="0dp"
 						android:spinnerMode="dropdown"/>
 
 					<LinearLayout
@@ -456,7 +495,7 @@
 						android:id="@+id/spinner_year"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:padding="8dp"
+						android:padding="0dp"
 						android:spinnerMode="dropdown"/>
 
 
@@ -576,7 +615,7 @@
 						android:id="@+id/spinner_blg"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:padding="8dp"
+						android:padding="0dp"
 						android:spinnerMode="dropdown"/>
 
 					<LinearLayout

@@ -262,7 +262,7 @@ public class gallery extends  AppCompatActivity  {
 
 	public void _request_api (final String _method) {
 
-		gallery_api.startRequestNetwork(RequestNetworkController.GET, "https://new.mlu.ac.in/api/v1/"+_method, "no tag", _gallery_request_listener);
+		gallery_api.startRequestNetwork(RequestNetworkController.GET, "https://mlu.ac.in/api/v1/"+_method, "no tag", _gallery_request_listener);
 
 
 	}

@@ -16,7 +16,6 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -40,17 +39,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -98,8 +94,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	private ImageView imageview2;
 	private EditText edittext3;
 
-	private RequestNetwork retweet;
-	private RequestNetwork.RequestListener _retweet_request_listener;
+
 	private TimerTask timer;
 	private final Intent in = new Intent();
 	private TimerTask scroll_time;
@@ -112,7 +107,6 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 	private RequestNetwork class_api;
-
 	private RequestNetwork.RequestListener _class_api_listener;
 
 
@@ -128,6 +122,9 @@ public class AuthActivity extends  AppCompatActivity  {
 	private RequestNetwork.RequestListener _slider_api_listener;
 
 
+	private  RequestNetwork college_api;
+	private RequestNetwork.RequestListener _college_api_listener;
+
 
 	private HashMap<String, Object> api_map = new HashMap<>();
 
@@ -142,9 +139,9 @@ public class AuthActivity extends  AppCompatActivity  {
 	private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
 	private long mBackPressed;
 
-	private Spinner spinner_class_name,spinner_department,spinner_year,spinner_blg;
+	private Spinner spinner_class_name,spinner_department,spinner_year,spinner_blg, spinner_college;
 
-	LinearLayout linear_mname, linear_name, linear_fname, linear_addr, linear_phone, linear_roll,spn_ln1,spn_ln2,spn_ln3,spn_ln4;
+	LinearLayout linear_mname, linear_name, linear_fname, linear_addr, linear_phone, linear_roll,spn_ln0,spn_ln1,spn_ln2,spn_ln3,spn_ln4;
 
 	EditText fname, mname, name, addr, roll,phone_edit;
 
@@ -154,12 +151,13 @@ public class AuthActivity extends  AppCompatActivity  {
 			text_year_,
 			text_blg_,
 			dob_text,
-	dob_value,
+	        dob_value,
 			fname_text,
 			mname_text,
 			name_text,
 			addr_text,
-			roll_text;
+			roll_text,
+	        college_text;
 
 
 	ArrayList<HashMap<String, Object>> class_list = new ArrayList<>();
@@ -170,16 +168,21 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	ArrayList<HashMap<String, Object>> blg_list = new ArrayList<>();
 
+	ArrayList<HashMap<String, Object>> college_list = new ArrayList<>();
+
+
 	private ListView listview1;
 	private ListView listview2;
 	private ListView listview3;
 	private ListView listview4;
+	private ListView listView5;
 
 
 	String class_name,class_id="";
 	String year_name,year_id="";
 	String dept_name,dept_id="";
 	String blg_name="";
+	String college_id;
 
 
 	///////////////////////////////////////////////////////////
@@ -196,11 +199,11 @@ public class AuthActivity extends  AppCompatActivity  {
 		╚═╝░░╚═╝╚═╝░░░░░╚═╝      ╚══════╝╚═╝╚═╝░░╚══╝╚═╝░░╚═╝
 	**/
 
-	   String api = "https://exam.infydemo.in/api/";
-	   String api_mlu = "https://new.mlu.ac.in/api/v1/";
+	   String api = "https://student.mlu.ac.in/api/";
+	   String api_mlu = "https://mlu.ac.in/api/v1/";
 
 	   //https://nft.digitallinkcard.xyz/api/
-	   //https://exam.infydemo.in/api/
+	   //https://student.mlu.ac.in/api/
 
 	////////////////////////////////////////////////
 
@@ -224,17 +227,25 @@ public class AuthActivity extends  AppCompatActivity  {
   department_api = new RequestNetwork( this);
   year_api = new RequestNetwork(this);
   slider_api = new RequestNetwork(this);
+  college_api = new RequestNetwork(this);
 
 		spinner_class_name = findViewById(R.id.spinner_class_name);
 		spinner_department = findViewById(R.id.spinner_department);
 		spinner_year = findViewById(R.id.spinner_year);
 		spinner_blg = findViewById(R.id.spinner_blg);
+		spinner_college = findViewById(R.id.spinner_college_name);
 
 		listview1 =  findViewById(R.id.listview_class);
 		listview2 =  findViewById(R.id.listview_dept);
 		listview3 =  findViewById(R.id.listview_year);
 		listview4 =  findViewById(R.id.listview_blg);
+		listView5 = findViewById(R.id.listview_college);
+
 		phone_edit = findViewById(R.id.phone_edit);
+
+
+
+
 
 
 
@@ -246,7 +257,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				if(!Objects.requireNonNull(class_list.get(_position).get("id")).toString().equals("")){
 
 					class_id = Objects.requireNonNull(class_list.get(_position).get("id")).toString();
-					showMessage(class_id);
+					//showMessage(class_id);
 				}
 
 			}
@@ -266,7 +277,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				if(!Objects.requireNonNull(department_list.get(_position).get("id")).toString().equals("")){
 
 					dept_id = Objects.requireNonNull(department_list.get(_position).get("id")).toString();
-					showMessage(dept_id);
+					//showMessage(dept_id);
 				}
 
 			}
@@ -287,7 +298,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				if(!Objects.requireNonNull(year_list.get(_position).get("id")).toString().equals("")){
 
 					year_id = Objects.requireNonNull(year_list.get(_position).get("id")).toString();
-					showMessage(year_id);
+					//showMessage(year_id);
 				}
 
 			}
@@ -308,7 +319,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				if(!Objects.requireNonNull(blg_list.get(_position).get("name")).toString().equals("Select blood group..")){
 
 					blg_name = Objects.requireNonNull(blg_list.get(_position).get("name")).toString();
-					showMessage(blg_name);
+					//showMessage(blg_name);
 				}
 
 			}
@@ -319,6 +330,22 @@ public class AuthActivity extends  AppCompatActivity  {
 			}
 		});
 
+		spinner_college.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
+
+				if(!Objects.requireNonNull(college_list.get(_position).get("name")).toString().equals("")){
+
+					college_id = Objects.requireNonNull(college_list.get(_position).get("id")).toString();
+					//showMessage("College selected");
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
 
 
 
@@ -539,6 +566,34 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 
+		_college_api_listener = new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+				Log.d("college_api",response);
+				try {
+					college_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
+					// refresh the list or recycle or grid
+
+
+					listView5.setAdapter(new Listview5Adapter(college_list));
+					((BaseAdapter)listView5.getAdapter()).notifyDataSetChanged();
+					spinner_college.setAdapter(new Listview3Adapter(college_list));
+
+
+				}catch (Exception e){
+
+					showMessage(e.toString());
+				}
+
+
+			}
+
+			@Override
+			public void onErrorResponse(String tag, String message) {
+
+			}
+		};
 
 
 
@@ -558,6 +613,9 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 
+
+
+		spn_ln0 = findViewById(R.id.spn_ln0);
 		spn_ln1 = findViewById(R.id.spn_ln1);
 		spn_ln2 = findViewById(R.id.spn_ln2);
 		spn_ln3 = findViewById(R.id.spn_ln3);
@@ -581,6 +639,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				name_text = findViewById(R.id.stu_name); // textview
 				addr_text = findViewById(R.id.text_addr); // textview
 				roll_text = findViewById(R.id.text_roll_); // textview
+		  college_text =  findViewById(R.id.text_college_name_);
 
 		        text_class_name_ = findViewById(R.id.text_class_name_);
 				text_department_ = findViewById(R.id.text_department_);
@@ -619,10 +678,6 @@ public class AuthActivity extends  AppCompatActivity  {
 		textview7 = findViewById(R.id.textview7);
 		imageview2 = findViewById(R.id.imageview2);
 		edittext3 = findViewById(R.id.edittext3);
-
-
-
-		retweet = new RequestNetwork(this);
 
 
 		login_api = new RequestNetwork(this);
@@ -1006,6 +1061,7 @@ public class AuthActivity extends  AppCompatActivity  {
 		request_department_API();
 		request_year_API();
 		request_slider_API();
+		college_api_request();
 		blood_gp();
 
 
@@ -1014,14 +1070,24 @@ public class AuthActivity extends  AppCompatActivity  {
 		linear10.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)100, 0xFFFFFFFF));
 	}
 
+	///////////////////////////////////////////////////////////////////////
+
+    /*	ALL REQUEST API */
 
 	private void request_class_API(){
-
 		class_api.startRequestNetwork(RequestNetworkController.GET,
 				api+"get/class",
 				"no tag",
 				_class_api_listener);
 
+	}
+
+	private void college_api_request(){
+
+		college_api.startRequestNetwork(RequestNetworkController.GET,
+				api+"get/class",
+				"no tag",
+				_college_api_listener);
 	}
 
 
@@ -1031,9 +1097,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				api+"get/department",
 				"no tag",
 				_department_api_listener);
-
 	}
-
 
 
 
@@ -1311,13 +1375,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	/////////////////////////////////////////////
 
-
-
 	///Spinner adpters
-
-
-
-
 
 	public class Listview1Adapter extends BaseAdapter {
 		ArrayList<HashMap<String, Object>> _data;
@@ -1489,11 +1547,45 @@ public class AuthActivity extends  AppCompatActivity  {
 	}
 
 
+	public class Listview5Adapter extends BaseAdapter {
+		ArrayList<HashMap<String, Object>> _data;
+		public Listview5Adapter(ArrayList<HashMap<String, Object>> _arr) {
+			_data = _arr;
+		}
+
+		@Override
+		public int getCount() {
+			return _data.size();
+		}
+
+		@Override
+		public HashMap<String, Object> getItem(int _index) {
+			return _data.get(_index);
+		}
+
+		@Override
+		public long getItemId(int _index) {
+			return _index;
+		}
+		@Override
+		public View getView(final int _position, View _v, ViewGroup _container) {
+			LayoutInflater _inflater = (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View _view = _v;
+			if (_view == null) {
+				_view = _inflater.inflate(R.layout.clg_list_cus, null);
+			}
+
+			final TextView textview1 = (TextView) _view.findViewById(R.id.textview1);
+
+			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+
+			textview1.setText(Objects.requireNonNull(college_list.get(_position).get("year")).toString());
 
 
 
-
-
+			return _view;
+		}
+	}
 
 
 	////////////////////////
@@ -2097,6 +2189,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				 name_text.setVisibility(View.GONE);
 				 addr_text.setVisibility(View.GONE);
 				 roll_text.setVisibility(View.GONE);
+				 college_text.setVisibility(View.GONE);
 
 		        fname.setVisibility(View.GONE);
 				mname.setVisibility(View.GONE);
@@ -2104,10 +2197,12 @@ public class AuthActivity extends  AppCompatActivity  {
 				addr.setVisibility(View.GONE);
 				roll.setVisibility(View.GONE);
 
+
 				spinner_class_name.setVisibility(View.GONE);
 				spinner_department.setVisibility(View.GONE);
 	         	spinner_year.setVisibility(View.GONE);
 				spinner_blg.setVisibility(View.GONE);
+				spinner_college.setVisibility(View.GONE);
 
 
 		        linear_mname.setVisibility(View.GONE);
@@ -2117,6 +2212,7 @@ public class AuthActivity extends  AppCompatActivity  {
 				linear_phone.setVisibility(View.GONE);
 				linear_roll.setVisibility(View.GONE);
 
+
 		text_class_name_.setVisibility(View.GONE);
 		text_department_.setVisibility(View.GONE);
 		text_year_ .setVisibility(View.GONE);
@@ -2125,6 +2221,7 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 
+		spn_ln0.setVisibility(View.GONE);
 		spn_ln1.setVisibility(View.GONE);
 		spn_ln2.setVisibility(View.GONE);
 		spn_ln3.setVisibility(View.GONE);
@@ -2140,6 +2237,8 @@ public class AuthActivity extends  AppCompatActivity  {
 		 name_text.setVisibility(View.VISIBLE);
 		 addr_text.setVisibility(View.VISIBLE);
 		 roll_text.setVisibility(View.VISIBLE);
+		 college_text.setVisibility(View.VISIBLE);
+
 
 		fname.setVisibility(View.VISIBLE);
 		mname.setVisibility(View.VISIBLE);
@@ -2147,10 +2246,12 @@ public class AuthActivity extends  AppCompatActivity  {
 		 addr.setVisibility(View.VISIBLE);
 		 roll.setVisibility(View.VISIBLE);
 
+
 		spinner_class_name.setVisibility(View.VISIBLE);
 		spinner_department.setVisibility(View.VISIBLE);
 		      spinner_year.setVisibility(View.VISIBLE);
 		       spinner_blg.setVisibility(View.VISIBLE);
+		   spinner_college.setVisibility(View.VISIBLE);
 
 
 		 linear_mname.setVisibility(View.VISIBLE);
@@ -2167,6 +2268,7 @@ public class AuthActivity extends  AppCompatActivity  {
 		      dob_value .setVisibility(View.VISIBLE);
 
 
+		spn_ln0.setVisibility(View.VISIBLE);
 		spn_ln1.setVisibility(View.VISIBLE);
 		spn_ln2.setVisibility(View.VISIBLE);
 		spn_ln3.setVisibility(View.VISIBLE);

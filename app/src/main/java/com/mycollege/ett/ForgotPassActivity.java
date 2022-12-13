@@ -73,7 +73,7 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 
 	private RequestNetwork register_api;
 	private RequestNetwork.RequestListener _register_api_listener;
-	String register_api_url =  "https://exam.infydemo.in/api/register?";
+	String register_api_url =  "https://student.mlu.ac.in/api/register?";
 
 
 	@Override

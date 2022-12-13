@@ -143,13 +143,13 @@ public class exam extends  AppCompatActivity  {
 		authorization.put("Authorization","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwicm9sZSI6IjQiLCJyb2xlVGV4dCI6IlN0dWRlbnQiLCJuYW1lIjoiRGViZW5kcmEgS3VtYXIgU2Fob28iLCJsYXN0TG9naW4iOiIyMDIyLTExLTI0IDA0OjQ1OjQ4IiwiaXNMb2dnZWRJbiI6dHJ1ZSwiQVBJX1RJTUUiOjE2Njk5ODE0MzJ9.GnZXnMKufGFEx9GHklORreKyIzenyg9KtuH0Q15bMU4");
 		exam_api.setHeaders(authorization);
 		//exam_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
-		exam_api.startRequestNetwork(RequestNetworkController.GET, "https://exam.infydemo.in/api/exam/get", "no tag",_exam_request_listener);
+		exam_api.startRequestNetwork(RequestNetworkController.GET, "https://student.mlu.ac.in/api/exam/get", "no tag",_exam_request_listener);
 
 		//api_map.clear();
 
 
 
-		//exam_api.startRequestNetwork(RequestNetworkController.GET, "https://new.mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
+		//exam_api.startRequestNetwork(RequestNetworkController.GET, "https://mlu.ac.in/api/v1/"+_method, "no tag", _exam_request_listener);
 
 	}
 

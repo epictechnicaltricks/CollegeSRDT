@@ -47,9 +47,10 @@ dependencies {
 	//implementation 'com.razorpay:checkout:1.6.26'
 
 
+	// razorpay checkout
 	implementation 'com.razorpay:checkout:1.6.4'
 
-	//rezor pay
+	//razorpay don't remove this this will show an error on payment
 	implementation 'com.android.support:multidex:1.0.3'
 
 
