@@ -40,7 +40,7 @@ dependencies {
 
 	implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
-    //Glide
+    //Glide image lib
 	implementation 'com.github.bumptech.glide:glide:4.12.0'
 
 	//payment gateway razorpay
@@ -50,9 +50,10 @@ dependencies {
 	// razorpay checkout
 	implementation 'com.razorpay:checkout:1.6.4'
 
-	//razorpay don't remove this this will show an error on payment
+	//razorpay don't remove this this will give an error on compile
 	implementation 'com.android.support:multidex:1.0.3'
 
+	// lottie animations
 	def lottieVersion = "3.4.0"
 	implementation "com.airbnb.android:lottie:$lottieVersion"
 
