@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -133,6 +134,16 @@ public class Util {
 						toast.show();
 				}
 		}
+
+
+	 public static String Generate_Bill_no() {
+
+		Calendar c = Calendar.getInstance();
+		long time = c.getTimeInMillis();
+		long random = Util.getRandom(1000,9999);
+
+		return time + "" + random;
+	}
 
 		public static boolean isConnected(Context a) {
 				ConnectivityManager connectivityManager = (android.net.ConnectivityManager) 

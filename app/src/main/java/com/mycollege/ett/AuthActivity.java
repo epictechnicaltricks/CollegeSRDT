@@ -334,11 +334,11 @@ public class AuthActivity extends  AppCompatActivity  {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
 
-				if(!Objects.requireNonNull(college_list.get(_position).get("name")).toString().equals("")){
+				//if(!Objects.requireNonNull(college_list.get(_position).get("college_name")).toString().equals("")){
 
 					college_id = Objects.requireNonNull(college_list.get(_position).get("id")).toString();
 					//showMessage("College selected");
-				}
+				//}
 			}
 
 			@Override
@@ -362,6 +362,8 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 		  try {
+
+			  class_list.clear();
 
 			  class_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 			  // refresh the list or recycle or grid	  Log.d("class_Api",list);
@@ -404,6 +406,8 @@ public class AuthActivity extends  AppCompatActivity  {
 		  Log.d("api depart",response);
 
 		  try {
+			  department_list.clear();
+
 			  department_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 			  // refresh the list or recycle or grid
 
@@ -435,6 +439,9 @@ public class AuthActivity extends  AppCompatActivity  {
 		  Log.d("api year",response);
 
 		  try {
+
+			  year_list.clear();
+
 			  year_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 			  // refresh the list or recycle or grid
 
@@ -466,7 +473,7 @@ public class AuthActivity extends  AppCompatActivity  {
 	  public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 		  Log.d("api slider",response);
 
-
+         listmap.clear();
 		  listmap = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 
 		  _slider();
@@ -572,18 +579,20 @@ public class AuthActivity extends  AppCompatActivity  {
 
 				Log.d("college_api",response);
 				try {
+					college_list.clear();
 					college_list = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 					// refresh the list or recycle or grid
 
+					//Toast.makeText(AuthActivity.this, response, Toast.LENGTH_SHORT).show();
 
 					listView5.setAdapter(new Listview5Adapter(college_list));
 					((BaseAdapter)listView5.getAdapter()).notifyDataSetChanged();
-					spinner_college.setAdapter(new Listview3Adapter(college_list));
-
+					spinner_college.setAdapter(new
+							Listview5Adapter(college_list));
 
 				}catch (Exception e){
 
-					showMessage(e.toString());
+					showMessage("College API error\n"+e.toString());
 				}
 
 
@@ -1084,8 +1093,13 @@ public class AuthActivity extends  AppCompatActivity  {
 
 	private void college_api_request(){
 
-		college_api.startRequestNetwork(RequestNetworkController.GET,
+		/*college_api.startRequestNetwork(RequestNetworkController.GET,
 				api+"get/class",
+				"no tag",
+				_college_api_listener);*/
+
+		college_api.startRequestNetwork(RequestNetworkController.GET,
+				"https://nft.digitallinkcard.xyz/api/get/college",
 				"no tag",
 				_college_api_listener);
 	}
@@ -1579,7 +1593,19 @@ public class AuthActivity extends  AppCompatActivity  {
 
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
 
-			textview1.setText(Objects.requireNonNull(college_list.get(_position).get("year")).toString());
+
+			try {
+				textview1.setText(Objects.requireNonNull(college_list.get(_position).get("id")).toString());
+
+
+				//textview1.setText(Objects.requireNonNull(college_list.get(_position).get("college_name")).toString());
+
+			}catch (Exception e){
+
+
+				showMessage("college api error\n"+e);
+			}
+
 
 
 

@@ -777,10 +777,12 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 					@Override
 					public void run() {
 						viewpager1.setCurrentItem((int)count);
-						count++;
+
 						if (count == listmap.size()) {
 							count = 0;
 						}
+
+						++count;
 					}
 				});
 			}
