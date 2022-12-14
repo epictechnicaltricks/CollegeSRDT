@@ -334,11 +334,17 @@ public class AuthActivity extends  AppCompatActivity  {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int _position, long id) {
 
-				//if(!Objects.requireNonNull(college_list.get(_position).get("college_name")).toString().equals("")){
+				try {
+					if(!Objects.requireNonNull(college_list.get(_position).get("college_name")).toString().equals("")){
 
-					college_id = Objects.requireNonNull(college_list.get(_position).get("id")).toString();
-					//showMessage("College selected");
-				//}
+						college_id = Objects.requireNonNull(college_list.get(_position).get("id")).toString();
+						showMessage(college_list.get(_position).get("id").toString());
+					}
+				}catch (Exception e)
+				{
+
+				}
+
 			}
 
 			@Override
@@ -856,14 +862,15 @@ public class AuthActivity extends  AppCompatActivity  {
 										  ,email.getText().toString()
 										  ,pass.getText().toString()
 										  ,phone_edit.getText().toString()
-										  ,class_id
-										  ,dept_id
+										  ,class_id.trim()
+										  ,dept_id.trim()
 										  ,roll.getText().toString()
-										  ,year_id
+										  ,year_id.trim()
 										  ,fname.getText().toString()
 										  ,mname.getText().toString()
-										  ,blg_name
+										  ,blg_name.trim()
 										  ,dob_value.getText().toString()
+										  ,college_id.trim()
 										  ,addr.getText().toString());
 
 
@@ -1197,7 +1204,7 @@ public class AuthActivity extends  AppCompatActivity  {
 									  String _roll,
 									  String _fname, String _mname,
 									  String _blg, String _dob,
-									  String _addr)
+									  String _addr, String _collage_id)
 
 	{
 		linear7.setVisibility(View.VISIBLE);
@@ -1219,6 +1226,7 @@ public class AuthActivity extends  AppCompatActivity  {
 		api_map2.put("field_3", _blg.trim());
 		api_map2.put("field_4", _dob.trim());
 		api_map2.put("field_5", _addr.trim());
+		api_map2.put("field_6", _collage_id.trim());
 
 		register_api.setParams(api_map2, RequestNetworkController.REQUEST_PARAM);
 		register_api.startRequestNetwork(RequestNetworkController.POST, api+"register?", "no tag", _register_api_listener);
@@ -1595,10 +1603,15 @@ public class AuthActivity extends  AppCompatActivity  {
 
 
 			try {
-				textview1.setText(Objects.requireNonNull(college_list.get(_position).get("id")).toString());
+				//textview1.setText(Objects.requireNonNull(college_list.get(_position).get("id")).toString());
 
+try{
+	textview1.setText(Objects.requireNonNull(college_list.get(_position).get("college_name")).toString());
 
-				//textview1.setText(Objects.requireNonNull(college_list.get(_position).get("college_name")).toString());
+}catch (Exception e)
+{
+
+}
 
 			}catch (Exception e){
 

@@ -98,8 +98,11 @@ android/support/multidex/R.java
  android.support.multidex.R
 androidx/savedstate/R.java
  androidx.savedstate.R
-com/mycollege/ett/FileUtil.java
- com.mycollege.ett.FileUtil
+com/mycollege/ett/MainActivity.java
+ com.mycollege.ett.MainActivity
+ com.mycollege.ett.MainActivity$1
+ com.mycollege.ett.MainActivity$2
+ com.mycollege.ett.MainActivity$2$1
 androidx/asynclayoutinflater/R.java
  androidx.asynclayoutinflater.R
  androidx.asynclayoutinflater.R$attr
@@ -268,18 +271,39 @@ com/bumptech/glide/gifdecoder/R.java
 com/mycollege/ett/RequestNetwork.java
  com.mycollege.ett.RequestNetwork
  com.mycollege.ett.RequestNetwork$RequestListener
-androidx/vectordrawable/animated/R.java
- androidx.vectordrawable.animated.R
- androidx.vectordrawable.animated.R$attr
- androidx.vectordrawable.animated.R$color
- androidx.vectordrawable.animated.R$dimen
- androidx.vectordrawable.animated.R$drawable
- androidx.vectordrawable.animated.R$id
- androidx.vectordrawable.animated.R$integer
- androidx.vectordrawable.animated.R$layout
- androidx.vectordrawable.animated.R$string
- androidx.vectordrawable.animated.R$style
- androidx.vectordrawable.animated.R$styleable
+com/mycollege/ett/HomeActivity.java
+ com.mycollege.ett.HomeActivity
+ com.mycollege.ett.HomeActivity$1
+ com.mycollege.ett.HomeActivity$10
+ com.mycollege.ett.HomeActivity$11
+ com.mycollege.ett.HomeActivity$12
+ com.mycollege.ett.HomeActivity$13
+ com.mycollege.ett.HomeActivity$14
+ com.mycollege.ett.HomeActivity$15
+ com.mycollege.ett.HomeActivity$16
+ com.mycollege.ett.HomeActivity$17
+ com.mycollege.ett.HomeActivity$18
+ com.mycollege.ett.HomeActivity$19
+ com.mycollege.ett.HomeActivity$2
+ com.mycollege.ett.HomeActivity$20
+ com.mycollege.ett.HomeActivity$21
+ com.mycollege.ett.HomeActivity$22
+ com.mycollege.ett.HomeActivity$22$1
+ com.mycollege.ett.HomeActivity$3
+ com.mycollege.ett.HomeActivity$3$1
+ com.mycollege.ett.HomeActivity$4
+ com.mycollege.ett.HomeActivity$4$1
+ com.mycollege.ett.HomeActivity$4$2
+ com.mycollege.ett.HomeActivity$4$3
+ com.mycollege.ett.HomeActivity$5
+ com.mycollege.ett.HomeActivity$6
+ com.mycollege.ett.HomeActivity$7
+ com.mycollege.ett.HomeActivity$8
+ com.mycollege.ett.HomeActivity$9
+ com.mycollege.ett.HomeActivity$Recyclerview1Adapter
+ com.mycollege.ett.HomeActivity$Recyclerview1Adapter$1
+ com.mycollege.ett.HomeActivity$Recyclerview1Adapter$ViewHolder
+ com.mycollege.ett.HomeActivity$Viewpager1Adapter
 androidx/cursoradapter/R.java
  androidx.cursoradapter.R
 com/mycollege/ett/news.java
@@ -293,21 +317,10 @@ com/mycollege/ett/news.java
  com.mycollege.ett.news$Recyclerview1Adapter$2
  com.mycollege.ett.news$Recyclerview1Adapter$2$1
  com.mycollege.ett.news$Recyclerview1Adapter$ViewHolder
-com/razorpay/R.java
- com.razorpay.R
- com.razorpay.R$anim
- com.razorpay.R$attr
- com.razorpay.R$bool
- com.razorpay.R$color
- com.razorpay.R$dimen
- com.razorpay.R$drawable
- com.razorpay.R$id
- com.razorpay.R$integer
- com.razorpay.R$layout
- com.razorpay.R$raw
- com.razorpay.R$string
- com.razorpay.R$style
- com.razorpay.R$styleable
+com/mycollege/ett/ProfileActivity.java
+ com.mycollege.ett.ProfileActivity
+ com.mycollege.ett.ProfileActivity$1
+ com.mycollege.ett.ProfileActivity$Listview1Adapter
 androidx/cardview/R.java
  androidx.cardview.R
  androidx.cardview.R$attr
@@ -518,48 +531,21 @@ com/airbnb/lottie/R.java
  com.airbnb.lottie.R$styleable
 com/google/firebase/auth/internal/R.java
  com.google.firebase.auth.internal.R
-com/mycollege/ett/HomeActivity.java
- com.mycollege.ett.HomeActivity
- com.mycollege.ett.HomeActivity$1
- com.mycollege.ett.HomeActivity$10
- com.mycollege.ett.HomeActivity$11
- com.mycollege.ett.HomeActivity$12
- com.mycollege.ett.HomeActivity$13
- com.mycollege.ett.HomeActivity$14
- com.mycollege.ett.HomeActivity$15
- com.mycollege.ett.HomeActivity$16
- com.mycollege.ett.HomeActivity$17
- com.mycollege.ett.HomeActivity$18
- com.mycollege.ett.HomeActivity$19
- com.mycollege.ett.HomeActivity$2
- com.mycollege.ett.HomeActivity$20
- com.mycollege.ett.HomeActivity$21
- com.mycollege.ett.HomeActivity$22
- com.mycollege.ett.HomeActivity$22$1
- com.mycollege.ett.HomeActivity$3
- com.mycollege.ett.HomeActivity$3$1
- com.mycollege.ett.HomeActivity$4
- com.mycollege.ett.HomeActivity$4$1
- com.mycollege.ett.HomeActivity$4$2
- com.mycollege.ett.HomeActivity$4$3
- com.mycollege.ett.HomeActivity$5
- com.mycollege.ett.HomeActivity$6
- com.mycollege.ett.HomeActivity$7
- com.mycollege.ett.HomeActivity$8
- com.mycollege.ett.HomeActivity$9
- com.mycollege.ett.HomeActivity$Recyclerview1Adapter
- com.mycollege.ett.HomeActivity$Recyclerview1Adapter$1
- com.mycollege.ett.HomeActivity$Recyclerview1Adapter$ViewHolder
- com.mycollege.ett.HomeActivity$Viewpager1Adapter
-com/mycollege/ett/MainActivity.java
- com.mycollege.ett.MainActivity
- com.mycollege.ett.MainActivity$1
- com.mycollege.ett.MainActivity$2
- com.mycollege.ett.MainActivity$2$1
-com/mycollege/ett/ProfileActivity.java
- com.mycollege.ett.ProfileActivity
- com.mycollege.ett.ProfileActivity$1
- com.mycollege.ett.ProfileActivity$Listview1Adapter
+com/razorpay/R.java
+ com.razorpay.R
+ com.razorpay.R$anim
+ com.razorpay.R$attr
+ com.razorpay.R$bool
+ com.razorpay.R$color
+ com.razorpay.R$dimen
+ com.razorpay.R$drawable
+ com.razorpay.R$id
+ com.razorpay.R$integer
+ com.razorpay.R$layout
+ com.razorpay.R$raw
+ com.razorpay.R$string
+ com.razorpay.R$style
+ com.razorpay.R$styleable
 com/mycollege/ett/AuthActivity.java
  com.mycollege.ett.AuthActivity
  com.mycollege.ett.AuthActivity$1
@@ -608,3 +594,17 @@ com/mycollege/ett/AuthActivity.java
  com.mycollege.ett.AuthActivity$Listview4Adapter
  com.mycollege.ett.AuthActivity$Listview5Adapter
  com.mycollege.ett.AuthActivity$Viewpager1Adapter
+com/mycollege/ett/FileUtil.java
+ com.mycollege.ett.FileUtil
+androidx/vectordrawable/animated/R.java
+ androidx.vectordrawable.animated.R
+ androidx.vectordrawable.animated.R$attr
+ androidx.vectordrawable.animated.R$color
+ androidx.vectordrawable.animated.R$dimen
+ androidx.vectordrawable.animated.R$drawable
+ androidx.vectordrawable.animated.R$id
+ androidx.vectordrawable.animated.R$integer
+ androidx.vectordrawable.animated.R$layout
+ androidx.vectordrawable.animated.R$string
+ androidx.vectordrawable.animated.R$style
+ androidx.vectordrawable.animated.R$styleable
