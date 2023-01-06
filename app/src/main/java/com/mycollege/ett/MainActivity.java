@@ -72,6 +72,8 @@ public class MainActivity extends  AppCompatActivity  {
 		_NavStatusBarColor("#FFFFFF", "#FFFFFF");
 		_changeActivityFont("en_light");
 		_DARK_ICONS();
+
+
 		timer = new TimerTask() {
 			@Override
 			public void run() {

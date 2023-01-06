@@ -165,7 +165,7 @@ public class programs extends  AppCompatActivity  {
 	}
 
 
-	public class Recyclerview1Adapter extends RecyclerView.Adapter<Recyclerview1Adapter.ViewHolder> {
+	public class Recyclerview1Adapter extends RecyclerView.Adapter<Recyclerview1Adapter.ViewHolder> 		{
 		ArrayList<HashMap<String, Object>> _data;
 		public Recyclerview1Adapter(ArrayList<HashMap<String, Object>> _arr) {
 			_data = _arr;

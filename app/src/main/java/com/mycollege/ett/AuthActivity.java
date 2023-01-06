@@ -197,7 +197,9 @@ public class AuthActivity extends  AppCompatActivity  {
 		██╔══██║██╔═══╝░██║      ██║░░░░░██║██║╚████║██╔═██╗░
 		██║░░██║██║░░░░░██║      ███████╗██║██║░╚███║██║░╚██╗
 		╚═╝░░╚═╝╚═╝░░░░░╚═╝      ╚══════╝╚═╝╚═╝░░╚══╝╚═╝░░╚═╝
-	**/
+
+
+   **/
 
 	   String api = "https://student.mlu.ac.in/api/";
 	   String api_mlu = "https://mlu.ac.in/api/v1/";
@@ -223,11 +225,15 @@ public class AuthActivity extends  AppCompatActivity  {
 
 		/** ////       API SECTION    /////////////  **/
 
-  class_api = new RequestNetwork(this);
-  department_api = new RequestNetwork( this);
-  year_api = new RequestNetwork(this);
-  slider_api = new RequestNetwork(this);
-  college_api = new RequestNetwork(this);
+         class_api = new RequestNetwork(this);
+         department_api = new RequestNetwork( this);
+         year_api = new RequestNetwork(this);
+         slider_api = new RequestNetwork(this);
+         college_api = new RequestNetwork(this);
+
+		/** ////       API SECTION    /////////////  **/
+
+
 
 		spinner_class_name = findViewById(R.id.spinner_class_name);
 		spinner_department = findViewById(R.id.spinner_department);

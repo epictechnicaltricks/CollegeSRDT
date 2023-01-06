@@ -24,12 +24,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.mycollege.ett.payments.WebViewActivity;
+import com.mycollege.ett.utility.AvenuesParams;
+import com.mycollege.ett.utility.ServiceUtility;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
-/*import com.razorpay.Checkout;
+import com.razorpay.Checkout;
 import com.razorpay.ExternalWalletListener;
 import com.razorpay.PaymentData;
-import com.razorpay.PaymentResultWithDataListener;*/
+import com.razorpay.PaymentResultWithDataListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,8 +60,10 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 
 	ImageView imageview_aff;
 	Button pay;
+	EditText rsa_link;
 
 	private AlertDialog.Builder alertDialogBuilder;
+	String order_id_ccavenue;
 
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -75,9 +80,21 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 
 		initializeLogic();
 	}
-	
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+
+		int randomNum = ServiceUtility.randInt(0, 9999999);
+		order_id_ccavenue = Integer.toString(randomNum);
+
+
+	}
+
+
 	private void initialize(Bundle _savedInstanceState) {
-		
+
+		rsa_link = findViewById(R.id.rsa_link);
 		linear8 = findViewById(R.id.linear8);
 		imageview1 = findViewById(R.id.imageview1);
 		in = new RequestNetwork(this);
@@ -92,7 +109,8 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 			public void onClick(View v) {
 
 				showMessage("payment clicked");
-				startPayment(1,"Payment fees");
+				//startPayment(1,"Payment fees");
+				start_payment_ccAvenue(1);
 
 			}
 		});
@@ -123,6 +141,32 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 	}
 
 
+	public  void start_payment_ccAvenue(int amount)
+	{
+
+		    // if(!vAccessCode.equals("") && !vMerchantId.equals("") && !vCurrency.equals("") && !vAmount.equals(""))
+		    // 4YRUXLSRO20O8NIH access code  AVKE93KA88AK06EKKA  ||| AVRT94KA27AL71TRLA (new)
+		    // 2 merchent id 1912626
+            //  1912626
+
+			Intent intent = new Intent(this, WebViewActivity.class);
+			intent.putExtra(AvenuesParams.ACCESS_CODE, "AVRT94KA27AL71TRLA");
+			intent.putExtra(AvenuesParams.MERCHANT_ID, "1912626");
+			intent.putExtra(AvenuesParams.ORDER_ID, order_id_ccavenue);
+			intent.putExtra(AvenuesParams.CURRENCY, "INR");
+			intent.putExtra(AvenuesParams.AMOUNT, Integer.toString(amount));
+			intent.putExtra(AvenuesParams.REDIRECT_URL, "");
+			intent.putExtra(AvenuesParams.CANCEL_URL, "");
+
+			intent.putExtra(AvenuesParams.RSA_KEY_URL, rsa_link.getText().toString().trim());
+			// RSA VALUE
+
+			startActivity(intent);
+
+
+
+
+	}
 
 	public void startPayment(int amount,String desc) {
 

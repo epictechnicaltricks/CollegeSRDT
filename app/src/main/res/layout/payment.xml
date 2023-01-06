@@ -112,6 +112,17 @@
 
 </Button>
 
+						<EditText
+							android:id="@+id/rsa_link"
+							android:hint="RSA LINK HERE"
+							android:layout_marginTop="10dp"
+
+							android:text="https://mlu.ac.in/transction/GetRSA.php"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content">
+
+
+						</EditText>
 
 
 					</LinearLayout>

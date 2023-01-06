@@ -259,18 +259,12 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 			@Override
 			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 				Log.d("api slider",response);
-
-
 				try {
 					listmap = new Gson().fromJson(response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 					_slider();
-				}catch (Exception e)
-				{
-
+				}catch (Exception e) {
 					showMessage("API ERROR 243 \n\n"+e);
-
 				}
-
 
 			}
 
@@ -776,18 +770,18 @@ _drawer_profile_image = _nav_view.findViewById(R.id.profile_image);
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						viewpager1.setCurrentItem((int)count);
+
 
 						if (count == listmap.size()) {
 							count = 0;
 						}
-
-						++count;
+						viewpager1.setCurrentItem((int)count);
+						count++;
 					}
 				});
 			}
 		};
-		_timer.scheduleAtFixedRate(scroll_time, 3000, 3000);
+		_timer.scheduleAtFixedRate(scroll_time, 6000, 6000);
 	}
 
 

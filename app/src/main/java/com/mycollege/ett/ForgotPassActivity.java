@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -81,7 +83,7 @@ public class ForgotPassActivity extends  AppCompatActivity  {
 		super.onCreate(_savedInstanceState);
 		setContentView(R.layout.forgot_pass);
 		initialize(_savedInstanceState);
-		com.google.firebase.FirebaseApp.initializeApp(this);
+		FirebaseApp.initializeApp(this);
 		initializeLogic();
 	}
 	
