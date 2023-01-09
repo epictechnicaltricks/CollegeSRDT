@@ -25,7 +25,9 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 
@@ -138,9 +140,10 @@ public class exam extends  AppCompatActivity  {
 	private void req_exam_api()
 	{
 		SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-//sh.getString("token", "")
+        //sh.getString("token", "")
 		authorization.clear();
-		authorization.put("Authorization","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwicm9sZSI6IjQiLCJyb2xlVGV4dCI6IlN0dWRlbnQiLCJuYW1lIjoiRGViZW5kcmEgS3VtYXIgU2Fob28iLCJsYXN0TG9naW4iOiIyMDIyLTExLTI0IDA0OjQ1OjQ4IiwiaXNMb2dnZWRJbiI6dHJ1ZSwiQVBJX1RJTUUiOjE2Njk5ODE0MzJ9.GnZXnMKufGFEx9GHklORreKyIzenyg9KtuH0Q15bMU4");
+		authorization.put("Authorization",sh.getString("token", ""));
+
 		exam_api.setHeaders(authorization);
 		//exam_api.setParams(api_map, RequestNetworkController.REQUEST_PARAM);
 		exam_api.startRequestNetwork(RequestNetworkController.GET, "https://student.mlu.ac.in/api/exam/get", "no tag",_exam_request_listener);
@@ -195,6 +198,15 @@ public class exam extends  AppCompatActivity  {
 		}
 	}
 
+
+	public String giveDate() {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		return sdf.format(cal.getTime());
+	}
+
+
+
 	public class Recyclerview1Adapter extends RecyclerView.Adapter<Recyclerview1Adapter.ViewHolder> {
 		ArrayList<HashMap<String, Object>> _data;
 		public Recyclerview1Adapter(ArrayList<HashMap<String, Object>> _arr) {
@@ -245,8 +257,19 @@ result.setOnClickListener(new View.OnClickListener() {
 	@Override
 	public void onClick(View v) {
 
+		SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
 		Intent i = new Intent();
 		i.setClass(getApplicationContext(),payment.class);
+		i.putExtra("student_name",sharedPreferences.getString("name", ""));
+		i.putExtra("dept_id",exam_map.get((int)_position).get("department_id").toString());
+		i.putExtra("dept_name","PHD");
+		i.putExtra("class_id",exam_map.get((int)_position).get("class_id").toString());
+		i.putExtra("class_name","5year integrated Ba. LLB");
+		i.putExtra("exam",exam_map.get((int)_position).get("name").toString());
+		i.putExtra("semester",exam_map.get((int)_position).get("semistar").toString());
+		i.putExtra("term",exam_map.get((int)_position).get("term").toString());
+		i.putExtra("fees",exam_map.get((int)_position).get("form_fee").toString());
+		i.putExtra("date", giveDate());
 		startActivity(i);
 
 	}

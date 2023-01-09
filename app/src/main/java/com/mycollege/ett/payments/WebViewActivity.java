@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.mycollege.ett.R;
+import com.mycollege.ett.RequestNetwork;
+import com.mycollege.ett.RequestNetworkController;
 import com.mycollege.ett.utility.AvenuesParams;
 import com.mycollege.ett.utility.Constants;
 import com.mycollege.ett.utility.LoadingDialog;
@@ -40,11 +43,38 @@ public class WebViewActivity extends AppCompatActivity {
     String encVal;
     String vResponse;
 
+    private HashMap<String, Object> submit_map = new HashMap<>();
+    private RequestNetwork submit_api_call;
+    private RequestNetwork.RequestListener _submit_api_listener;
+
+    WebView webview ;
+    AlertDialog.Builder builder;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_webview);
+
+        webview = (WebView) findViewById(R.id.webview);
+        submit_api_call = new RequestNetwork(this);
+        builder = new AlertDialog.Builder(this);
+        _submit_api_listener= new RequestNetwork.RequestListener() {
+            @Override
+            public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+                showMessage("Successfully Form Applied.");
+
+            }
+
+            @Override
+            public void onErrorResponse(String tag, String message) {
+
+                showMessage("Failed to submit form\n"+message);
+
+            }
+        };
+
+
         mainIntent = getIntent();
 
 //get rsa key method
@@ -87,11 +117,17 @@ public class WebViewActivity extends AppCompatActivity {
                 public void processHTML(String html) {
                     // process the html source code to get final status of transaction
                     String status = null;
-                    if (html.indexOf("Failure") != -1) {
+                    if (html.contains("Failure")) {
                         status = "Transaction Declined!";
-                    } else if (html.indexOf("Success") != -1) {
+                    } else if (html.contains("Success")) {
+
+
+
                         status = "Transaction Successful!";
-                    } else if (html.indexOf("Aborted") != -1) {
+
+
+
+                    } else if (html.contains("Aborted")) {
                         status = "Transaction Cancelled!";
                     } else {
                         status = "Status Not Known!";
@@ -99,28 +135,77 @@ public class WebViewActivity extends AppCompatActivity {
 
 
                     Log.d("payment_cc", status);
-                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
+                 /*   Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), StatusActivity.class);
                     intent.putExtra("transStatus", status);
                     startActivity(intent);
-
+*/
 
 
 
                 }
             }
 
-            final WebView webview = (WebView) findViewById(R.id.webview);
+
             webview.getSettings().setJavaScriptEnabled(true);
             webview.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
+
+
+
+
             webview.setWebViewClient(new WebViewClient() {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(webview, url);
                     LoadingDialog.cancelLoading();
-                    if (url.indexOf("/ccavResponseHandler.jsp") != -1) {
+                    if (url.contains("/ccavResponseHandler.jsp")) {
                         webview.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
                     }
+                    Toast.makeText(WebViewActivity.this, url, Toast.LENGTH_SHORT).show();
+
+                    webview.evaluateJavascript(
+                            "(function() { return ('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>'); })();",
+                            new ValueCallback<String>() {
+                                @Override
+                                public void onReceiveValue(String html) {
+                                    Log.d("payment_cc_html", html);
+                                    // code here
+                                    if(html.contains("Successful"))
+                                    {
+
+                                        builder.setMessage("Payment Success")
+                                                .setCancelable(false)
+                                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+
+                                                    }
+                                                });
+                                        //Creating dialog box
+                                        AlertDialog alert = builder.create();
+                                        //Setting the title manually
+                                        alert.setTitle("Response");
+                                        alert.show();
+
+                                        Log.d("payment_cc", "payment success");
+                                        Toast.makeText(WebViewActivity.this, "Payment success", Toast.LENGTH_SHORT).show();
+
+                                    }else {
+
+                                        Log.d("payment_cc", "payment failure");
+                                        //Toast.makeText(WebViewActivity.this, "Payment failure", Toast.LENGTH_SHORT).show();
+
+
+                                    }
+                                }
+                            });
+
+
+                    Log.d("payment_cc", url);
+
+
+
+
+
                 }
 
                 @Override
@@ -132,7 +217,10 @@ public class WebViewActivity extends AppCompatActivity {
 
 
             try {
-                String postData = AvenuesParams.ACCESS_CODE + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ACCESS_CODE), "UTF-8") + "&" + AvenuesParams.MERCHANT_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.MERCHANT_ID), "UTF-8") + "&" + AvenuesParams.ORDER_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ORDER_ID), "UTF-8") + "&" + AvenuesParams.REDIRECT_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.REDIRECT_URL), "UTF-8") + "&" + AvenuesParams.CANCEL_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.CANCEL_URL), "UTF-8") + "&" + AvenuesParams.ENC_VAL + "=" + URLEncoder.encode(encVal, "UTF-8");
+                String postData = AvenuesParams.ACCESS_CODE + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ACCESS_CODE),
+                        "UTF-8") + "&" + AvenuesParams.MERCHANT_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.MERCHANT_ID), "UTF-8") + "&" + AvenuesParams.ORDER_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ORDER_ID), "UTF-8") + "&" + AvenuesParams.REDIRECT_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.REDIRECT_URL), "UTF-8") + "&" + AvenuesParams.CANCEL_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.CANCEL_URL), "UTF-8") + "&" + AvenuesParams.ENC_VAL + "=" + URLEncoder.encode(encVal, "UTF-8");
+
+
                 webview.postUrl(Constants.TRANS_URL, postData.getBytes());
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -140,6 +228,61 @@ public class WebViewActivity extends AppCompatActivity {
 
         }
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(webview.canGoBack()){
+
+            webview.goBack();
+        }else {
+
+            finish();
+        }
+    }
+
+    public void _submit_api_request(String _nationality,
+                                    String _name,
+                                    String _email, String _state,
+                                    String _mob, String _city, String _program_name,
+                                    String _qualification,
+                                    String _gender,
+                                    String _caste) {
+
+        submit_map.clear();
+        submit_map = new HashMap<>();
+
+        submit_map.put("name",  _name.trim());
+        submit_map.put("department", _email.trim());
+        submit_map.put("class_id",  _mob.trim());
+        submit_map.put("semistar", _nationality.trim());
+        submit_map.put("term", _state);
+        submit_map.put("type", _city.trim());
+        submit_map.put("exam_date", _program_name);
+        submit_map.put("qualification", _qualification.trim());
+        submit_map.put("gender", _gender.trim());
+        submit_map.put("caste", _caste.trim());
+
+        submit_api_call.setParams(submit_map, RequestNetworkController.REQUEST_PARAM);
+        submit_api_call.startRequestNetwork(RequestNetworkController.POST, "https://student.mlu.ac.in/api/exam/add", "no tag", _submit_api_listener);
+
+
+        //textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
+
+        //Toast.makeText(this, "Login complete", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public void get_RSA_key(final String ac, final String od) {
         LoadingDialog.showLoadingDialog(WebViewActivity.this, "Loading...");
@@ -215,4 +358,12 @@ public class WebViewActivity extends AppCompatActivity {
 
         alertDialog.show();
     }
+
+
+    @Deprecated
+    public void showMessage(String _s) {
+        Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_LONG).show();
+    }
+
+
 }

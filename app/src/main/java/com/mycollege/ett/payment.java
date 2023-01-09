@@ -59,11 +59,20 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 	private RequestNetwork.RequestListener _in_request_listener;
 
 	ImageView imageview_aff;
-	Button pay;
-	EditText rsa_link;
+	Button pay, close ;
+	//EditText rsa_link;
 
 	private AlertDialog.Builder alertDialogBuilder;
 	String order_id_ccavenue;
+
+	EditText stu_name, dept, class_name, exam, semester, time, term;
+	TextView date, fees;
+
+
+
+	private HashMap<String, Object> submit_map = new HashMap<>();
+	private RequestNetwork submit_api_call;
+	private RequestNetwork.RequestListener _submit_api_listener;
 
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -72,7 +81,23 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 		initialize(_savedInstanceState);
 		com.google.firebase.FirebaseApp.initializeApp(this);
 
+		submit_api_call = new RequestNetwork(this);
 
+		_submit_api_listener= new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+				showMessage("Successfully Form Applied.");
+
+			}
+
+			@Override
+			public void onErrorResponse(String tag, String message) {
+
+				showMessage("Failed to submit form\n"+message);
+
+			}
+		};
 
 		//razorpay
 		Checkout.preload(getApplicationContext());
@@ -81,11 +106,15 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 		initializeLogic();
 	}
 
+
+
+
+
 	@Override
 	protected void onStart() {
 		super.onStart();
 
-		int randomNum = ServiceUtility.randInt(0, 9999999);
+		int randomNum = ServiceUtility.randInt(10000000, 99999999);
 		order_id_ccavenue = Integer.toString(randomNum);
 
 
@@ -94,12 +123,44 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 
 	private void initialize(Bundle _savedInstanceState) {
 
-		rsa_link = findViewById(R.id.rsa_link);
+		//rsa_link = findViewById(R.id.rsa_link);
 		linear8 = findViewById(R.id.linear8);
 		imageview1 = findViewById(R.id.imageview1);
 		in = new RequestNetwork(this);
 
 		pay =findViewById(R.id.pay);
+		close = findViewById(R.id.close);
+
+		close.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				finish();
+			}
+		});
+
+
+		date = findViewById(R.id.date);
+		term = findViewById(R.id.term);
+		fees = findViewById(R.id.fees);
+		semester = findViewById(R.id.semister_name);
+		exam = findViewById(R.id.exam_name);
+		class_name = findViewById(R.id.class_name);
+		dept = findViewById(R.id.dept_name);
+		stu_name = findViewById(R.id.stu_name);
+
+		date.setText("Date : "+getIntent().getStringExtra("date"));
+		term.setText(getIntent().getStringExtra("term"));
+		fees.setText("Fees : ₹"+getIntent().getStringExtra("fees"));
+		semester.setText(getIntent().getStringExtra("semester"));
+		exam.setText(getIntent().getStringExtra("exam"));
+		class_name.setText(getIntent().getStringExtra("class_name"));
+		dept.setText(getIntent().getStringExtra("dept_name"));
+		stu_name.setText(getIntent().getStringExtra("student_name"));
+
+
+
+
 
 		imageview_aff = findViewById(R.id.imageview_aff);
 
@@ -108,9 +169,9 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 			@Override
 			public void onClick(View v) {
 
-				showMessage("payment clicked");
+				// showMessage("payment clicked");
 				//startPayment(1,"Payment fees");
-				start_payment_ccAvenue(1);
+				start_payment_ccAvenue(Integer.parseInt(getIntent().getStringExtra("fees").replaceAll("[.]00","")));
 
 			}
 		});
@@ -158,8 +219,10 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 			intent.putExtra(AvenuesParams.REDIRECT_URL, "");
 			intent.putExtra(AvenuesParams.CANCEL_URL, "");
 
-			intent.putExtra(AvenuesParams.RSA_KEY_URL, rsa_link.getText().toString().trim());
+			intent.putExtra(AvenuesParams.RSA_KEY_URL, "https://mlu.ac.in/transction/GetRSA.php");
 			// RSA VALUE
+		// Ordinal : https://mlu.ac.in/transction/GetRSA.php
+		    // test rsa link : https://secure.ccavenue.com/transaction/jsp/GetRSA.jsp
 
 			startActivity(intent);
 
@@ -170,18 +233,17 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 
 	public void startPayment(int amount,String desc) {
 
+	   /*
 
+	   buy_coin  = get_coins;
 
-
-
-	/*	buy_coin  = get_coins;
-
-
-		Intent upiPayIntent = new Intent(Intent.ACTION_VIEW);
+        Intent upiPayIntent = new Intent(Intent.ACTION_VIEW);
 		upiPayIntent.setData(Uri.parse("upi://pay?mode=02&pa=Q02250494@ybl&purpose=00&am="
 				+amount+"&mc=0000&pn=LionBook&orgid=180001&sign=MEUCIDnhMrYjFpn59C7cjKT1FfIvvMxcJ4hz/4cTmBHHkIT7AiEA7yEiHItl5PEFMNiTjne1qSG4YGvOB6C9K/JxrU8SiW0="));
 
-		startActivityForResult(upiPayIntent, UPI_PAYMENT);*/
+		startActivityForResult(upiPayIntent, UPI_PAYMENT);
+
+		*/
 
 
 
@@ -351,13 +413,13 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 	
 	@Deprecated
 	public void showMessage(String _s) {
-		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), _s, Toast.LENGTH_LONG).show();
 	}
 
 
 	@Override
 	public void onPaymentSuccess(String s) {
-
+        // RAZORPAY PAYMENT GATEWAY
 		AlertDialog.Builder al = new AlertDialog.Builder(this);
 		al.setTitle("Payment response");
 		al.setMessage(s);

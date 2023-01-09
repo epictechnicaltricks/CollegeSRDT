@@ -85,44 +85,317 @@
 						android:orientation="vertical">
 
 
-						<TextView
 
-							android:layout_gravity="center"
-							android:padding="10dp"
-							android:id="@+id/textview433"
+
+						<LinearLayout
+							android:id="@+id/linearss1"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
-
+							android:padding="15dp"
 							android:gravity="left"
-							android:textSize="20sp"
-                            android:textStyle="bold"
-							android:text="Pay fees now"
-							android:textColor="#000000"
-							android:layout_weight="1"/>
-
-<Button
-	android:id="@+id/pay"
-	android:textColor="#fff"
-	android:background="#3697EC"
-	android:layout_gravity="center"
-	android:layout_width="wrap_content"
-	android:text="Pay fees"
-	android:layout_height="wrap_content">
+							android:orientation="vertical">
 
 
-</Button>
+							<TextView
+								android:layout_marginBottom="5dp"
+								android:textColor="#3697EC"
 
-						<EditText
-							android:id="@+id/rsa_link"
-							android:hint="RSA LINK HERE"
-							android:layout_marginTop="10dp"
-
-							android:text="https://mlu.ac.in/transction/GetRSA.php"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content">
+								android:textStyle="bold"
+								android:textSize="20sp"
+								android:text="Fillup exam form"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content">
 
 
-						</EditText>
+							</TextView>
+							<LinearLayout
+
+								android:paddingBottom="12dp"
+								android:layout_width="match_parent"
+								android:layout_height="2dp"
+								android:padding="8dp"
+								android:background="#3697EC"
+								android:orientation="horizontal"/>
+
+
+							<TextView
+
+								android:layout_marginStart="7dp"
+								android:id="@+id/textview3"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="20dp"
+								android:text="Student name"
+								android:textSize="14sp"
+								android:textStyle="bold"
+								android:textColor="#575656"/>
+
+
+							<EditText
+								android:enabled="false"
+								android:id="@+id/stu_name"
+								android:paddingTop="12dp"
+
+
+								android:layout_marginTop="7dp"
+								android:background="@drawable/shape"
+								android:textSize="14sp"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#7E7E7E"
+
+								android:textColorHint="#607D8B"/>
+
+						
+							<TextView
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+								android:id="@+id/textview1012"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:text="Department"
+								android:inputType="numberSigned"
+								android:textSize="14sp"
+								android:textColor="#575656"/>
+
+							<EditText
+								android:enabled="false"
+								android:paddingTop="12dp"
+								android:inputType="numberSigned"
+								android:layout_marginTop="7dp"
+								android:background="@drawable/shape"
+								android:textSize="14sp"
+								android:id="@+id/dept_name"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#7E7E7E"
+
+								android:textColorHint="#607D8B"/>
+
+
+
+							<TextView
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+								android:id="@+id/textview1560"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:text="Class"
+								android:inputType="numberSigned"
+								android:textSize="14sp"
+								android:textColor="#575656"/>
+
+							<EditText
+								android:enabled="false"
+								android:paddingTop="12dp"
+								android:inputType="numberSigned"
+								android:layout_marginTop="7dp"
+								android:background="@drawable/shape"
+								android:textSize="14sp"
+android:id="@+id/class_name"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#7E7E7E"
+
+								android:textColorHint="#607D8B"/>
+
+
+							<TextView
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+								android:id="@+id/textview1fds0"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:text="Exam"
+								android:inputType="numberSigned"
+								android:textSize="14sp"
+								android:textColor="#575656"/>
+
+							<EditText
+								android:enabled="false"
+								android:id="@+id/exam_name"
+								android:paddingTop="12dp"
+								android:inputType="numberSigned"
+								android:layout_marginTop="7dp"
+								android:background="@drawable/shape"
+								android:textSize="14sp"
+
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#7E7E7E"
+
+								android:textColorHint="#607D8B"/>
+
+
+							<TextView
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:text="Semester"
+								android:inputType="numberSigned"
+								android:textSize="14sp"
+								android:textColor="#575656"/>
+
+							<EditText
+								android:enabled="false"
+								android:id="@+id/semister_name"
+								android:paddingTop="12dp"
+								android:inputType="numberSigned"
+								android:layout_marginTop="7dp"
+								android:background="@drawable/shape"
+								android:textSize="14sp"
+
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#7E7E7E"
+
+								android:textColorHint="#607D8B"/>
+
+
+							<TextView
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+								android:id="@+id/textview10"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:text="Term"
+								android:inputType="numberSigned"
+								android:textSize="14sp"
+								android:textColor="#575656"/>
+
+							<EditText
+								android:enabled="false"
+								android:paddingTop="12dp"
+								android:inputType="numberSigned"
+								android:layout_marginTop="7dp"
+								android:background="@drawable/shape"
+								android:textSize="14sp"
+								android:id="@+id/term"
+								android:layout_width="match_parent"
+								android:layout_height="40dp"
+								android:padding="8dp"
+
+								android:textColor="#7E7E7E"
+
+								android:textColorHint="#607D8B"/>
+
+
+							<TextView
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+android:id="@+id/date"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:text="Date : 09-01-2023"
+								android:inputType="numberSigned"
+								android:textSize="17sp"
+								android:textColor="#575656"/>
+
+
+
+
+
+
+							<TextView
+								android:layout_marginBottom="10dp"
+								android:layout_marginStart="7dp"
+								android:textStyle="bold"
+								android:id="@+id/fees"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:text="Fees : 1.00"
+								android:textSize="18sp"
+								android:textColor="#047E04"/>
+
+
+							<LinearLayout
+
+								android:layout_marginBottom="10dp"
+								android:id="@+id/linear7"
+								android:layout_width="match_parent"
+								android:layout_height="2dp"
+								android:background="#EEEEEE"
+								android:orientation="horizontal"
+								android:padding="8dp" >
+
+
+
+							</LinearLayout>
+
+
+
+							<LinearLayout
+								android:gravity="right"
+								android:orientation="horizontal"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content">
+
+								<Button
+
+									android:id="@+id/pay"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="15dp"
+									android:padding="12dp"
+									app:backgroundTint="#1C89E8"
+									android:layout_gravity="center_horizontal|center_vertical"
+									android:text="SUBMIT FORM"
+									android:textSize="12sp"
+									android:textColor="#FFFFFF"
+									android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+									style="@style/Widget.MaterialComponents.Button"/>
+
+
+								<Button
+									android:layout_marginLeft="10dp"
+									android:id="@+id/close"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="15dp"
+									android:padding="12dp"
+									app:backgroundTint="#FB4545"
+									android:layout_gravity="center_horizontal|center_vertical"
+									android:text="CLOSE"
+									android:textSize="12sp"
+									android:textColor="#FFFFFF"
+									android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+									style="@style/Widget.MaterialComponents.Button"/>
+
+
+							</LinearLayout>
+
+
+
+
+						</LinearLayout>
+
+
+
+
+
+
+
+
+
 
 
 					</LinearLayout>
