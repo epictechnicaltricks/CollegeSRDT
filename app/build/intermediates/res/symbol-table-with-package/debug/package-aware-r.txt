@@ -1204,8 +1204,10 @@ id checkbox
 id checkbox1
 id checked
 id chronometer
+id class_name
 id clip_horizontal
 id clip_vertical
+id close
 id collapseActionView
 id container
 id content
@@ -1218,6 +1220,7 @@ id dark
 id date
 id decor_content_parent
 id default_activity_button
+id dept_name
 id desc
 id design_bottom_sheet
 id design_menu_item_action_area
@@ -1235,6 +1238,7 @@ id edittext2
 id edittext3
 id edittext4
 id edittext4_textview_91
+id edittext4we
 id email
 id email_
 id end
@@ -1243,6 +1247,7 @@ id enterAlways
 id enterAlwaysCollapsed
 id exam
 id exam_date
+id exam_name
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1317,6 +1322,7 @@ id linear_name376
 id linear_name_
 id linear_phone_
 id linear_roll_
+id linearss1
 id listMode
 id list_item
 id listview1
@@ -1399,7 +1405,6 @@ id right
 id right_icon
 id right_side
 id roll_
-id rsa_link
 id rzp_innerbox
 id rzp_outerbox
 id rzp_securedpayments
@@ -1426,6 +1431,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id semister
+id semister_name
 id send_otp
 id shortcut
 id showCustom
@@ -1470,6 +1476,7 @@ id stretch
 id stu_name
 id subject
 id submenuarrow
+id submit
 id submit_
 id submit_area
 id tabMode
@@ -1515,7 +1522,10 @@ id textinput_error
 id textinput_helper_text
 id textview1
 id textview10
+id textview1012
 id textview11
+id textview1560
+id textview1fds0
 id textview2
 id textview3
 id textview4
@@ -1644,6 +1654,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout exam_cus
+layout exam_form_submit
 layout exam_layout
 layout forgot_pass
 layout gallery
