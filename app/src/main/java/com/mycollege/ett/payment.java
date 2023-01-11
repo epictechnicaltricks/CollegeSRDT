@@ -219,6 +219,20 @@ public class payment extends  AppCompatActivity  implements PaymentResultListene
 			intent.putExtra(AvenuesParams.REDIRECT_URL, "");
 			intent.putExtra(AvenuesParams.CANCEL_URL, "");
 
+
+
+			intent.putExtra("dept_id",getIntent().getStringExtra("dept_id"));
+			intent.putExtra("class_id",getIntent().getStringExtra("class_id"));
+		    intent.putExtra("exam_id",getIntent().getStringExtra("exam_id"));
+		    intent.putExtra("dept_name",dept.getText().toString().trim());
+		    intent.putExtra("class_name",class_name.getText().toString().trim());
+		    intent.putExtra("exam",getIntent().getStringExtra("exam"));
+			intent.putExtra("semester",getIntent().getStringExtra("semester"));
+		    intent.putExtra("date",getIntent().getStringExtra("date"));
+			intent.putExtra("fees",getIntent().getStringExtra("fees"));
+		    intent.putExtra("student_name",stu_name.getText().toString());
+
+
 			intent.putExtra(AvenuesParams.RSA_KEY_URL, "https://mlu.ac.in/transction/GetRSA.php");
 			// RSA VALUE
 		// Ordinal : https://mlu.ac.in/transction/GetRSA.php

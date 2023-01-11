@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.SparseBooleanArray;
 import android.util.TypedValue;
 import android.view.View;
@@ -21,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -65,7 +68,10 @@ public class about_course extends  AppCompatActivity  {
 		}
 
 		title.setText(getIntent().getStringExtra("title"));
-		desc.setText(getIntent().getStringExtra("desc"));
+		//desc.setText();
+
+		desc.setText(Html.fromHtml(getIntent().getStringExtra("desc")));
+		desc.setMovementMethod(LinkMovementMethod.getInstance());
 
 		Glide.with(getApplicationContext())
 				.load(Uri.parse(getIntent().getStringExtra("img")))

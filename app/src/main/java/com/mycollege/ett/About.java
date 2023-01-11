@@ -95,11 +95,12 @@ public class About extends  AppCompatActivity  {
 		_DARK_ICONS();
 
 		Glide.with(getApplicationContext())
-				.load(Uri.parse("https://mlu.ac.in/wp-content/uploads/2022/01/mlu-cuttack-main-gate-for-website.jpg"))
+				.load(Uri.parse("https://odishabhaskar.com/wp-content/uploads/2022/08/Madhusudan-law-University-750x430.jpg"))
 				.error(R.drawable.person)
 				.placeholder(R.drawable.person)
 				.thumbnail(0.01f)
 				.into(imageview_aff);
+		
 
 	}
 	
@@ -136,10 +137,11 @@ public class About extends  AppCompatActivity  {
 
 
 	public void _NavStatusBarColor (final String _color1, final String _color2) {
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-			Window w = this.getWindow();	w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);	w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-			w.setStatusBarColor(Color.parseColor("#" + _color1.replace("#", "")));	w.setNavigationBarColor(Color.parseColor("#" + _color2.replace("#", "")));
-		}
+		Window w = this.getWindow();
+		w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+		w.setStatusBarColor(Color.parseColor("#" + _color1.replace("#", "")));
+		w.setNavigationBarColor(Color.parseColor("#" + _color2.replace("#", "")));
 	}
 	
 	

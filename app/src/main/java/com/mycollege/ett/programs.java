@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.SparseBooleanArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -196,15 +197,16 @@ public class programs extends  AppCompatActivity  {
 
 			c_name.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
 			view.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_med.ttf"), Typeface.NORMAL);
-			desc.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
+			//desc.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
 
 
 			try{
 
 
 				c_name.setText(Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
-				desc.setText(Objects.requireNonNull(listmap2.get(_position).get("description")).toString());
-
+				//desc.setText();
+                desc.setText(Html.fromHtml(Objects.requireNonNull(listmap2.get(_position).get("description")).toString()));
+				desc.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), Typeface.NORMAL);
 				api_map3 = new Gson().fromJson(Objects.requireNonNull(listmap2.get(_position).get("img_url")).toString(), new TypeToken<HashMap<String, Object>>(){}.getType());
 
 
@@ -257,7 +259,7 @@ public class programs extends  AppCompatActivity  {
 
 			}catch (Exception e)
 			{
-				showMessage("887 line "+e.toString());
+				showMessage("887 line "+e);
 			}
 
 

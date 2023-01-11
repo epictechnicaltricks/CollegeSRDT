@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -49,18 +50,43 @@ public class WebViewActivity extends AppCompatActivity {
 
     WebView webview ;
     AlertDialog.Builder builder;
+    boolean payment=false;
+
+    HashMap<String, Object> authorization = new HashMap<>();
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_webview);
 
-        webview = (WebView) findViewById(R.id.webview);
+        webview = findViewById(R.id.webview);
         submit_api_call = new RequestNetwork(this);
         builder = new AlertDialog.Builder(this);
+
+
+
+
         _submit_api_listener= new RequestNetwork.RequestListener() {
             @Override
             public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+
+                Toast.makeText(WebViewActivity.this, response, Toast.LENGTH_SHORT).show();
+                Log.d("payment_cc_submit",response);
+                builder.setMessage("You have successfully applied the form you can exit now.")
+                        .setCancelable(false)
+
+                        .setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                finish();
+
+                            }
+                        });
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("Success");
+                alert.show();
 
                 showMessage("Successfully Form Applied.");
 
@@ -68,6 +94,23 @@ public class WebViewActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(String tag, String message) {
+
+                builder.setMessage("Your payment done but error on submitting the Form, please check your internet and Try again!\n\nError message\n"+message)
+                        .setCancelable(false)
+
+                        .setPositiveButton("Retry now", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                request_submit_Api();
+
+                            }
+                        });
+
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("Failed to submit !");
+                alert.show();
 
                 showMessage("Failed to submit form\n"+message);
 
@@ -80,6 +123,7 @@ public class WebViewActivity extends AppCompatActivity {
 //get rsa key method
         get_RSA_key(mainIntent.getStringExtra(AvenuesParams.ACCESS_CODE), mainIntent.getStringExtra(AvenuesParams.ORDER_ID));
     }
+
 
 
 
@@ -161,7 +205,12 @@ public class WebViewActivity extends AppCompatActivity {
                     if (url.contains("/ccavResponseHandler.jsp")) {
                         webview.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
                     }
-                    Toast.makeText(WebViewActivity.this, url, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(WebViewActivity.this, url, Toast.LENGTH_SHORT).show();
+
+
+                    //request_submit_Api();
+
+
 
                     webview.evaluateJavascript(
                             "(function() { return ('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>'); })();",
@@ -173,27 +222,10 @@ public class WebViewActivity extends AppCompatActivity {
                                     if(html.contains("Successful"))
                                     {
 
-                                        builder.setMessage("Payment Success")
-                                                .setCancelable(false)
-                                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
-
-                                                    }
-                                                });
-                                        //Creating dialog box
-                                        AlertDialog alert = builder.create();
-                                        //Setting the title manually
-                                        alert.setTitle("Response");
-                                        alert.show();
-
+                                        payment = true;
+                                        request_submit_Api(); // sent response to server
                                         Log.d("payment_cc", "payment success");
                                         Toast.makeText(WebViewActivity.this, "Payment success", Toast.LENGTH_SHORT).show();
-
-                                    }else {
-
-                                        Log.d("payment_cc", "payment failure");
-                                        //Toast.makeText(WebViewActivity.this, "Payment failure", Toast.LENGTH_SHORT).show();
-
 
                                     }
                                 }
@@ -229,44 +261,65 @@ public class WebViewActivity extends AppCompatActivity {
         }
     }
 
+    private void request_submit_Api(){
+
+        _submit_api_request(getIntent().getStringExtra("dept_id"),
+                getIntent().getStringExtra("class_id"),
+                getIntent().getStringExtra("exam_id"),
+                getIntent().getStringExtra("dept_name"),
+                getIntent().getStringExtra("class_name"),
+                getIntent().getStringExtra("exam"),
+                getIntent().getStringExtra("semester"),
+                getIntent().getStringExtra("date"),
+                getIntent().getStringExtra("fees"),
+                getIntent().getStringExtra("student_name"));
+
+    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(webview.canGoBack()){
 
-            webview.goBack();
-        }else {
 
+        // if payment is done then it will not exit the app
+        if(!payment)
+        {
             finish();
         }
+
     }
 
-    public void _submit_api_request(String _nationality,
-                                    String _name,
-                                    String _email, String _state,
-                                    String _mob, String _city, String _program_name,
-                                    String _qualification,
-                                    String _gender,
-                                    String _caste) {
+    public void _submit_api_request(String _department_id,
+                                    String _class_id,
+                                    String _exam_id, String _department,
+                                    String _class, String _exam, String _semistar,
+                                    String _date,
+                                    String _form_fee,
+                                    String _student_name) {
 
         submit_map.clear();
-        submit_map = new HashMap<>();
+        authorization.clear();
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        authorization.put("Authorization",sh.getString("token", ""));
+        // Log.d("payment_cc",sh.getString("token", ""));
 
-        submit_map.put("name",  _name.trim());
-        submit_map.put("department", _email.trim());
-        submit_map.put("class_id",  _mob.trim());
-        submit_map.put("semistar", _nationality.trim());
-        submit_map.put("term", _state);
-        submit_map.put("type", _city.trim());
-        submit_map.put("exam_date", _program_name);
-        submit_map.put("qualification", _qualification.trim());
-        submit_map.put("gender", _gender.trim());
-        submit_map.put("caste", _caste.trim());
+        submit_map = new HashMap<>();   //sh.getString("token", "")
+        submit_map.put("department_id",  _department_id.trim());
+        submit_map.put("class_id", _class_id.trim());
+        submit_map.put("exam_id",  _exam_id.trim());
+        submit_map.put("department", _department.trim());
+        submit_map.put("class", _class.trim());
+        submit_map.put("exam", _exam.trim());
+        submit_map.put("semistar", _semistar.trim());
+        submit_map.put("date", _date.trim());
+        submit_map.put("form_fee", _form_fee.trim());
+        submit_map.put("student_name", _student_name.trim());
 
+        submit_api_call.setHeaders(authorization);
         submit_api_call.setParams(submit_map, RequestNetworkController.REQUEST_PARAM);
-        submit_api_call.startRequestNetwork(RequestNetworkController.POST, "https://student.mlu.ac.in/api/exam/add", "no tag", _submit_api_listener);
-
+        submit_api_call.startRequestNetwork(RequestNetworkController.POST,
+                "https://student.mlu.ac.in/api/user/exam/add",
+                "no tag", _submit_api_listener);
 
         //textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
 

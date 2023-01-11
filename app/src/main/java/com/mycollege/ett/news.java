@@ -8,6 +8,8 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.SparseBooleanArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -310,7 +312,9 @@ public class news extends  AppCompatActivity  {
 
 
 				c_name.setText(Objects.requireNonNull(listmap2.get(_position).get("title")).toString());
-				desc.setText(Objects.requireNonNull(listmap2.get(_position).get("content")).toString());
+				desc.setText(Html.fromHtml(Objects.requireNonNull(listmap2.get(_position).get("content")).toString()));
+				//desc.setMovementMethod(LinkMovementMethod.getInstance());
+				//desc.setText();
 				String dt = Objects.requireNonNull(listmap2.get(_position).get("created_at")).toString();
 				date.setText("Date : "+dt.substring(0,10));
 

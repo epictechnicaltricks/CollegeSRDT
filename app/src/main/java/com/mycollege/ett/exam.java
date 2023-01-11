@@ -264,6 +264,7 @@ result.setOnClickListener(new View.OnClickListener() {
 		i.putExtra("dept_id",exam_map.get((int)_position).get("department_id").toString());
 		i.putExtra("dept_name","PHD");
 		i.putExtra("class_id",exam_map.get((int)_position).get("class_id").toString());
+		i.putExtra("exam_id",exam_map.get((int)_position).get("id").toString());
 		i.putExtra("class_name","5year integrated Ba. LLB");
 		i.putExtra("exam",exam_map.get((int)_position).get("name").toString());
 		i.putExtra("semester",exam_map.get((int)_position).get("semistar").toString());
