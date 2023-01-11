@@ -165,11 +165,7 @@ public class WebViewActivity extends AppCompatActivity {
                         status = "Transaction Declined!";
                     } else if (html.contains("Success")) {
 
-
-
                         status = "Transaction Successful!";
-
-
 
                     } else if (html.contains("Aborted")) {
                         status = "Transaction Cancelled!";
@@ -321,9 +317,11 @@ public class WebViewActivity extends AppCompatActivity {
                 "https://student.mlu.ac.in/api/user/exam/add",
                 "no tag", _submit_api_listener);
 
-        //textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
 
+        //textview1.setText(_role +"\n"+_class_name+"\n"+_department+"\n"+_year+"\n"+_blg+"\n");
         //Toast.makeText(this, "Login complete", Toast.LENGTH_SHORT).show();
+
+
     }
 
 
@@ -389,6 +387,8 @@ public class WebViewActivity extends AppCompatActivity {
 
 
     public void show_alert(String msg) {
+
+
         AlertDialog alertDialog = new AlertDialog.Builder(
                 WebViewActivity.this).create();
 
